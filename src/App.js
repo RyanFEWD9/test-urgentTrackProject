@@ -38,7 +38,7 @@ function App() {
       {/*need Hospital coordinate and data from <Distance /> and <Adderss />, show
       address, tel and website*/}
       <Redirection />
-      {/*Redirect to google map with last update time*/}
+      {/*Redirect to google map with last update time */}
     </div>
   );
 }
