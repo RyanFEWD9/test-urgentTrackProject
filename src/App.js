@@ -10,11 +10,13 @@ import Redirection from "./Components/Redirection";
 
 function App() {
   //Below is A&E waiting time
-  const API1 =
-    "https://api.csdi.gov.hk/apim/dataquery/api/?id=fhb_rcd_1636947932221_94410&layer=geodatastore&limit=100&offset=0";
+  const API1 = "https://www.ha.org.hk/opendata/aed/aedwtdata-tc.json";
   //Below is hospital address,website,contact, for better reading : https://portal.csdi.gov.hk/csdi-webpage/info/dataquery?id=fhb_rcd_1637028364270_14638
   const API2 =
     "https://api.csdi.gov.hk/apim/dataquery/api/?id=fhb_rcd_1637028364270_14638&layer=geotagging&limit=200&offset=0";
+
+  //below API url
+  const hospitalUrl = "https://www.ha.org.hk/opendata/facility-hosp.json";
 
   return (
     <div>
