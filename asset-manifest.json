@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/RyanFEWD9/test-urgentTrackProject.git/static/css/main.87202f97.css",
+    "main.js": "/RyanFEWD9/test-urgentTrackProject.git/static/js/main.d632f050.js",
+    "static/js/787.e75c002b.chunk.js": "/RyanFEWD9/test-urgentTrackProject.git/static/js/787.e75c002b.chunk.js",
+    "static/media/logo.svg": "/RyanFEWD9/test-urgentTrackProject.git/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/RyanFEWD9/test-urgentTrackProject.git/index.html",
+    "main.87202f97.css.map": "/RyanFEWD9/test-urgentTrackProject.git/static/css/main.87202f97.css.map",
+    "main.d632f050.js.map": "/RyanFEWD9/test-urgentTrackProject.git/static/js/main.d632f050.js.map",
+    "787.e75c002b.chunk.js.map": "/RyanFEWD9/test-urgentTrackProject.git/static/js/787.e75c002b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.87202f97.css",
+    "static/js/main.d632f050.js"
+  ]
+}
