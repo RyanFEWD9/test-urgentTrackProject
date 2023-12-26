@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.hospital-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.hospital-item {
+  border: 1px solid gray;
+  padding: 10px;
+  margin: 5px;
+}

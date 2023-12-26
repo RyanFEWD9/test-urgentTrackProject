@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./App.css";
 
 function Distance() {
   const [userLocation, setUserLocation] = useState(null);
@@ -67,6 +68,8 @@ function Distance() {
         const distance = R * c; // Distance in kilometers
         return { hospital, distance };
       });
+      //Sort distances in ascending order
+      distances.sort((a, b) => a.distance - b.distance);
       setDistances(distances);
     }
   };
