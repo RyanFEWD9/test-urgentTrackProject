@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div>
-      <h4>UrgentTrack</h4>
+      <h1>UrgentTrack</h1>
       <p style={{ color: "red" }}>
         LATITUDE and LONGITUDE just for our REF, will delete later
       </p>
