@@ -20,10 +20,7 @@ function App() {
 
   return (
     <div>
-      <h1>UrgentTrack</h1>
-      <p style={{ color: "red" }}>
-        LATITUDE and LONGITUDE just for our REF, will delete later
-      </p>
+      <h1>香港公立醫院</h1>
       {/* page1 */}
       <MyLocation /> {/*Your Current Latitude and Longtitude in console*/}
       <WaitingTime API={API1} />
