@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+import styles from "../App.module.css";
 
 function Distance() {
   const [userLocation, setUserLocation] = useState(null);
@@ -24,7 +24,7 @@ function Distance() {
         },
         (error) => {
           console.log(error);
-        },
+        }
       );
     } else {
       console.log("Geolocation is not supported by this browser.");
@@ -34,11 +34,11 @@ function Distance() {
   const fetchHospitalData = async () => {
     try {
       const response = await fetch(
-        "https://www.ha.org.hk/opendata/facility-hosp.json",
+        "https://www.ha.org.hk/opendata/facility-hosp.json"
       );
       const data = await response.json();
       const filteredHospitals = data.filter(
-        (hospital) => hospital.with_AE_service_eng === "Yes",
+        (hospital) => hospital.with_AE_service_eng === "Yes"
       );
       setHospitals(filteredHospitals);
       calculateDistances(filteredHospitals);
@@ -82,10 +82,10 @@ function Distance() {
 
   return (
     <div id="hospitalDisplayWrapper">
-      {distances.length >= 0 ? (
+      {distances.length > 0 ? (
         <div>
           <h2>Distances to Hospitals:</h2>
-          <ul>
+          <div className={styles["hospital-container"]}>
             {distances.map((item, index) => (
               <div key={index} className={styles["hospital-item"]}>
                 <p>Hospital: {item.hospital.institution_tc}</p>

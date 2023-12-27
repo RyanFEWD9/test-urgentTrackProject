@@ -1,4 +1,3 @@
-import style from "./App.module.css";
 import MyLocation from "./Components/MyLocation";
 import WaitingTime from "./Components/WaitingTime";
 import Filter from "./Components/Filter";
