@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
 
 function Distance() {
   const [userLocation, setUserLocation] = useState(null);
@@ -24,7 +23,7 @@ function Distance() {
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
     } else {
       console.log("Geolocation is not supported by this browser.");
@@ -34,11 +33,11 @@ function Distance() {
   const fetchHospitalData = async () => {
     try {
       const response = await fetch(
-        "https://www.ha.org.hk/opendata/facility-hosp.json"
+        "https://www.ha.org.hk/opendata/facility-hosp.json",
       );
       const data = await response.json();
       const filteredHospitals = data.filter(
-        (hospital) => hospital.with_AE_service_eng === "Yes"
+        (hospital) => hospital.with_AE_service_eng === "Yes",
       );
       setHospitals(filteredHospitals);
       calculateDistances(filteredHospitals);
@@ -68,8 +67,6 @@ function Distance() {
         const distance = R * c; // Distance in kilometers
         return { hospital, distance };
       });
-      //Sort distances in ascending order
-      distances.sort((a, b) => a.distance - b.distance);
       setDistances(distances);
     }
   };
@@ -79,10 +76,60 @@ function Distance() {
   };
 
   return (
-    <div>
-      {distances.length > 0 ? (
+    <div id="hospitalDisplayWrapper">
+      {distances.length >= 0 ? (
         <div>
-          <h2>Distances to Hospitals:</h2>
+          <ul>
+            <div id="outputList">
+              <div ClassName="hospitalName">
+                <h2>
+                  東區尤德夫人那打素醫院
+                  <button id="checkDistanceWrapper">
+                    <img src="/mapsFlags.png" width="12em" />
+                    1.3km
+                  </button>
+                </h2>
+              </div>
+              <h5>
+                等候時間: <span id="timeText">+ 超過 1 小時</span>
+              </h5>
+              <h5>地址: 香港柴灣樂民道3 號</h5>
+              <h5>電話: 1234 5678</h5>
+              <h5>
+                <a href="https://www.ha.org.hk/visitor/ha_visitor_text_index.asp?Content_ID=100141&lang=CHIB5">
+                  查看更多
+                </a>
+              </h5>
+            </div>
+
+            <div id="outputList">
+              <div ClassName="hospitalName">
+                <h2>
+                  東區尤德夫人那打素醫院
+                  <button id="checkDistanceWrapper">
+                    <img src="/mapsFlags.png" width="12em" />
+                    1.3km
+                  </button>
+                </h2>
+              </div>
+              <h5>
+                等候時間: <span id="timeText">+ 超過 1 小時</span>
+              </h5>
+              <h5>地址: 香港柴灣樂民道3 號</h5>
+              <h5>電話: 1234 5678</h5>
+              <h5>
+                <a href="https://www.ha.org.hk/visitor/ha_visitor_text_index.asp?Content_ID=100141&lang=CHIB5">
+                  查看更多
+                </a>
+              </h5>
+            </div>
+
+
+
+
+            
+          </ul>
+
           <ul>
             {distances.map((item, index) => (
               <li key={index}>
