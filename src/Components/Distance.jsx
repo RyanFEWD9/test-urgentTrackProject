@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../App.module.css";
 
-function Distance(props) {
+function Distance({ setLatestTime, ...props }) {
   const [userLocation, setUserLocation] = useState(null);
   const [hospitals, setHospitals] = useState([]);
   const [distances, setDistances] = useState([]);
@@ -9,7 +9,7 @@ function Distance(props) {
   //WaitTime API
   const [isFetching, setIsFetching] = useState(false);
   const [characters, setCharacters] = useState([]); // array
-  const [latestTime, setLatestTime] = useState("");
+  // const [latestTime, setLatestTime] = useState("");
 
   useEffect(() => {
     const getData = async () => {

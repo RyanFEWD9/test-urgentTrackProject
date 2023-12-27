@@ -40,3 +40,10 @@ Ryan's update
 
 1. App.js : API props name(type) all updated in Distance.jsx and LastUploadTime.jsx
 2. Distance.jsx bug fixed : for Distance API, seperated into 3 useEffect (line 48 to line 62) to fix fetching issue
+
+2023/12/27 23:30 Abbie's update
+
+1. New TimeContext.js created for createContext use
+2. App.js : New latestTime useState(line 12), CORS variable (line 15) and TimeContext Provider for latestTime (line 35)
+3. Distance.jsx : New param for setLatestTime (line 4), removed latestTime useState (line 12)
+4. LastUploadTime.jsx : Updated with useContext hook
