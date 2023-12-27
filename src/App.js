@@ -1,23 +1,28 @@
 import MyLocation from "./Components/MyLocation";
 import Filter from "./Components/Filter";
 import Distance from "./Components/Distance";
-
+import React from "react";
 import Map from "./Components/Map";
 
 import SearchBar from "./Components/SearchBar";
 import LastUploadTime from "./Components/LastUploadTime";
+import TimeContext from "./TimeContext";
 
 function App() {
+  const [latestTime, setLatestTime] = React.useState("");
+
+  //Below is CORS proxy
+  const CORS = "https://cors-anywhere.herokuapp.com/";
+
   //Below is A&E waiting time
-  const API1 =
-    "https://cors-anywhere.herokuapp.com/https://www.ha.org.hk/opendata/aed/aedwtdata-tc.json";
+  const API1 = `${CORS}https://www.ha.org.hk/opendata/aed/aedwtdata-tc.json`;
+
   //Below is hospital address,website,contact, for better reading : https://portal.csdi.gov.hk/csdi-webpage/info/dataquery?id=fhb_rcd_1637028364270_14638
   const API2 =
     "https://api.csdi.gov.hk/apim/dataquery/api/?id=fhb_rcd_1637028364270_14638&layer=geotagging&limit=200&offset=0";
 
-  //below API url
-  const hospitalUrl =
-    "https://cors-anywhere.herokuapp.com/https://www.ha.org.hk/opendata/facility-hosp.json";
+  //Below Distance and Hospital Name
+  const hospitalUrl = `${CORS}https://www.ha.org.hk/opendata/facility-hosp.json`;
 
   return (
     <div>
@@ -27,20 +32,26 @@ function App() {
         width="200em"
       />
       <h1>急症室等候時間</h1>
-      <SearchBar />
-      {/* page1 */}
-      <MyLocation /> {/*Your Current Latitude and Longtitude in console*/}
-      <Filter />
-      {/*according to the district*/}
-      {/*Redirect to google map with last update time */}
-      {/* page1 */}
-      <Map />
-      {/*need Hospital coordinate and data from <Distance /> and <Adderss />, show
+      <TimeContext.Provider value={latestTime}>
+        <SearchBar />
+        {/* page1 */}
+        <MyLocation /> {/*Your Current Latitude and Longtitude in console*/}
+        <Filter />
+        {/*according to the district*/}
+        {/*Redirect to google map with last update time */}
+        {/* page1 */}
+        <Map />
+        {/*need Hospital coordinate and data from <Distance /> and <Adderss />, show
       address, tel and website*/}
-      <Distance WaitTimeAPI={API1} DistanceAPI={hospitalUrl} />
-      {/*calc distance function, need to get user gps and Hospital
+        <Distance
+          setLatestTime={setLatestTime}
+          WaitTimeAPI={API1}
+          DistanceAPI={hospitalUrl}
+        />
+        {/*calc distance function, need to get user gps and Hospital
       location: Ryan*/}
-      <LastUploadTime WaitTimeAPI={API1} />
+        <LastUploadTime />
+      </TimeContext.Provider>
     </div>
   );
 }

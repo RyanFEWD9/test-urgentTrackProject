@@ -1,32 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
+import TimeContext from "../TimeContext";
 
-function WaitingTime(props) {
-  const [isFetching, setIsFetching] = useState(false);
-  const [characters, setCharacters] = useState([]); // array
-  const [latestTime, setLatestTime] = useState("");
+function LastUploadTime() {
+  const latestTime = useContext(TimeContext);
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        setIsFetching(true);
-        const res = await fetch(`${props.WaitTimeAPI}`);
-        const { waitTime, updateTime } = await res.json();
-        setCharacters(waitTime);
-        setLatestTime(updateTime);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setIsFetching(false);
-      }
-    };
-    getData();
-  }, []); //dependency array
-
-  return (
-    <div>
-      <h6>最後更新時間：{latestTime}</h6>
-    </div>
-  );
+  return <div>最後更新： {latestTime}</div>;
 }
 
-export default WaitingTime;
+export default LastUploadTime;
