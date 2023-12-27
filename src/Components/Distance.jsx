@@ -78,7 +78,7 @@ function Distance() {
     return deg * (Math.PI / 180);
   };
 
-  console.log(distances);
+  // console.log(distances);
 
   return (
     <div id="hospitalDisplayWrapper">
