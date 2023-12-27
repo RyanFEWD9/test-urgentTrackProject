@@ -2,6 +2,10 @@ body {
   background-color: #fafafa;
   color: #363737;
   font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .App {
@@ -33,18 +37,13 @@ body {
 .App-link {
   color: #61dafb;
 }
-.searchInputWrapper {
-  display:flex;
-  align-items:center;
-}
 
 input:focus::placeholder {
   color: transparent;
 }
 
-
-.searchInputWrapper{
-   background-color: #ffffff;
+.searchInputWrapper {
+  background-color: #ffffff;
   width: 90%;
   height: 1rem;
   padding: 2.5%;
@@ -53,11 +52,12 @@ input:focus::placeholder {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
   outline: none;
   margin: 1%;
-  display:flex;
-  justify-items:center;
+  display: flex;
+  justify-items: center;
 }
+
 .searchInput {
-   background-color: #ffffff;
+  background-color: #ffffff;
   width: 90%;
   border: none;
   outline: none;
@@ -85,40 +85,36 @@ input:focus::placeholder {
 }
 
 button:hover {
-  background-color: #E4E4E4;
+  background-color: #e4e4e4;
   transform: translateY(-0.08em);
   transition: scale(1.05);
-  }
-
-
-.FilterWrapper span {
- padding:0 0 0 0.2em;
 }
 
-
+.FilterWrapper span {
+  padding: 0 0 0 0.2em;
+}
 
 #outputList {
   display: flex;
   flex-direction: column;
-   margin: 2%;
+  margin: 2%;
   background-color: #ffffff;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
   border-radius: 0.5em;
-  padding:6%;
+  padding: 6%;
 }
 
 ul {
   display: flex;
   flex-direction: column;
   margin: 2%;
-  padding:6%;
+  padding: 6%;
   justify-content: center;
 }
 
-
 #timeText {
-  color:#1466E1;
-  font-size:140%;
+  color: #1466e1;
+  font-size: 140%;
 }
 
 #checkDistanceWrapper {
@@ -126,32 +122,29 @@ ul {
   border: none;
   background-color: #ffffff;
   outline: none;
-  
 }
 
-
-
 #outputList:hover {
-  border: 2px solid  #2683fd;
+  border: 2px solid #2683fd;
   box-shadow: 0 2px 3px rgba(38, 131, 253, 0.3);
-  
+
   transition: scale(1.2);
 }
 
 h6 {
-  text-align:center;
+  text-align: center;
 }
 
 iframe {
   border-radius: 0.5em;
-  margin: 0.4rem;
-  width: 94%;
-  height: 90%;
+  margin: 2% 6% 6% 2%;
+  width: 25em;
+  height: 30em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  display:flex;
+  display: flex;
 }
 
 h4 {
@@ -172,6 +165,3 @@ li {
     transform: rotate(360deg);
   }
 }
-
-
-
