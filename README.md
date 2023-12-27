@@ -27,3 +27,11 @@ Ryan's update
 2023/12/27 12:00 Abbie's update
 
 1. Updated API1 with CORSANYWHERE
+
+2023/12/27 16:00 Abbie's update
+
+1. Combined WaitTime.jsx with Distance.jsx
+2. Deleted WaitTime.jsx
+3. App.js deleted red text with latitude and longtitude
+4. Distance.jsx added hospital address
+5. Distance.jsx added rules for topWait above 2hrs
