@@ -1,5 +1,4 @@
 import MyLocation from "./Components/MyLocation";
-import WaitingTime from "./Components/WaitingTime";
 import Filter from "./Components/Filter";
 import Distance from "./Components/Distance";
 
@@ -30,19 +29,14 @@ function App() {
       <SearchBar />
       {/* page1 */}
       <MyLocation /> {/*Your Current Latitude and Longtitude in console*/}
-      <WaitingTime API={API1} />
-      {/*Hospital name, waiting time and last update time : Abbie*/}
       <Filter />
       {/*according to the district*/}
       {/*Redirect to google map with last update time */}
-      <p style={{ color: "red" }}>
-        LATITUDE and LONGITUDE just for our REF, will delete later
-      </p>
       {/* page1 */}
       <Map />
       {/*need Hospital coordinate and data from <Distance /> and <Adderss />, show
       address, tel and website*/}
-      <Distance />
+      <Distance API={API1} />
       {/*calc distance function, need to get user gps and Hospital
       location: Ryan*/}
       <LastUploadTime API={API1} />

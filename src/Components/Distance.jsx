@@ -1,11 +1,50 @@
 import React, { useEffect, useState } from "react";
 import styles from "../App.module.css";
 
-function Distance() {
+function Distance(props) {
   const [userLocation, setUserLocation] = useState(null);
   const [hospitals, setHospitals] = useState([]);
   const [distances, setDistances] = useState([]);
 
+  //WaitTime API
+  const [isFetching, setIsFetching] = useState(false);
+  const [characters, setCharacters] = useState([]); // array
+  const [latestTime, setLatestTime] = useState("");
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        setIsFetching(true);
+        const res = await fetch(`${props.API}`);
+        const { waitTime, updateTime } = await res.json();
+        setCharacters(waitTime);
+        setLatestTime(updateTime);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setIsFetching(false);
+      }
+    };
+    getData();
+  }, []);
+
+  //red text for waitTime above 2hrs
+  const isWaitTimeOverTwoHours = (waitTime) => {
+    // This regular expression matches "超過" followed by one or more digits and then "小時"
+    const overHoursRegex = /超過\s*(\d+)\s*小時/;
+    const match = waitTime.match(overHoursRegex);
+
+    if (match) {
+      // Extract the number and convert it to an integer
+      const hours = parseInt(match[1], 10);
+      // Check if the extracted hours are greater than or equal to 2
+      return hours >= 2;
+    }
+
+    return false;
+  };
+
+  //Distance API
   useEffect(() => {
     fetchUserLocation();
     fetchHospitalData();
@@ -78,24 +117,49 @@ function Distance() {
     return deg * (Math.PI / 180);
   };
 
-  // console.log(distances);
+  console.log(distances);
 
   return (
     <div id="hospitalDisplayWrapper">
       {distances.length > 0 ? (
         <div>
-          <h2>Distances to Hospitals:</h2>
           <div className={styles["hospital-container"]}>
             {distances.map((item, index) => (
               <div key={index} className={styles["hospital-item"]}>
-                <p>Hospital: {item.hospital.institution_tc}</p>
-                <p>Distance: {item.distance.toFixed(0)} km</p>
+                <p>
+                  {item.hospital.institution_tc}
+                  <span> 📍{item.distance.toFixed(0)} km</span>
+                </p>
+                <p>地址：{item.hospital.address_tc}</p>
+                {isFetching
+                  ? "更新中..."
+                  : characters
+                      .filter(
+                        (char) => char.hospName === item.hospital.institution_tc
+                      )
+                      .map(({ hospName, topWait }) => (
+                        <div key={hospName} className="wait-Time">
+                          <p>
+                            等候時間：
+                            <span
+                              className={
+                                isWaitTimeOverTwoHours(topWait)
+                                  ? styles.redText
+                                  : styles.blueText
+                              }
+                            >
+                              {topWait}
+                            </span>
+                          </p>
+                          <a href="#">查看更多</a>
+                        </div>
+                      ))}
               </div>
             ))}
           </div>
         </div>
       ) : (
-        <p>Loading data...</p>
+        <p>更新中...</p>
       )}
     </div>
   );
