@@ -24,16 +24,8 @@ function WaitingTime(props) {
 
   return (
     <div>
-     
-      {isFetching
-        ? "更新中..."
-        : characters.map(({ hospName, topWait }) => (
-            <div key={hospName} className="wait-Time">
-              <p>{hospName}</p>
-              <p>{topWait}</p>
-            </div>
-          ))}
-
+ 
+      <h6>最後更新時間：{latestTime}</h6>
     </div>
   );
 }
