@@ -11,7 +11,8 @@ import LastUploadTime from "./Components/LastUploadTime";
 
 function App() {
   //Below is A&E waiting time
-  const API1 = "https://www.ha.org.hk/opendata/aed/aedwtdata-tc.json";
+  const API1 =
+    "https://cors-anywhere.herokuapp.com/https://www.ha.org.hk/opendata/aed/aedwtdata-tc.json";
   //Below is hospital address,website,contact, for better reading : https://portal.csdi.gov.hk/csdi-webpage/info/dataquery?id=fhb_rcd_1637028364270_14638
   const API2 =
     "https://api.csdi.gov.hk/apim/dataquery/api/?id=fhb_rcd_1637028364270_14638&layer=geotagging&limit=200&offset=0";
@@ -51,4 +52,3 @@ function App() {
 }
 
 export default App;
-

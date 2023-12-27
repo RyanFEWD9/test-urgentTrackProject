@@ -23,3 +23,7 @@ Ryan's update
 2. App.js deleted red p text for latitude and longtitude
 3. App.js updated h1 as 香港公立醫院
 4. WaitingTime.js updated with new API
+
+2023/12/27 12:00 Abbie's update
+
+1. Updated API1 with CORSANYWHERE
