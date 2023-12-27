@@ -34,7 +34,7 @@ function Distance() {
   const fetchHospitalData = async () => {
     try {
       const response = await fetch(
-        "https://www.ha.org.hk/opendata/facility-hosp.json"
+        "https://cors-anywhere.herokuapp.com/https://www.ha.org.hk/opendata/facility-hosp.json"
       );
       const data = await response.json();
       const filteredHospitals = data.filter(
