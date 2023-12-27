@@ -16,7 +16,8 @@ function App() {
     "https://api.csdi.gov.hk/apim/dataquery/api/?id=fhb_rcd_1637028364270_14638&layer=geotagging&limit=200&offset=0";
 
   //below API url
-  const hospitalUrl = "https://www.ha.org.hk/opendata/facility-hosp.json";
+  const hospitalUrl =
+    "https://cors-anywhere.herokuapp.com/https://www.ha.org.hk/opendata/facility-hosp.json";
 
   return (
     <div>
@@ -36,10 +37,10 @@ function App() {
       <Map />
       {/*need Hospital coordinate and data from <Distance /> and <Adderss />, show
       address, tel and website*/}
-      <Distance API={API1} />
+      <Distance WaitTimeAPI={API1} DistanceAPI={hospitalUrl} />
       {/*calc distance function, need to get user gps and Hospital
       location: Ryan*/}
-      <LastUploadTime API={API1} />
+      <LastUploadTime WaitTimeAPI={API1} />
     </div>
   );
 }

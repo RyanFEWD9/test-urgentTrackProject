@@ -35,3 +35,8 @@ Ryan's update
 3. App.js deleted red text with latitude and longtitude
 4. Distance.jsx added hospital address
 5. Distance.jsx added rules for topWait above 2hrs
+
+2023/12/27 18:00 Abbie's update
+
+1. App.js : API props name(type) all updated in Distance.jsx and LastUploadTime.jsx
+2. Distance.jsx bug fixed : for Distance API, seperated into 3 useEffect (line 48 to line 62) to fix fetching issue
