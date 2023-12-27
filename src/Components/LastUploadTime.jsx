@@ -9,7 +9,7 @@ function WaitingTime(props) {
     const getData = async () => {
       try {
         setIsFetching(true);
-        const res = await fetch(`${props.API}`);
+        const res = await fetch(`${props.WaitTimeAPI}`);
         const { waitTime, updateTime } = await res.json();
         setCharacters(waitTime);
         setLatestTime(updateTime);
@@ -24,7 +24,6 @@ function WaitingTime(props) {
 
   return (
     <div>
- 
       <h6>最後更新時間：{latestTime}</h6>
     </div>
   );

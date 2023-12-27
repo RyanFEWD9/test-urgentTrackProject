@@ -15,7 +15,7 @@ function Distance(props) {
     const getData = async () => {
       try {
         setIsFetching(true);
-        const res = await fetch(`${props.API}`);
+        const res = await fetch(`${props.WaitTimeAPI}`);
         const { waitTime, updateTime } = await res.json();
         setCharacters(waitTime);
         setLatestTime(updateTime);
@@ -47,8 +47,19 @@ function Distance(props) {
   //Distance API
   useEffect(() => {
     fetchUserLocation();
-    fetchHospitalData();
   }, []);
+
+  useEffect(() => {
+    if (userLocation) {
+      fetchHospitalData();
+    }
+  }, [userLocation]);
+
+  useEffect(() => {
+    if (hospitals.length > 0 && userLocation) {
+      calculateDistances(hospitals);
+    }
+  }, [hospitals, userLocation]);
 
   const fetchUserLocation = () => {
     if (navigator.geolocation) {
@@ -72,9 +83,7 @@ function Distance(props) {
 
   const fetchHospitalData = async () => {
     try {
-      const response = await fetch(
-        "https://cors-anywhere.herokuapp.com/https://www.ha.org.hk/opendata/facility-hosp.json"
-      );
+      const response = await fetch(`${props.DistanceAPI}`);
       const data = await response.json();
       const filteredHospitals = data.filter(
         (hospital) => hospital.with_AE_service_eng === "Yes"
@@ -117,7 +126,7 @@ function Distance(props) {
     return deg * (Math.PI / 180);
   };
 
-  console.log(distances);
+  // console.log(distances);
 
   return (
     <div id="hospitalDisplayWrapper">
