@@ -52,3 +52,7 @@ Ryan's update
 
 input icon link in index.html (line 15-line 38)
 About CSS of App.js, , Map.jsx, SearchBar.jsx, Filter.jsx, Distance.jsx, style updated to App.module.css.
+
+2023/12/28 Abbie's update
+
+1. Distance.jsx added back contact and website

@@ -2,15 +2,21 @@ import React, { useEffect, useState } from "react";
 import styles from "../App.module.css";
 
 function Distance({ setLatestTime, ...props }) {
+  //For Distance API use
   const [userLocation, setUserLocation] = useState(null);
   const [hospitals, setHospitals] = useState([]);
   const [distances, setDistances] = useState([]);
 
-  //WaitTime API
+  //For Hospital Tel API use
+  const [isFetching2, setIsFetching2] = useState(false);
+  const [hospitalsData, setHospitalsData] = useState([]);
+
+  //For WaitTime API use
   const [isFetching, setIsFetching] = useState(false);
   const [characters, setCharacters] = useState([]); // array
   // const [latestTime, setLatestTime] = useState("");
 
+  //WaitTime API Fetching
   useEffect(() => {
     const getData = async () => {
       try {
@@ -44,7 +50,41 @@ function Distance({ setLatestTime, ...props }) {
     return false;
   };
 
-  //Distance API
+  //Hospital Tel API fetching
+  useEffect(() => {
+    const getData2 = async () => {
+      try {
+        setIsFetching2(true);
+        const res = await fetch(props.TelAPI);
+        const data = await res.json();
+
+        // Create an array to hold all hospital names and contact numbers
+        const hospitalsData = data.features.map((feature) => {
+          const properties = feature.properties;
+          // Replace <br/> with space or any other preferred separator
+          const contact = properties.NSEARCH02_TC.replace("<br/>", " / ");
+          return {
+            name: properties.NAME_TC,
+            contact: contact,
+            website: properties.NSEARCH03_TC,
+            address: properties.ADDRESS_TC,
+            latitude: properties.LATITUDE,
+            longitude: properties.LONGITUDE,
+          };
+        });
+        setHospitalsData(hospitalsData);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setIsFetching2(false);
+      }
+    };
+    getData2();
+  }, []);
+
+  console.log(hospitalsData);
+
+  //Distance API Fetching
   useEffect(() => {
     fetchUserLocation();
   }, []);
@@ -61,6 +101,7 @@ function Distance({ setLatestTime, ...props }) {
     }
   }, [hospitals, userLocation]);
 
+  // console.log(hospitals);
   const fetchUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -95,7 +136,7 @@ function Distance({ setLatestTime, ...props }) {
     }
   };
   console.log(userLocation);
-  console.log(hospitals);
+  // console.log(hospitals);
   const calculateDistances = (hospitals) => {
     if (userLocation) {
       const distances = hospitals.map((hospital) => {
@@ -142,7 +183,6 @@ function Distance({ setLatestTime, ...props }) {
                     {item.distance.toFixed(0)} km
                   </span>
                 </h2>
-                <p>地址：{item.hospital.address_tc}</p>
                 {isFetching
                   ? "更新中..."
                   : characters
@@ -163,8 +203,26 @@ function Distance({ setLatestTime, ...props }) {
                               {topWait}
                             </span>
                           </p>
-                          <br></br>
-                          <a href="#">查看更多</a>
+                        </div>
+                      ))}
+
+                {isFetching2
+                  ? "更新中..."
+                  : hospitalsData
+                      .filter(
+                        (hospitalsData) =>
+                          hospitalsData.name === item.hospital.institution_tc
+                      )
+                      .map(({ name, contact, website, address }) => (
+                        <div key={name}>
+                          <p>地址：{address}</p>
+                          <p>
+                            電話：
+                            {contact}
+                          </p>
+                          <a href={website} target="_blank">
+                            查看更多
+                          </a>
                         </div>
                       ))}
               </div>
