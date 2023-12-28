@@ -18,8 +18,7 @@ function App() {
   const API1 = `${CORS}https://www.ha.org.hk/opendata/aed/aedwtdata-tc.json`;
 
   //Below is hospital address,website,contact, for better reading : https://portal.csdi.gov.hk/csdi-webpage/info/dataquery?id=fhb_rcd_1637028364270_14638
-  const API2 =
-    "https://api.csdi.gov.hk/apim/dataquery/api/?id=fhb_rcd_1637028364270_14638&layer=geotagging&limit=200&offset=0";
+  const API2 = `${CORS}https://api.csdi.gov.hk/apim/dataquery/api/?id=fhb_rcd_1637028364270_14638&layer=geotagging&limit=200&offset=0`;
 
   //Below Distance and Hospital Name
   const hospitalUrl = `${CORS}https://www.ha.org.hk/opendata/facility-hosp.json`;
@@ -42,6 +41,7 @@ function App() {
           setLatestTime={setLatestTime}
           WaitTimeAPI={API1}
           DistanceAPI={hospitalUrl}
+          TelAPI={API2}
         />
         {/*calc distance function, need to get user gps and Hospital
       location: Ryan*/}
