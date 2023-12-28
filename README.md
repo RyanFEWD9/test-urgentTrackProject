@@ -47,3 +47,8 @@ Ryan's update
 2. App.js : New latestTime useState(line 12), CORS variable (line 15) and TimeContext Provider for latestTime (line 35)
 3. Distance.jsx : New param for setLatestTime (line 4), removed latestTime useState (line 12)
 4. LastUploadTime.jsx : Updated with useContext hook
+
+2023/12/28 Kelly's update
+
+input icon link in index.html (line 15-line 38)
+About CSS of App.js, , Map.jsx, SearchBar.jsx, Filter.jsx, Distance.jsx, style updated to App.module.css.
