@@ -26,11 +26,6 @@ function App() {
 
   return (
     <div>
-      <img
-        src="public/HospitalLogoWithName.png"
-        alt="HosipitalLogo"
-        width="200em"
-      />
       <h1>急症室等候時間</h1>
       <TimeContext.Provider value={latestTime}>
         <SearchBar />

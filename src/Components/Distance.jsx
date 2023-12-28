@@ -131,14 +131,17 @@ function Distance({ setLatestTime, ...props }) {
   return (
     <div id="hospitalDisplayWrapper">
       {distances.length > 0 ? (
-        <div>
+        <div className={styles["all-hospital-container"]}>
           <div className={styles["hospital-container"]}>
             {distances.map((item, index) => (
               <div key={index} className={styles["hospital-item"]}>
-                <p>
+                <h2>
                   {item.hospital.institution_tc}
-                  <span> 📍{item.distance.toFixed(0)} km</span>
-                </p>
+                  <span>
+                    &emsp;<span class="glyphicon glyphicon-map-marker"></span>
+                    {item.distance.toFixed(0)} km
+                  </span>
+                </h2>
                 <p>地址：{item.hospital.address_tc}</p>
                 {isFetching
                   ? "更新中..."
@@ -160,6 +163,7 @@ function Distance({ setLatestTime, ...props }) {
                               {topWait}
                             </span>
                           </p>
+                          <br></br>
                           <a href="#">查看更多</a>
                         </div>
                       ))}
