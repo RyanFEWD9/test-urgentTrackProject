@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../App.module.css";
 
 function Filter() {
   const latitude = 37.7749; // Sample latitude
@@ -12,23 +13,15 @@ function Filter() {
     window.open(`http://maps.apple.com/maps?daddr=${latitude},${longitude}`);
   };
   return (
-    <div className="FilterWrapper">
+    <div className={styles["FilterWrapper"]}>
       <button>
-        
-          <img src="/filter.png" width="12em" />
-      <span>篩選</span>
-        
+        <span class="glyphicon glyphicon-align-center"></span>
+        <span>篩選</span>
       </button>
       <button>
-        
-          <img src="/mapsFlags.png" width="12em" />
-      <span >位置</span>
-        
+        <span class="glyphicon glyphicon-map-marker"></span>
+        <span>位置</span>
       </button>
-      <span>
-        <button onClick={redirectToGoogleMaps}>Google Maps</button>
-        <button onClick={redirectToAppleMaps}>Apple Maps</button>
-      </span>
     </div>
   );
 }

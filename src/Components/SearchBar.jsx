@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "../App.module.css";
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -9,17 +10,18 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="searchInputWrapper">
-      <input
-        className="searchInput"
-        type="search"
-        placeholder="輸入公立醫院名稱以搜尋急症室路線"
-        onChange={handleChange}
-        value={searchInput}
-      />
-      <button className="searchButton">
-        <img src="/SearchIcon.png" />
-      </button>
+    <div className={styles["allsearchInputWrapper"]}>
+      <div className={styles["searchInputWrapper"]}>
+        <input
+          type="search"
+          placeholder="輸入公立醫院名稱以搜尋急症室路線"
+          onChange={handleChange}
+          value={searchInput}
+        />
+        <button id={styles["searchButton"]}>
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+      </div>
     </div>
   );
 };
