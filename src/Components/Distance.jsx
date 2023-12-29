@@ -63,6 +63,14 @@ function Distance({
       latitude: hospital.latitude,
       longitude: hospital.longitude,
     });
+
+    const scrollToPosition = () => {
+      window.scrollTo({
+        top: 100, // Scroll to the top of the page
+        behavior: "smooth", // Add smooth scrolling behavior
+      });
+    };
+    scrollToPosition();
   };
 
   //Hospital Tel API fetching
