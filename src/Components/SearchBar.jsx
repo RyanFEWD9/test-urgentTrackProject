@@ -19,7 +19,7 @@ const SearchBar = () => {
           value={searchInput}
         />
         <button id={styles["searchButton"]}>
-          <span class="glyphicon glyphicon-search"></span>
+          <span className="glyphicon glyphicon-search"></span>
         </button>
       </div>
     </div>

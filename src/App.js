@@ -1,7 +1,6 @@
-import MyLocation from "./Components/MyLocation";
 import Filter from "./Components/Filter";
 import Distance from "./Components/Distance";
-import React from "react";
+import React, { useState } from "react";
 import Map from "./Components/Map";
 
 import SearchBar from "./Components/SearchBar";
@@ -10,7 +9,14 @@ import TimeContext from "./TimeContext";
 
 function App() {
   const [latestTime, setLatestTime] = React.useState("");
+  const [userLocation, setUserLocation] = useState(null);
+  const [selectedHospitalLocation, setSelectedHospitalLocation] =
+    useState(null);
 
+  // Function to update the selected hospital location
+  const handleHospitalSelect = (location) => {
+    setSelectedHospitalLocation(location);
+  };
   //Below is CORS proxy
   const CORS = "https://cors-anywhere.herokuapp.com/";
 
@@ -26,25 +32,24 @@ function App() {
   return (
     <div>
       <h1>急症室等候時間</h1>
-      <TimeContext.Provider value={latestTime}>
-        <SearchBar />
-        {/* page1 */}
-        <MyLocation /> {/*Your Current Latitude and Longtitude in console*/}
-        <Filter />
-        {/*according to the district*/}
-        {/*Redirect to google map with last update time */}
-        {/* page1 */}
-        <Map />
-        {/*need Hospital coordinate and data from <Distance /> and <Adderss />, show
+      <SearchBar />
+      <Filter />
+      {/*according to the district*/}
+      {/*Redirect to google map with last update time */}
+
+      <Map userLocation={userLocation} location={selectedHospitalLocation} />
+      <Distance
+        setLatestTime={setLatestTime}
+        WaitTimeAPI={API1}
+        DistanceAPI={hospitalUrl}
+        TelAPI={API2}
+        userLocation={userLocation}
+        setUserLocation={setUserLocation}
+        onHospitalSelect={handleHospitalSelect}
+      />
+      {/*need Hospital coordinate and data from <Distance /> and <Adderss />, show
       address, tel and website*/}
-        <Distance
-          setLatestTime={setLatestTime}
-          WaitTimeAPI={API1}
-          DistanceAPI={hospitalUrl}
-          TelAPI={API2}
-        />
-        {/*calc distance function, need to get user gps and Hospital
-      location: Ryan*/}
+      <TimeContext.Provider value={latestTime}>
         <LastUploadTime />
       </TimeContext.Provider>
     </div>
