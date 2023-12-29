@@ -61,4 +61,4 @@ About CSS of App.js, , Map.jsx, SearchBar.jsx, Filter.jsx, Distance.jsx, style u
 
 1. Updated Map.jsx with userlocation on default and hospital location with onclick function
 2. Distance.jsx added onclick button for Map location (Map.jsx)
-3. Deleted MyLocation.jsx and Address.jsx
+3. Deleted MyLoation.jsx and Address.jsx
