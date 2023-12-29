@@ -195,7 +195,7 @@ function Distance({
   return (
     <div id="hospitalDisplayWrapper">
       {distances.length > 0 ? (
-        <div className={styles["all-hospital-container"]}>
+        <div>
           <div className={styles["hospital-container"]}>
             <p>以下是距離您當前位置最近的急症室服務：</p>
             {distances.map((item, index) => (
