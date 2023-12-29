@@ -8,7 +8,7 @@ function SearchBar({ distances, handleHospitalClick }) {
     <div>
       <input 
         type="text" 
-        placeholder="Search by name" 
+        placeholder="輸入公立醫院名稱以搜尋急症室路線" 
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
