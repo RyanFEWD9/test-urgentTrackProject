@@ -1,11 +1,15 @@
 body {
   background-color: #fafafa;
   color: #545454;
-  margin: 4%;
-  justify-content: center;
+  margin:2%;
+
+
+
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media only screen and (max-width:1200px) and  (min-width:1000px)  {
+ 
 }
 
 @keyframes App-logo-spin {
@@ -18,32 +22,53 @@ body {
 }
 /**/
 
-.hospital-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 46%;
-  padding: 1%;
-}
 
 .hospital-item {
+  display: flex;
   flex-direction: column;
-  margin: 2%;
-  background-color: #ffffff;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
-  border-radius: 0.5em;
-  padding: 6%;
-  transform: scale(0.96);
+  cursor: pointer;
+  
+  cursor: pointer;
+
+ 
+  
 }
 
-.hospital-item:hover {
+.hospital-container::after {
+  clip-path: circle(10% at 0% 0%);           
+  transition: all .3s ease-in;
+  position: absolute;
+  z-index: 0;
+  background: #00cec9;
+ 
+
+  
+}
+
+
+.hospital-item {
+  background-color: #ffffff;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 1em;
+  padding: 1em;
+  transform: scale(0.96);
+  margin:0.2em;
+
+
+ 
+}
+
+.hospital-item:hover::after {
   border: 2px solid #2683fd;
   box-shadow: 0 0 3px rgb(108, 172, 255);
   transform: scale(1);
+
+
 }
 
 @media screen and (max-width: 600px) {
   .hospital-container {
-    flex-direction: column;
+    flex-wrap: wrap;
   }
 }
 
@@ -60,20 +85,31 @@ body {
 }
 /**/
 .googleMapWrapper {
-  width: 90%;
-  height: 90%; /* Adjust the height as desired */
-  /* Center the map horizontally */
-  margin-top: 3%;
-  margin-bottom: 3%;
+ 
 }
 
+.mapHeading {
+  position: relative;
+  
+}
+.mapContainer{
+  position: relative;
+  align-items: stretch;
+
+  /* Center the map horizontally */
+  display: flex;
+  justify-content: space-around;
+  
+
+  
+}
 iframe {
-  width: 90%;
-  height: 40%;
-  position: absolute;
-  margin: 1%;
+  width: 100%;
+  height: 600%;
+
   border-radius: 0.4em;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+
 }
 
 /**/
@@ -81,17 +117,26 @@ iframe {
   display: flex;
   justify-content: center;
 }
+
+.MapWithDistanceWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 .searchInputWrapper {
   background-color: #ffffff;
-  width: 90%;
-  padding: 1%;
-  border-radius: 5em;
+  width: 100%;
+  min-height: 10%;
+  padding: 0.8em;
+  border-radius: 4em;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
   border: none;
   outline: none;
-  margin-bottom: 1.5%;
+
   display: flex;
   justify-content: space-between;
+
+  margin:2%;
 }
 
 input:focus::placeholder {
@@ -107,8 +152,8 @@ input:focus::placeholder {
 input {
   border: none;
   outline: none;
-  width: 22em;
-  text-align: center;
+  width: 20em;
+ 
 }
 
 .FilterWrapper button {
@@ -125,7 +170,7 @@ input {
 button {
   background-color: #ffffff;
   box-shadow: none;
-  margin-right: 0.6em;
+
 
   border-radius: 50em;
   border: none;
@@ -133,7 +178,7 @@ button {
   width: 5rem;
 
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 button:hover {
@@ -147,21 +192,34 @@ button:hover {
 }
 
 footer {
-  text-align: center;
+  text-align: right;
   font-weight: normal;
   font-size: 0.8em;
   color: #7f7f7f;
+  margin: 2%;
+}
+
+
+h1 {
+  text-align: left;
+  
+  font-size: 2.5em;
+  margin:4%;
+  
 }
 
 h2 {
-  text-align: left;
-  margin-bottom: 8%;
+
+  font-size: 1.8em;
 }
-h1 {
-  text-align: center;
-  margin-bottom: 8%;
-  font-size: 2.5em;
+
+h3 {
+  
+  font-size: 1.5em;
+ 
 }
+
+
 a {
   text-decoration: none;
   color: #2683fd;
@@ -170,4 +228,8 @@ a {
 span {
   padding: 2%;
   transform: scale(0.9);
+}
+
+p {
+  margin:2%;
 }
