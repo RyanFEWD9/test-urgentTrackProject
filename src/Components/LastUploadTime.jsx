@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
-import TimeContext from "../TimeContext";
+import React from "react";
 
-function LastUploadTime() {
-  const latestTime = useContext(TimeContext);
-
+function LastUploadTime(props) {
   return (
     <div>
-      <footer>最後更新： {latestTime}</footer>
+      <footer>最後更新： {props.latestTime}</footer>
     </div>
   );
 }

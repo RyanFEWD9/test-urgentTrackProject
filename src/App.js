@@ -5,10 +5,9 @@ import Map from "./Components/Map";
 
 import SearchBar from "./Components/SearchBar";
 import LastUploadTime from "./Components/LastUploadTime";
-import TimeContext from "./TimeContext";
 
 function App() {
-  const [latestTime, setLatestTime] = React.useState("");
+  const [latestTime, setLatestTime] = useState("");
   const [userLocation, setUserLocation] = useState(null);
   const [selectedHospitalLocation, setSelectedHospitalLocation] =
     useState(null);
@@ -47,11 +46,7 @@ function App() {
         setUserLocation={setUserLocation}
         onHospitalSelect={handleHospitalSelect}
       />
-      {/*need Hospital coordinate and data from <Distance /> and <Adderss />, show
-      address, tel and website*/}
-      <TimeContext.Provider value={latestTime}>
-        <LastUploadTime />
-      </TimeContext.Provider>
+      <LastUploadTime latestTime={latestTime} />
     </div>
   );
 }
