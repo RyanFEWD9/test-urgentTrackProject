@@ -47,6 +47,7 @@ function App() {
         setUserLocation={setUserLocation}
         onHospitalSelect={handleHospitalSelect}
       />
+
       {/*need Hospital coordinate and data from <Distance /> and <Adderss />, show
       address, tel and website*/}
       <TimeContext.Provider value={latestTime}>
