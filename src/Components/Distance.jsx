@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from "../App.module.css";
 
-function Distance({ setLatestTime, ...props }) {
+function Distance({
+  userLocation,
+  setUserLocation,
+  setLatestTime,
+  onHospitalSelect,
+  ...props
+}) {
   //For Distance API use
-  const [userLocation, setUserLocation] = useState(null);
   const [hospitals, setHospitals] = useState([]);
   const [distances, setDistances] = useState([]);
 
@@ -48,6 +53,16 @@ function Distance({ setLatestTime, ...props }) {
     }
 
     return false;
+  };
+
+  // On Click function for hospital container
+  const handleHospitalClick = (hospital) => {
+    // Call the onHospitalSelect function provided by the parent component
+
+    onHospitalSelect({
+      latitude: hospital.latitude,
+      longitude: hospital.longitude,
+    });
   };
 
   //Hospital Tel API fetching
@@ -175,7 +190,11 @@ function Distance({ setLatestTime, ...props }) {
         <div className={styles["all-hospital-container"]}>
           <div className={styles["hospital-container"]}>
             {distances.map((item, index) => (
-              <div key={index} className={styles["hospital-item"]}>
+              <div
+                key={index}
+                className={styles["hospital-item"]}
+                onClick={() => handleHospitalClick(item.hospital)}
+              >
                 <h2>
                   {item.hospital.institution_tc}
                   <span>
@@ -184,7 +203,7 @@ function Distance({ setLatestTime, ...props }) {
                   </span>
                 </h2>
                 {isFetching
-                  ? "更新中..."
+                  ? "等候時間更新中..."
                   : characters
                       .filter(
                         (char) => char.hospName === item.hospital.institution_tc
@@ -207,7 +226,7 @@ function Distance({ setLatestTime, ...props }) {
                       ))}
 
                 {isFetching2
-                  ? "更新中..."
+                  ? "詳細資訊更新中..."
                   : hospitalsData
                       .filter(
                         (hospitalsData) =>
@@ -230,7 +249,7 @@ function Distance({ setLatestTime, ...props }) {
           </div>
         </div>
       ) : (
-        <p>更新中...</p>
+        <p>醫院距離更新中...</p>
       )}
     </div>
   );
