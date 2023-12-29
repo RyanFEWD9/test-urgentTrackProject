@@ -19,7 +19,6 @@ function Distance({
   //For WaitTime API use
   const [isFetching, setIsFetching] = useState(false);
   const [characters, setCharacters] = useState([]); // array
-  // const [latestTime, setLatestTime] = useState("");
 
   //WaitTime API Fetching
   useEffect(() => {
@@ -62,6 +61,7 @@ function Distance({
     onHospitalSelect({
       latitude: hospital.latitude,
       longitude: hospital.longitude,
+      hospitalName: hospital.institution_tc,
     });
 
     const scrollToPosition = () => {
@@ -105,7 +105,7 @@ function Distance({
     getData2();
   }, []);
 
-  console.log(hospitalsData);
+  console.log(hospitals);
 
   //Distance API Fetching
   useEffect(() => {
@@ -190,13 +190,14 @@ function Distance({
     return deg * (Math.PI / 180);
   };
 
-  // console.log(distances);
+  console.log(props.hospital);
 
   return (
     <div id="hospitalDisplayWrapper">
       {distances.length > 0 ? (
         <div className={styles["all-hospital-container"]}>
           <div className={styles["hospital-container"]}>
+            <p>以下是距離您當前位置最近的急症室服務：</p>
             {distances.map((item, index) => (
               <div
                 key={index}
