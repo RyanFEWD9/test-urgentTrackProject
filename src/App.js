@@ -1,4 +1,4 @@
-import Filter from "./Components/Filter";
+
 import Distance from "./Components/Distance";
 import React, { useState } from "react";
 import Map from "./Components/Map";
@@ -32,10 +32,11 @@ function App() {
     <div>
       <h1>急症室等候時間</h1>
       <SearchBar />
-      <Filter />
+    
       {/*according to the district*/}
       {/*Redirect to google map with last update time */}
 
+      <div className="MapWithDistanceWrapper">
       <Map userLocation={userLocation} location={selectedHospitalLocation} />
       <Distance
         setLatestTime={setLatestTime}
@@ -46,6 +47,7 @@ function App() {
         setUserLocation={setUserLocation}
         onHospitalSelect={handleHospitalSelect}
       />
+      </div>
       <LastUploadTime latestTime={latestTime} />
     </div>
   );

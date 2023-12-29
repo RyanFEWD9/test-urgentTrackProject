@@ -67,3 +67,6 @@ About CSS of App.js, , Map.jsx, SearchBar.jsx, Filter.jsx, Distance.jsx, style u
 
 1. Map.jsx add back description text for userlocation or hospital location
 2. Distance.jsx add back desription text for hospital cards
+
+2023/12/30 Kelly's update
+1. Updated a bit in CSS ( App.module.css)
