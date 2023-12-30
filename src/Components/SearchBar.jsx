@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styles from "../App.module.css";
 
-const SearchBar = () => {
-  const [searchInput, setSearchInput] = useState("");
+function SearchBar({ onSearch }) {
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearchInput(e.target.value);
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+    onSearch(event.target.value); // Pass the search term to the parent component
   };
 
   return (
@@ -15,8 +15,8 @@ const SearchBar = () => {
         <input
           type="search"
           placeholder="輸入公立醫院名稱以搜尋急症室路線"
-          onChange={handleChange}
-          value={searchInput}
+          onChange={handleSearchChange}
+          value={searchTerm}
         />
         <button id={styles["searchButton"]}>
           <span className="glyphicon glyphicon-search"></span>
@@ -24,5 +24,5 @@ const SearchBar = () => {
       </div>
     </div>
   );
-};
+}
 export default SearchBar;

@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from "react";
 import styles from "../App.module.css";
+import SearchBar from "./SearchBar";
+import LastUploadTime from "./LastUploadTime";
+import Map from "./Map";
+import { isWaitTimeOverTwoHours } from "./utils";
 
-function Distance({
-  userLocation,
-  setUserLocation,
-  setLatestTime,
-  onHospitalSelect,
-  ...props
-}) {
+function Distance() {
+  //For enabling CORS
+  // https://cors-anywhere.herokuapp.com/corsdemo
+
+  //CORS proxy
+  const CORS = "https://cors-anywhere.herokuapp.com/";
+
+  //A&E waiting time
+  const API1 = `${CORS}https://www.ha.org.hk/opendata/aed/aedwtdata-tc.json`;
+
+  //Hospital address,website,contact
+  const API2 = `${CORS}https://api.csdi.gov.hk/apim/dataquery/api/?id=fhb_rcd_1637028364270_14638&layer=geotagging&limit=200&offset=0`;
+
+  //Distance and Hospital Name API
+  const hospitalUrl = `${CORS}https://www.ha.org.hk/opendata/facility-hosp.json`;
+
   //For Distance API use
   const [hospitals, setHospitals] = useState([]);
   const [distances, setDistances] = useState([]);
@@ -18,14 +31,38 @@ function Distance({
 
   //For WaitTime API use
   const [isFetching, setIsFetching] = useState(false);
+  const [latestTime, setLatestTime] = useState("");
   const [characters, setCharacters] = useState([]); // array
+
+  //For the search bar use
+  const [searchTerm, setSearchTerm] = useState("");
+
+  //For Map use
+  const [userLocation, setUserLocation] = useState(null);
+  const [selectedHospitalLocation, setSelectedHospitalLocation] =
+    useState(null);
+
+  // Function to update the selected hospitaﬁl location
+  const handleHospitalSelect = (location) => {
+    setSelectedHospitalLocation(location);
+  };
+
+  // Function to filter hospitals based on search term
+  const getFilteredDistances = () => {
+    if (!searchTerm) {
+      return distances;
+    }
+    return distances.filter((item) =>
+      item.hospital.institution_tc.includes(searchTerm)
+    );
+  };
 
   //WaitTime API Fetching
   useEffect(() => {
     const getData = async () => {
       try {
         setIsFetching(true);
-        const res = await fetch(`${props.WaitTimeAPI}`);
+        const res = await fetch(API1);
         const { waitTime, updateTime } = await res.json();
         setCharacters(waitTime);
         setLatestTime(updateTime);
@@ -38,27 +75,11 @@ function Distance({
     getData();
   }, []);
 
-  //red text for waitTime above 2hrs
-  const isWaitTimeOverTwoHours = (waitTime) => {
-    // This regular expression matches "超過" followed by one or more digits and then "小時"
-    const overHoursRegex = /超過\s*(\d+)\s*小時/;
-    const match = waitTime.match(overHoursRegex);
-
-    if (match) {
-      // Extract the number and convert it to an integer
-      const hours = parseInt(match[1], 10);
-      // Check if the extracted hours are greater than or equal to 2
-      return hours >= 2;
-    }
-
-    return false;
-  };
-
   // On Click function for hospital container
   const handleHospitalClick = (hospital) => {
     // Call the onHospitalSelect function provided by the parent component
 
-    onHospitalSelect({
+    handleHospitalSelect({
       latitude: hospital.latitude,
       longitude: hospital.longitude,
       hospitalName: hospital.institution_tc,
@@ -78,7 +99,7 @@ function Distance({
     const getData2 = async () => {
       try {
         setIsFetching2(true);
-        const res = await fetch(props.TelAPI);
+        const res = await fetch(API2);
         const data = await res.json();
 
         // Create an array to hold all hospital names and contact numbers
@@ -105,7 +126,7 @@ function Distance({
     getData2();
   }, []);
 
-  console.log(hospitals);
+  console.log(hospitalsData);
 
   //Distance API Fetching
   useEffect(() => {
@@ -124,7 +145,6 @@ function Distance({
     }
   }, [hospitals, userLocation]);
 
-  // console.log(hospitals);
   const fetchUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -147,7 +167,7 @@ function Distance({
 
   const fetchHospitalData = async () => {
     try {
-      const response = await fetch(`${props.DistanceAPI}`);
+      const response = await fetch(hospitalUrl);
       const data = await response.json();
       const filteredHospitals = data.filter(
         (hospital) => hospital.with_AE_service_eng === "Yes"
@@ -158,8 +178,7 @@ function Distance({
       console.log(error);
     }
   };
-  console.log(userLocation);
-  // console.log(hospitals);
+
   const calculateDistances = (hospitals) => {
     if (userLocation) {
       const distances = hospitals.map((hospital) => {
@@ -190,76 +209,86 @@ function Distance({
     return deg * (Math.PI / 180);
   };
 
-  console.log(props.hospital);
-
   return (
-    <div id="hospitalDisplayWrapper">
-      {distances.length > 0 ? (
-        <div>
-          <div className={styles["hospital-container"]}>
-            <p>以下是距離您當前位置最近的急症室服務：</p>
-            {distances.map((item, index) => (
-              <div
-                key={index}
-                className={styles["hospital-item"]}
-                onClick={() => handleHospitalClick(item.hospital)}
-              >
-                <h2>
-                  {item.hospital.institution_tc}
-                  <span>
-                    &emsp;<span class="glyphicon glyphicon-map-marker"></span>
-                    {item.distance.toFixed(0)} km
-                  </span>
-                </h2>
-                {isFetching
-                  ? "等候時間更新中..."
-                  : characters
-                      .filter(
-                        (char) => char.hospName === item.hospital.institution_tc
-                      )
-                      .map(({ hospName, topWait }) => (
-                        <div key={hospName} className="wait-Time">
-                          <p>
-                            等候時間：
-                            <span
-                              className={
-                                isWaitTimeOverTwoHours(topWait)
-                                  ? styles.redText
-                                  : styles.blueText
-                              }
-                            >
-                              {topWait}
-                            </span>
-                          </p>
-                        </div>
-                      ))}
-
-                {isFetching2
-                  ? "詳細資訊更新中..."
-                  : hospitalsData
-                      .filter(
-                        (hospitalsData) =>
-                          hospitalsData.name === item.hospital.institution_tc
-                      )
-                      .map(({ name, contact, website, address }) => (
-                        <div key={name}>
-                          <p>地址：{address}</p>
-                          <p>
-                            電話：
-                            {contact}
-                          </p>
-                          <a href={website} target="_blank">
-                            查看更多
-                          </a>
-                        </div>
-                      ))}
-              </div>
-            ))}
-          </div>
+    <div>
+      <h1>急症室等候時間</h1>
+      <div id="hospitalDisplayWrapper">
+        <SearchBar onSearch={setSearchTerm} />
+        <div className="MapWithDistanceWrapper">
+          <Map
+            userLocation={userLocation}
+            location={selectedHospitalLocation}
+          />
         </div>
-      ) : (
-        <p>醫院距離更新中...</p>
-      )}
+        {distances.length > 0 ? (
+          <div>
+            <div className={styles["hospital-container"]}>
+              <p>以下是距離您當前位置最近的急症室服務：</p>
+              {getFilteredDistances().map((item, index) => (
+                <div
+                  key={index}
+                  className={styles["hospital-item"]}
+                  onClick={() => handleHospitalClick(item.hospital)}
+                >
+                  <h2>
+                    {item.hospital.institution_tc}
+                    <span>
+                      &emsp;<span class="glyphicon glyphicon-map-marker"></span>
+                      {item.distance.toFixed(0)} km
+                    </span>
+                  </h2>
+                  {isFetching
+                    ? "等候時間更新中..."
+                    : characters
+                        .filter(
+                          (char) =>
+                            char.hospName === item.hospital.institution_tc
+                        )
+                        .map(({ hospName, topWait }) => (
+                          <div key={hospName} className="wait-Time">
+                            <p>
+                              等候時間：
+                              <span
+                                className={
+                                  isWaitTimeOverTwoHours(topWait)
+                                    ? styles.redText
+                                    : styles.blueText
+                                }
+                              >
+                                {topWait}
+                              </span>
+                            </p>
+                          </div>
+                        ))}
+
+                  {isFetching2
+                    ? "詳細資訊更新中..."
+                    : hospitalsData
+                        .filter(
+                          (hospitalsData) =>
+                            hospitalsData.name === item.hospital.institution_tc
+                        )
+                        .map(({ name, contact, website, address }) => (
+                          <div key={name}>
+                            <p>地址：{address}</p>
+                            <p>
+                              電話：
+                              {contact}
+                            </p>
+                            <a href={website} target="_blank">
+                              查看更多
+                            </a>
+                          </div>
+                        ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <p>醫院距離更新中...</p>
+        )}
+        <LastUploadTime latestTime={latestTime} />
+      </div>
     </div>
   );
 }

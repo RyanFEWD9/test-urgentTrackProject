@@ -69,4 +69,14 @@ About CSS of App.js, , Map.jsx, SearchBar.jsx, Filter.jsx, Distance.jsx, style u
 2. Distance.jsx add back desription text for hospital cards
 
 2023/12/30 Kelly's update
+
 1. Updated a bit in CSS ( App.module.css)
+
+2023/12/30 Abbie's update
+
+1. Fixed SearchBar.jsx
+2. App.js : Nav Bar created with React Router
+3. Distance.jsx is the Homepage
+4. SearchBar.jsx rearranged as a child component of Distance.js
+5. Map.jsx rearranged as a child comonent of Map.js
+6. Created utils.js to store functions (waitingTimeabove2hrs)
