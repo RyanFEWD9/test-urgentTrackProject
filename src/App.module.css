@@ -1,15 +1,10 @@
 body {
   background-color: #fafafa;
   color: #545454;
-  margin:2%;
-
-
-
-
+  margin: 2%;
 }
 
-@media only screen and (max-width:1200px) and  (min-width:1000px)  {
- 
+@media only screen and (max-width: 1200px) and (min-width: 1000px) {
 }
 
 @keyframes App-logo-spin {
@@ -22,29 +17,21 @@ body {
 }
 /**/
 
-
 .hospital-item {
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  
-  cursor: pointer;
 
- 
-  
+  cursor: pointer;
 }
 
 .hospital-container::after {
-  clip-path: circle(10% at 0% 0%);           
-  transition: all .3s ease-in;
+  clip-path: circle(10% at 0% 0%);
+  transition: all 0.3s ease-in;
   position: absolute;
   z-index: 0;
   background: #00cec9;
- 
-
-  
 }
-
 
 .hospital-item {
   background-color: #ffffff;
@@ -52,18 +39,13 @@ body {
   border-radius: 1em;
   padding: 1em;
   transform: scale(0.96);
-  margin:0.2em;
-
-
- 
+  margin: 0.2em;
 }
 
 .hospital-item:hover::after {
   border: 2px solid #2683fd;
   box-shadow: 0 0 3px rgb(108, 172, 255);
   transform: scale(1);
-
-
 }
 
 @media screen and (max-width: 600px) {
@@ -85,23 +67,18 @@ body {
 }
 /**/
 .googleMapWrapper {
- 
 }
 
 .mapHeading {
   position: relative;
-  
 }
-.mapContainer{
+.mapContainer {
   position: relative;
   align-items: stretch;
 
   /* Center the map horizontally */
   display: flex;
   justify-content: space-around;
-  
-
-  
 }
 iframe {
   width: 100%;
@@ -109,7 +86,6 @@ iframe {
 
   border-radius: 0.4em;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
-
 }
 
 /**/
@@ -136,7 +112,7 @@ iframe {
   display: flex;
   justify-content: space-between;
 
-  margin:2%;
+  margin: 2%;
 }
 
 input:focus::placeholder {
@@ -153,7 +129,6 @@ input {
   border: none;
   outline: none;
   width: 20em;
- 
 }
 
 .FilterWrapper button {
@@ -170,7 +145,6 @@ input {
 button {
   background-color: #ffffff;
   box-shadow: none;
-
 
   border-radius: 50em;
   border: none;
@@ -199,26 +173,20 @@ footer {
   margin: 2%;
 }
 
-
 h1 {
   text-align: left;
-  
+
   font-size: 2.5em;
-  margin:4%;
-  
+  margin: 4%;
 }
 
 h2 {
-
   font-size: 1.8em;
 }
 
 h3 {
-  
   font-size: 1.5em;
- 
 }
-
 
 a {
   text-decoration: none;
@@ -231,5 +199,5 @@ span {
 }
 
 p {
-  margin:2%;
+  margin: 2%;
 }
