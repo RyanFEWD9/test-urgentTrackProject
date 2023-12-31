@@ -80,3 +80,13 @@ About CSS of App.js, , Map.jsx, SearchBar.jsx, Filter.jsx, Distance.jsx, style u
 4. SearchBar.jsx rearranged as a child component of Distance.js
 5. Map.jsx rearranged as a child comonent of Map.js
 6. Created utils.js to store functions (waitingTimeabove2hrs)
+
+2024/01/01 Abbie's update
+
+1. Added phonecall function to the Distance.jsx
+2. Added anchor tag to the address in Distance.jsx
+3. utils.js added hospitalSpecialistServices object
+4. ServicePage.jsx data rendered from utils.js and added buttons
+5. ServicePage.jsx added API for BookingWaitTime, data fetched
+6. ServicePage.module.css created for new path(/service) styling
+7. MUI Material Icons used for both Distance.jsx and ServicePage.jsx

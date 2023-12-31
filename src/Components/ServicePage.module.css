@@ -1,0 +1,23 @@
+.border {
+  border: 1px solid black;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.button {
+  border: 1px solid black;
+  border-radius: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 200px;
+}
+
+.button-container {
+}
+.specialistServices-container {
+}
+
+.bold {
+  font-weight: bold;
+}
