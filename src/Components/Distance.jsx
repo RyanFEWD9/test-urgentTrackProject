@@ -4,6 +4,12 @@ import SearchBar from "./SearchBar";
 import LastUploadTime from "./LastUploadTime";
 import Map from "./Map";
 import { isWaitTimeOverTwoHours } from "./utils";
+import CallIcon from "@mui/icons-material/Call";
+import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
+import NavigationIcon from "@mui/icons-material/Navigation";
+import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
+import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
+import InfoIcon from "@mui/icons-material/Info";
 
 function Distance() {
   //For enabling CORS
@@ -211,7 +217,10 @@ function Distance() {
 
   return (
     <div>
-      <h1>急症室等候時間</h1>
+      <h1>
+        <LocalHospitalIcon sx={{ fontSize: 30 }} />
+        急症室等候時間
+      </h1>
       <div id="hospitalDisplayWrapper">
         <SearchBar onSearch={setSearchTerm} />
         <div className="MapWithDistanceWrapper">
@@ -223,7 +232,7 @@ function Distance() {
         {distances.length > 0 ? (
           <div>
             <div className={styles["hospital-container"]}>
-              <p>以下是距離您當前位置最近的急症室服務：</p>
+              <h3>以下是距離您當前位置最近的急症室服務：</h3>
               {getFilteredDistances().map((item, index) => (
                 <div
                   key={index}
@@ -237,55 +246,78 @@ function Distance() {
                       {item.distance.toFixed(0)} km
                     </span>
                   </h2>
-                  {isFetching
-                    ? "等候時間更新中..."
-                    : characters
-                        .filter(
-                          (char) =>
-                            char.hospName === item.hospital.institution_tc
-                        )
-                        .map(({ hospName, topWait }) => (
-                          <div key={hospName} className="wait-Time">
-                            <p>
-                              等候時間：
-                              <span
-                                className={
-                                  isWaitTimeOverTwoHours(topWait)
-                                    ? styles.redText
-                                    : styles.blueText
-                                }
-                              >
-                                {topWait}
-                              </span>
-                            </p>
-                          </div>
-                        ))}
+                  {isFetching ? (
+                    <p>
+                      <HourglassBottomIcon />
+                      等候時間更新中...
+                    </p>
+                  ) : (
+                    characters
+                      .filter(
+                        (char) => char.hospName === item.hospital.institution_tc
+                      )
+                      .map(({ hospName, topWait }) => (
+                        <div key={hospName} className="wait-Time">
+                          <p>
+                            <QueryBuilderIcon />
+                            等候時間：
+                            <span
+                              className={
+                                isWaitTimeOverTwoHours(topWait)
+                                  ? styles.redText
+                                  : styles.blueText
+                              }
+                            >
+                              {topWait}
+                            </span>
+                          </p>
+                        </div>
+                      ))
+                  )}
 
-                  {isFetching2
-                    ? "詳細資訊更新中..."
-                    : hospitalsData
-                        .filter(
-                          (hospitalsData) =>
-                            hospitalsData.name === item.hospital.institution_tc
-                        )
-                        .map(({ name, contact, website, address }) => (
-                          <div key={name}>
-                            <p>地址：{address}</p>
-                            <p>
-                              電話：
-                              {contact}
-                            </p>
-                            <a href={website} target="_blank">
+                  {isFetching2 ? (
+                    <p>
+                      <HourglassBottomIcon />
+                      詳細資訊更新中...
+                    </p>
+                  ) : (
+                    hospitalsData
+                      .filter(
+                        (hospitalsData) =>
+                          hospitalsData.name === item.hospital.institution_tc
+                      )
+                      .map(({ name, contact, website, address }) => (
+                        <div key={name}>
+                          <p>
+                            <NavigationIcon />
+                            <a>{address}</a>
+                          </p>
+                          <p>
+                            <CallIcon />
+                            <a href={`tel:${contact}`}> {contact}</a>
+                          </p>
+                          <p>
+                            <InfoIcon />
+                            <a
+                              href={website}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               查看更多
                             </a>
-                          </div>
-                        ))}
+                          </p>
+                        </div>
+                      ))
+                  )}
                 </div>
               ))}
             </div>
           </div>
         ) : (
-          <p>醫院距離更新中...</p>
+          <p>
+            <HourglassBottomIcon />
+            醫院距離更新中...
+          </p>
         )}
         <LastUploadTime latestTime={latestTime} />
       </div>
