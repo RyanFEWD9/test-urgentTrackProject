@@ -90,3 +90,8 @@ About CSS of App.js, , Map.jsx, SearchBar.jsx, Filter.jsx, Distance.jsx, style u
 5. ServicePage.jsx added API for BookingWaitTime, data fetched
 6. ServicePage.module.css created for new path(/service) styling
 7. MUI Material Icons used for both Distance.jsx and ServicePage.jsx
+
+   
+2023/01/01 Kelly's update
+
+update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
