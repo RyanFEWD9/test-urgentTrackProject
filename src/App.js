@@ -11,9 +11,10 @@ function App() {
     <Router>
       <nav>
         {/* Links to navigate between pages */}
-        <Link to="/UrgentTrackProject">主頁 </Link>
+        <Link to="/about-us">主頁 </Link>
+        <Link to="/UrgentTrackProject">附近急症室 </Link>
         <Link to="/service">專科服務 </Link>
-        <Link to="/about-us">關於我們 </Link>
+        
       </nav>
 
       <Routes>

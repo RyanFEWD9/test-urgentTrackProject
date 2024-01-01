@@ -21,8 +21,6 @@ body {
   display: flex;
   flex-direction: column;
   cursor: pointer;
-
-  cursor: pointer;
 }
 
 .hospital-container::after {
@@ -177,7 +175,7 @@ h1 {
   text-align: left;
 
   font-size: 2.5em;
-  margin: 4%;
+ 
 }
 
 h2 {
@@ -186,6 +184,11 @@ h2 {
 
 h3 {
   font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.1em;
+  
 }
 
 a {
