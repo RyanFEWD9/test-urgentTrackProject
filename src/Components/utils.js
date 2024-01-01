@@ -14,9 +14,23 @@ export const isWaitTimeOverTwoHours = (waitTime) => {
   return false;
 };
 
+//district color function
+export function districtColor(obj) {
+  if (obj.hospital.district === "港島") {
+    return "hkisland";
+  }
+  if (obj.hospital.district === "九龍") {
+    return "kowloon";
+  }
+  if (obj.hospital.district === "新界") {
+    return "newterr";
+  }
+}
+
 export const hospitalSpecialistServices = [
   {
     name: "靈實醫院",
+    district: "九龍",
     type: "九龍東醫院聯網",
     contact: "2703 8888 / 2409 5868",
     website:
@@ -39,9 +53,12 @@ export const hospitalSpecialistServices = [
       兒科: 0,
       牙科: 0,
     },
+    latitude: 22.313773,
+    longitude: 114.25627,
   },
   {
     name: "基督教聯合醫院",
+    district: "九龍",
     type: "九龍東醫院聯網",
     contact: "2379 9611",
     website:
@@ -64,9 +81,13 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 1,
     },
+    latitude: 22.322291,
+    longitude: 114.2279,
   },
+
   {
     name: "仁濟醫院",
+    district: "九龍",
     type: "九龍西醫院聯網",
     contact: "2417 8383",
     website:
@@ -89,9 +110,12 @@ export const hospitalSpecialistServices = [
       兒科: 0,
       牙科: 0,
     },
+    latitude: 22.369548,
+    longitude: 114.11956,
   },
   {
     name: "將軍澳醫院",
+    district: "九龍",
     type: "九龍東醫院聯網",
     contact: "2208 0111",
     website:
@@ -114,9 +138,12 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 0,
     },
+    latitude: 22.317964,
+    longitude: 114.27021,
   },
   {
     name: "東華醫院",
+    district: "港島",
     type: "港島西醫院聯網",
     contact: "2589 8111",
     website:
@@ -139,9 +166,12 @@ export const hospitalSpecialistServices = [
       兒科: 0,
       牙科: 0,
     },
+    latitude: 22.284955,
+    longitude: 114.14661,
   },
   {
     name: "東華東院",
+    district: "港島",
     type: "港島東醫院聯網",
     contact: "2162 6888",
     website:
@@ -164,9 +194,12 @@ export const hospitalSpecialistServices = [
       兒科: 0,
       牙科: 0,
     },
+    latitude: 22.274725,
+    longitude: 114.19026,
   },
   {
     name: "屯門醫院",
+    district: "新界",
     type: "新界西醫院聯網",
     contact: "2468 5111",
     website:
@@ -189,9 +222,12 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 0,
     },
+    latitude: 22.40708,
+    longitude: 113.97621,
   },
   {
     name: "大口環根德公爵夫人兒童醫院",
+    district: "港島",
     type: "港島西醫院聯網",
     contact: "2817 7111",
     website:
@@ -214,9 +250,12 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 0,
     },
+    latitude: 22.271574,
+    longitude: 114.12424,
   },
   {
     name: "贊育醫院",
+    district: "港島",
     type: "港島西醫院聯網",
     contact: "2589 2100",
     website:
@@ -239,9 +278,12 @@ export const hospitalSpecialistServices = [
       兒科: 0,
       牙科: 0,
     },
+    latitude: 22.286146,
+    longitude: 114.14457,
   },
   {
     name: "天水圍醫院",
+    district: "新界",
     type: "新界西醫院聯網",
     contact: "3513 5000",
     website:
@@ -264,9 +306,12 @@ export const hospitalSpecialistServices = [
       兒科: 0,
       牙科: 0,
     },
+    latitude: 22.458704,
+    longitude: 113.99585,
   },
   {
     name: "伊利沙伯醫院",
+    district: "九龍",
     type: "九龍中醫院聯網",
     contact: "3506 8888",
     website:
@@ -289,9 +334,12 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 0,
     },
+    latitude: 22.30886,
+    longitude: 114.17519,
   },
   {
     name: "瑪麗醫院",
+    district: "港島",
     type: "港島西醫院聯網",
     contact: "2255 3838",
     website:
@@ -314,9 +362,12 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 0,
     },
+    latitude: 22.2704,
+    longitude: 114.13117,
   },
   {
     name: "律敦治醫院",
+    district: "港島",
     type: "港島東醫院聯網",
     contact: "2291 2000",
     website:
@@ -339,9 +390,12 @@ export const hospitalSpecialistServices = [
       兒科: 0,
       牙科: 0,
     },
+    latitude: 22.275909,
+    longitude: 114.17529,
   },
   {
     name: "威爾斯親王醫院",
+    district: "新界",
     type: "新界東醫院聯網",
     contact: "3505 2211",
     website:
@@ -364,9 +418,12 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 0,
     },
+    latitude: 22.379939,
+    longitude: 114.20129,
   },
   {
     name: "北大嶼山醫院",
+    district: "新界",
     type: "九龍西醫院聯網",
     contact: "3467 7000",
     website:
@@ -389,9 +446,12 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 0,
     },
+    latitude: 22.282571,
+    longitude: 113.93914,
   },
   {
     name: "聖母醫院",
+    district: "九龍",
     type: "九龍中醫院聯網",
     contact: "2320 2121",
     website:
@@ -414,9 +474,12 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 0,
     },
+    latitude: 22.345588,
+    longitude: 114.19657,
   },
   {
     name: "東區尤德夫人那打素醫院",
+    district: "港島",
     type: "港島東醫院聯網",
     contact: "2595 6111",
     website:
@@ -439,9 +502,12 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 0,
     },
+    latitude: 22.26918,
+    longitude: 114.23643,
   },
   {
     name: "博愛醫院",
+    district: "新界",
     type: "新界西醫院聯網",
     contact: "2486 8000",
     website:
@@ -464,9 +530,12 @@ export const hospitalSpecialistServices = [
       兒科: 0,
       牙科: 0,
     },
+    latitude: 22.44523,
+    longitude: 114.04159,
   },
   {
     name: "廣華醫院",
+    district: "九龍",
     type: "九龍中醫院聯網",
     contact: "2332 2311",
     website:
@@ -489,9 +558,12 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 0,
     },
+    latitude: 22.315174,
+    longitude: 114.17244,
   },
   {
     name: "香港佛教醫院",
+    district: "九龍",
     type: "九龍中醫院聯網",
     contact: "2339 6111",
     website:
@@ -507,16 +579,19 @@ export const hospitalSpecialistServices = [
       耳鼻喉科: 0,
       神經外科: 0,
       精神科: 0,
-      骨科: 0,
+      骨科: 1,
       紓緩醫學科: 0,
       婦科: 0,
       產科: 0,
       兒科: 0,
       牙科: 0,
     },
+    latitude: 22.33568,
+    longitude: 114.18874,
   },
   {
     name: "青山醫院",
+    district: "新界",
     type: "新界西醫院聯網",
     contact: "2456 7111",
     website:
@@ -531,7 +606,7 @@ export const hospitalSpecialistServices = [
       眼科: 0,
       耳鼻喉科: 0,
       神經外科: 0,
-      精神科: 0,
+      精神科: 1,
       骨科: 0,
       紓緩醫學科: 0,
       婦科: 0,
@@ -539,9 +614,12 @@ export const hospitalSpecialistServices = [
       兒科: 0,
       牙科: 0,
     },
+    latitude: 22.410011,
+    longitude: 113.97374,
   },
   {
     name: "沙田慈氏護養院",
+    district: "新界",
     type: "新界東醫院聯網",
     contact: "2636 7288",
     website:
@@ -564,9 +642,12 @@ export const hospitalSpecialistServices = [
       兒科: 0,
       牙科: 0,
     },
+    latitude: 22.39918,
+    longitude: 114.21653,
   },
   {
     name: "明愛醫院",
+    district: "九龍",
     type: "九龍西醫院聯網",
     contact: "3408 5678",
     website:
@@ -589,9 +670,12 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 1,
     },
+    latitude: 22.340629,
+    longitude: 114.15231,
   },
   {
     name: "雅麗氏何妙齡那打素醫院",
+    district: "新界",
     type: "新界東醫院聯網",
     contact: "2689 2000",
     website:
@@ -614,9 +698,12 @@ export const hospitalSpecialistServices = [
       兒科: 1,
       牙科: 0,
     },
+    latitude: 22.458696,
+    longitude: 114.17479,
   },
   {
     name: "葛量洪醫院",
+    district: "港島",
     type: "港島西醫院聯網",
     contact: "2518 2111",
     website:
@@ -639,6 +726,8 @@ export const hospitalSpecialistServices = [
       兒科: 0,
       牙科: 0,
     },
+    latitude: 22.251156,
+    longitude: 114.17316,
   },
 ];
 

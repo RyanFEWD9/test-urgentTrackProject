@@ -10,8 +10,10 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import InfoIcon from "@mui/icons-material/Info";
+import { hospitalSpecialistServices } from "./utils";
+import { districtColor } from "./utils";
 
-function Distance() {
+function Distance({ userLocation, setUserLocation }) {
   //For enabling CORS
   // https://cors-anywhere.herokuapp.com/corsdemo
 
@@ -44,7 +46,7 @@ function Distance() {
   const [searchTerm, setSearchTerm] = useState("");
 
   //For Map use
-  const [userLocation, setUserLocation] = useState(null);
+  // const [userLocation, setUserLocation] = useState(null);
   const [selectedHospitalLocation, setSelectedHospitalLocation] =
     useState(null);
 
@@ -215,6 +217,22 @@ function Distance() {
     return deg * (Math.PI / 180);
   };
 
+  function districtColor2(district) {
+    if (district === "港島") {
+      return styles.hkisland;
+    }
+    if (district === "九龍") {
+      return styles.kowloon;
+    }
+    if (district === "新界") {
+      return styles.newterr;
+    }
+    return ""; // Return an empty string or some default class if district doesn't match
+  }
+
+  console.log(hospitals);
+  console.log(distances);
+
   return (
     <div>
       <h1>
@@ -239,6 +257,23 @@ function Distance() {
                   className={styles["hospital-item"]}
                   onClick={() => handleHospitalClick(item.hospital)}
                 >
+                  <div
+                    className={districtColor2(
+                      hospitalSpecialistServices.find(
+                        (obj) => obj.name === item.hospital.institution_tc
+                      )?.district
+                    )}
+                  >
+                    <p>
+                      {
+                        // Use find to locate the matching service and return its district
+                        hospitalSpecialistServices.find(
+                          (obj) => obj.name === item.hospital.institution_tc
+                        )?.district
+                      }
+                      區
+                    </p>
+                  </div>
                   <h2>
                     {item.hospital.institution_tc}
                     <span>
