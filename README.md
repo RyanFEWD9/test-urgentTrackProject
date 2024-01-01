@@ -91,7 +91,11 @@ About CSS of App.js, , Map.jsx, SearchBar.jsx, Filter.jsx, Distance.jsx, style u
 6. ServicePage.module.css created for new path(/service) styling
 7. MUI Material Icons used for both Distance.jsx and ServicePage.jsx
 
-   
 2023/01/01 Kelly's update
 
 update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
+
+2023/01/01 11:30 Abbie's update
+
+1. utils.js new object : hospitalGoogleIframeLink
+2. Map.jsx updated using new object
