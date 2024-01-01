@@ -641,3 +641,96 @@ export const hospitalSpecialistServices = [
     },
   },
 ];
+
+export const hospitalGoogleIframeLink = [
+  {
+    NAME_TC: "仁濟醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59033.0952129059!2d114.04738722167967!3d22.369918000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f8ed283c0519%3A0xc54f8f3cd89808d1!2z5LuB5r-f6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704057991555!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "瑪嘉烈醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.324816582479!2d114.13124637529371!3d22.341360979657203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f8adc11ee0e1%3A0xff4432d1a9b0279a!2z6JG15raM55Gq5ZiJ54OI6Yar6Zmi6LevMi0xMOiZn-eRquWYieeDiOmGq-mZog!5e0!3m2!1szh-TW!2shk!4v1704058066615!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "明愛醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2185.6525391204996!2d114.15185805142919!3d22.340832664911655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34040751714c9edb%3A0xc485a03b484c400d!2z5piO5oSb6Yar6ZmiIC0g5oe35piO5qiTIEcvRuWwiOenkemWgOiouumDqOWAmeiouuWNgA!5e0!3m2!1szh-TW!2shk!4v1704048354934!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "威爾斯親王醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.3074561339213!2d114.19933127504684!3d22.379763979629512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404065040d39629%3A0x64a58d9847b993cd!2z5aiB54i-5pav6Kaq546L6Yar6Zmi5oCl55eH5a6k!5e0!3m2!1szh-TW!2shk!4v1704048409723!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "廣華醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.0574830371124!2d114.16856907504474!3d22.313665679676962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340400c6be756d77%3A0x328144aee16167c9!2z5buj6I-v6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048435554!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "博愛醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3687.5670425216535!2d114.0390459250489!3d22.44531602958254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f0a948ba6819%3A0xee4fad893ad00027!2z5Y2a5oSb6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048457465!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "伊利沙伯醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.189084954147!2d114.17248807504455!3d22.308687579680555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340400c26b2871b5%3A0xe0cd63796b5dfdaa!2z5LyK5Yip5rKZ5Lyv6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048484306!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "雅麗氏何妙齡那打素醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3687.2132186941603!2d114.17207712504928!3d22.45862047957302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404084e98b0074d%3A0xc15bfe87af267518!2z6ZuF6bqX5rCP5L2V5aaZ6b2h6YKj5omT57Sg6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048512513!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "瑪麗醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1846.1028308213374!2d114.12984703859738!3d22.270197994927067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403ffed4ec4217f%3A0xa021414a22bbb4e0!2z55Gq6bqX6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048550856!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "北區醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.195961403408!2d114.12202217505049!3d22.496829729545713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f615c7a4950b%3A0x1fae11530375607c!2z5YyX5Y2A6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048577097!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "律敦治醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.0523179498286!2d114.17278612504367!3d22.276007929704097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404005b157c8131%3A0x5cec98f63ff40420!2z5b6L5pWm5rK76Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048600134!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "基督教聯合醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.813395493696!2d114.22461407504505!3d22.322895979670296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340406ad58aab66b%3A0xb10e3fa4a2ef0fac!2z5Z-6552j5pWZ6IGv5ZCI6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048617802!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "屯門醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3688.5574874723693!2d113.97365712504772!3d22.40803357960921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403fade2d37716d%3A0xe7c6554364c86bd4!2z5bGv6ZaA6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048637325!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "天水圍醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3687.2141564093463!2d113.99315607504931!3d22.458585229573153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f0634aec8581%3A0x7ff2aa8ab865353f!2z5aSp5rC05ZyN6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048655767!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "東區尤德夫人那打素醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.214502661844!2d114.23288962504354!3d22.26986297970853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340401872071aac7%3A0xc7ab9f250e38d101!2z5p2x5Y2A5bCk5b635aSr5Lq66YKj5omT57Sg6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048679579!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "將軍澳醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.948681112506!2d114.26743487504493!3d22.317780529673946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404047666dc1a6f%3A0xd8b1fc68e2d491b1!2z5bCH6LuN5r6z6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048696794!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "北大嶼山醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.8933859226877!2d113.93669577504377!3d22.282028079699682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403e2a68b5cdc3f%3A0x8232e71cafed00be!2z5YyX5aSn5ba85bGx6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048714244!5m2!1szh-TW!2shk",
+  },
+  {
+    NAME_TC: "長洲醫院",
+    googleIframeLink:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3693.8713508972237!2d114.02782632504149!3d22.206994879753754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3401568e03ecc7bb%3A0x635158043e206f64!2z6ZW35rSy6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048731498!5m2!1szh-TW!2shk",
+  },
+];
