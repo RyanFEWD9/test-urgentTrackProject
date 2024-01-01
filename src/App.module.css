@@ -1,7 +1,13 @@
+* {
+  min-width: 400;
+}
+
 body {
   background-color: #fafafa;
   color: #545454;
-  margin: 2%;
+  margin-top: 6em;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 1000px) {
@@ -17,30 +23,22 @@ body {
 }
 /**/
 
+.hospital-container::after {
+}
+
 .hospital-item {
   display: flex;
   flex-direction: column;
   cursor: pointer;
-}
-
-.hospital-container::after {
-  clip-path: circle(10% at 0% 0%);
-  transition: all 0.3s ease-in;
-  position: absolute;
-  z-index: 0;
-  background: #00cec9;
-}
-
-.hospital-item {
   background-color: #ffffff;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
   border-radius: 1em;
   padding: 1em;
   transform: scale(0.96);
-  margin: 0.2em;
+  margin: 0.8em 0;
 }
 
-.hospital-item:hover::after {
+.hospital-item:hover {
   border: 2px solid #2683fd;
   box-shadow: 0 0 3px rgb(108, 172, 255);
   transform: scale(1);
@@ -84,6 +82,8 @@ iframe {
 
   border-radius: 0.4em;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2em;
+  margin-top: 1em;
 }
 
 /**/
@@ -106,10 +106,8 @@ iframe {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
   border: none;
   outline: none;
-
   display: flex;
   justify-content: space-between;
-
   margin: 2%;
 }
 
@@ -143,12 +141,10 @@ input {
 button {
   background-color: #ffffff;
   box-shadow: none;
-
   border-radius: 50em;
   border: none;
   outline: none;
   width: 5rem;
-
   justify-content: center;
   align-items: center;
 }
@@ -158,86 +154,266 @@ button:hover {
   transition: scale(1.05);
 }
 
-.FilterWrapper {
-  display: flex;
-  justify-content: center;
+/**/
+.servicePage-container {
+  margin-top: 0.4em;
 }
 
-footer {
+.button-container button {
+  background-color: #fafafa;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 50em;
+  border: 2px solid #2683fd;
+  outline: none;
+  width: 10rem;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.4em;
+  transform: scale(0.94);
+  color: #2683fd;
+  margin: 0.4em 0.1em;
+}
+
+.button-container button:hover {
+  background-color: #2683fd;
+  box-shadow: 0 0 3px rgba(108, 172, 255, 0.3);
+  transform: scale(1);
+  transform: translateY(-0.08em);
+  color: #ffffff;
+}
+
+/**/
+
+.footer-wrapper {
   text-align: right;
   font-weight: normal;
-  font-size: 0.8em;
+
   color: #7f7f7f;
-  margin: 2%;
+  margin: 2em;
+  margin-top: 2.4em;
+  display: flex;
+  justify-content: space-between;
 }
+
+/*textSetting*/
 
 h1 {
   text-align: left;
-
   font-size: 2.5em;
+  margin-left: 0.2em;
 }
 
 h2 {
   font-size: 1.8em;
+  margin-bottom: 0.6em;
+  margin-top: 0.4em;
+  margin-left: 0.2em;
 }
 
 h3 {
   font-size: 1.5em;
+  margin-left: 0.2em;
 }
 
 h4 {
   font-size: 1.1em;
+  margin-left: 0.2em;
 }
 
 a {
+  color: #496cd5;
+  font-style: italic;
+}
+
+a:hover {
+  color: #2e4faf;
   text-decoration: none;
-  color: #2683fd;
 }
 
 span {
-  padding: 2%;
+  padding: 0.2em;
   transform: scale(0.9);
 }
 
 p {
-  margin: 2%;
+  margin: 0.2em;
 }
 
-.hkisland {
-  background-color: #306fb9;
+/*ServicePage*/
+
+.kowloon,
+.hkisland,
+.newterr {
   color: white;
-  border-radius: 50px;
-  width: 87px;
-  height: 35px;
-  margin: 10px;
-  text-align: center;
-  padding-top: 5px;
   font-weight: 600;
-  font-size: 16px;
+  border-radius: 1em;
+  width: 4em;
+  height: 2em;
+  border: 2px solid #d60000;
+
+  text-align: center;
+  margin-left: 0.3em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+}
+.hkisland {
+  border: 2px solid #306fb9;
+  color: #306fb9;
 }
 
 .kowloon {
-  background-color: #d60000;
-  color: white;
-  border-radius: 50px;
-  width: 87px;
-  height: 35px;
-  margin: 10px;
-  text-align: center;
-  padding-top: 5px;
-  font-weight: 600;
-  font-size: 16px;
+  border: 2px solid #d60000;
+  color: #d60000;
 }
 
 .newterr {
-  background-color: #039e37;
-  color: white;
-  border-radius: 50px;
-  width: 87px;
-  height: 35px;
-  margin: 10px;
+  border: 2px solid #039e37;
+  color: #039e37;
+}
+
+.newServices-title {
+  margin-top: 2em;
+  margin-bottom: 1.6em;
+  font-size: 18px;
+}
+
+/*navBar*/
+.navBar-homepage nav a {
+  text-decoration: none;
+  padding-right: 1em;
+  color: #545454;
+  z-index: 1;
+  padding: 0.4em;
+  margin: 0.4em;
+  align-items: center;
   text-align: center;
-  padding-top: 5px;
-  font-weight: 600;
+  font-style: normal;
+  width: 5em;
+}
+
+.navBar-homepage nav a:hover {
+  text-decoration: none;
+  color: #3a60dd;
+  z-index: 1;
+  background-color: #2683fd;
+  border-radius: 50em;
+  color: #ffffff;
+  text-align: center;
+}
+
+.navBar-homepage nav {
+  text-decoration: none;
+  justify-content: flex-end;
+  padding-right: 2em;
+  display: flex;
+  width: 100%; /* Full width */
+  position: fixed; /* Set the navbar to fixed position */
+  justify-items: center;
+  background-color: #fafafa;
+  top: 0; /* Position the navbar at the top of the page */
+  padding: 2em;
+  z-index: 1;
+  text-align: center;
+}
+
+.navBar-homepage {
+  align-items: baseline;
+  background-color: #fafafa;
+  z-index: 1;
+  display: flex;
+  text-align: center;
+}
+
+.navBar-logoName span {
+  top: 0;
+  position: fixed;
+  z-index: 2;
+  padding-top: 2.3em;
+  font-weight: 700;
   font-size: 16px;
+  width: 9px;
+  transform: scale(0.98);
+}
+
+.navBar-logoName span:hover {
+  transform: scale(1);
+}
+
+/*buttonForServicePage*/
+.serviceText-container p {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.border {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: #ffffff;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 1em;
+  padding: 1em;
+  transform: scale(0.96);
+}
+
+.border:hover {
+  border: 2px solid #2683fd;
+  box-shadow: 0 0 3px rgb(108, 172, 255);
+  transform: scale(1);
+}
+
+/* AboutUsPage */
+.chooseServiceButton {
+  display: flex;
+  flex-direction: column;
+  width: 14em;
+  cursor: pointer;
+
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 1em;
+  padding: 1em;
+  transform: scale(0.96);
+  background-color: #2683fd;
+  color: #ffffff;
+}
+
+.chooseServiceButtonWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.chooseServiceButton a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.chooseServiceButton:hover {
+  border: 2px solid #2683fd;
+  box-shadow: 0 0 3px rgb(108, 172, 255);
+  transform: scale(1);
+}
+.mainWrapper p {
+  margin-bottom: 2em;
+}
+
+img {
+  border-radius: 50%;
+  margin: 1em;
+  width: 40em;
+  height: 40em;
+}
+
+.introWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.introTextWrapper {
+  margin: 1em;
+  margin-right: 4em;
 }

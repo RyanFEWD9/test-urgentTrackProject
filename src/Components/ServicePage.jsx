@@ -1,4 +1,5 @@
-import styles from "./ServicePage.module.css";
+//import styles from "./ServicePage.module.css";
+import styles from "../App.module.css";
 import CallIcon from "@mui/icons-material/Call";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -12,6 +13,7 @@ import { hospitalSpecialistServices } from "./utils";
 import ServicePageButton from "./ServicePageButton";
 import ServicePageMap from "./ServicePageMap";
 import { districtColor } from "./utils";
+import LastUploadTime from "./LastUploadTime";
 
 function ServicePage({ userLocation }) {
   //For enabling CORS
@@ -122,11 +124,8 @@ function ServicePage({ userLocation }) {
   console.log(allHospitals);
 
   return (
-    <div>
-      <h1>
-        <LocalHospitalIcon sx={{ fontSize: 30 }} />
-        專科服務
-      </h1>
+    <div className={styles["servicePage-container"]}>
+      <h1>專科服務</h1>
       <ServicePageMap
         userLocation={userLocation}
         location={selectedHospitalLocation2}
@@ -134,11 +133,13 @@ function ServicePage({ userLocation }) {
       <div className={styles["button-container"]}>
         <ServicePageButton setSelectedService={setSelectedService} />
       </div>
-      <h3>
-        <LocationOnIcon />
-        以下是距離您當前位置最近的專科醫院：
-      </h3>
-      <div className={styles["specialistServices-container"]}>
+      <div className={styles["serviceText-container"]}>
+        <p>
+          <LocationOnIcon sx={{ fontSize: 16, padding: 0.1 }} />
+          以下是距離您當前位置最近的專科醫院：
+        </p>
+      </div>
+      <section className={styles["specialistServices-container"]}>
         {allHospitals
           .filter(
             (obj) =>
@@ -152,29 +153,31 @@ function ServicePage({ userLocation }) {
               onClick={() => handleHospitalClick2(obj.hospital)}
             >
               <div className={styles[districtColor(obj)]}>
-                <p>{obj.hospital.district}區</p>
+                <p>{obj.hospital.district}</p>
               </div>
-              <p className={styles["bold"]}>
-                {obj.hospital.name}
+              <h2 className={styles["bold"]}>
+                {obj.hospital.name}&emsp;
                 <span>
-                  <LocationOnIcon />
+                  <span class="glyphicon glyphicon-map-marker"></span>
                   {obj.distance.toFixed(1)}km
                 </span>
-              </p>
+              </h2>
               <p>
-                <NavigationIcon />
+                <NavigationIcon style={{ color: "#2683fd" }} />
+                &emsp;
                 <a>{obj.hospital.address}</a>
               </p>
               <p>
-                <CallIcon />
+                <CallIcon style={{ color: "#2683fd" }} />
+                &emsp;
                 <a href={`tel:${obj.hospital.contact}`}>
                   {obj.hospital.contact}
                 </a>
               </p>
-              <p>
+              <h4 className={styles["newServices-title"]}>
                 <ClassIcon />
-                {obj.hospital.type}：新症輪候時間
-              </p>
+                {obj.hospital.type}新症大慨輪候時間 :
+              </h4>
               <ol>
                 {/* {service=key, avaiable= value} */}
                 {Object.entries(obj.hospital.specialistServices)
@@ -185,28 +188,28 @@ function ServicePage({ userLocation }) {
                       (time) =>
                         time.cluster === obj.hospital.type &&
                         time.specialty === service &&
-                        time.Category === "緊急新症 - 中位數"
+                        time.Category === "緊急新症大慨輪候時間"
                     );
 
                     const waitTimeStableSemiUrgent = hospitalsBooking.find(
                       (time) =>
                         time.cluster === obj.hospital.type &&
                         time.specialty === service &&
-                        time.Category === "半緊急新症 - 中位數"
+                        time.Category === "半緊急新症大慨輪候時間"
                     );
 
                     const waitTimeStable = hospitalsBooking.find(
                       (time) =>
                         time.cluster === obj.hospital.type &&
                         time.specialty === service &&
-                        time.Category === "穩定新症 - 中位數"
+                        time.Category === "穩定新症大慨輪候時間"
                     );
 
                     const waitTimeStableLongest = hospitalsBooking.find(
                       (time) =>
                         time.cluster === obj.hospital.type &&
                         time.specialty === service &&
-                        time.Category === "穩定新症 - 最長"
+                        time.Category === "穩定新症最長輪候時間"
                     );
 
                     return (
@@ -223,15 +226,21 @@ function ServicePage({ userLocation }) {
                               {waitTimeUrgent ? (
                                 <div>
                                   <p className={styles["blue"]}>
-                                    <AccessTimeIcon />
+                                    <AccessTimeIcon
+                                      style={{ color: "#2683fd" }}
+                                    />
                                     緊急新症：{waitTimeUrgent.Value}
                                   </p>
                                   <p className={styles["orange"]}>
-                                    <AccessTimeIcon />
+                                    <AccessTimeIcon
+                                      style={{ color: "#2683fd" }}
+                                    />
                                     半緊急新症：{waitTimeStableSemiUrgent.Value}
                                   </p>
                                   <p className={styles["red"]}>
-                                    <AccessTimeIcon />
+                                    <AccessTimeIcon
+                                      style={{ color: "#2683fd" }}
+                                    />
                                     穩定新症：{waitTimeStable.Value} (最長：
                                     {waitTimeStableLongest.Value})
                                   </p>
@@ -249,18 +258,18 @@ function ServicePage({ userLocation }) {
                   })}
               </ol>
               <p>
-                <InfoIcon />
+                <InfoIcon style={{ color: "#2683fd" }} />
                 <a
                   href={obj.hospital.website}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  查看更多
+                  &emsp;查看更多
                 </a>
               </p>
             </div>
           ))}
-      </div>
+      </section>
     </div>
   );
 }
