@@ -108,18 +108,6 @@ function ServicePage({ userLocation }) {
     return deg * (Math.PI / 180);
   };
 
-  // //district color function
-  // function districtColor(obj) {
-  //   if (obj.hospital.district === "港島") {
-  //     return "hkisland";
-  //   }
-  //   if (obj.hospital.district === "九龍") {
-  //     return "kowloon";
-  //   }
-  //   if (obj.hospital.district === "新界") {
-  //     return "newterr";
-  //   }
-  // }
   console.log(hospitalsBooking);
   console.log(allHospitals);
 
@@ -176,7 +164,7 @@ function ServicePage({ userLocation }) {
               </p>
               <h4 className={styles["newServices-title"]}>
                 <ClassIcon />
-                {obj.hospital.type}新症大慨輪候時間 :
+                {obj.hospital.type} 新症平均輪候時間 :
               </h4>
               <ol>
                 {/* {service=key, avaiable= value} */}
@@ -188,28 +176,28 @@ function ServicePage({ userLocation }) {
                       (time) =>
                         time.cluster === obj.hospital.type &&
                         time.specialty === service &&
-                        time.Category === "緊急新症大慨輪候時間"
+                        time.Category === "緊急新症 - 中位數"
                     );
 
                     const waitTimeStableSemiUrgent = hospitalsBooking.find(
                       (time) =>
                         time.cluster === obj.hospital.type &&
                         time.specialty === service &&
-                        time.Category === "半緊急新症大慨輪候時間"
+                        time.Category === "半緊急新症 - 中位數"
                     );
 
                     const waitTimeStable = hospitalsBooking.find(
                       (time) =>
                         time.cluster === obj.hospital.type &&
                         time.specialty === service &&
-                        time.Category === "穩定新症大慨輪候時間"
+                        time.Category === "穩定新症 - 中位數"
                     );
 
                     const waitTimeStableLongest = hospitalsBooking.find(
                       (time) =>
                         time.cluster === obj.hospital.type &&
                         time.specialty === service &&
-                        time.Category === "穩定新症最長輪候時間"
+                        time.Category === "穩定新症 - 最長"
                     );
 
                     return (
@@ -219,7 +207,7 @@ function ServicePage({ userLocation }) {
                           {isFetching3 ? (
                             <p>
                               <HourglassBottomIcon />
-                              等候時間更新中...
+                              新症大慨輪候時間更新中...
                             </p>
                           ) : (
                             <p>

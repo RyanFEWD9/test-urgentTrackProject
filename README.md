@@ -106,9 +106,12 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 2. New ServicePageButton.jsx
 3. District added for both Distance.jsx and ServicePage.jsx
 
-2023/01/02 Kelly's update
+2024/01/02 Kelly's update
 
-1. Updated CSS for AboutUsPage.jsx, Distance.jsx, LastLoadTime.jsx, Map.jsx, ServicePage.jsx ( All CSS were typed in  App.module.css)
+1. Updated CSS for AboutUsPage.jsx, Distance.jsx, LastLoadTime.jsx, Map.jsx, ServicePage.jsx ( All CSS were typed in App.module.css)
 2. the embed map links have not been updated yet, will update them later
 
+2024/01/02 12:45 Abbie's update
 
+1. Bug fixed for ServicePage.jsx
+2. Added back data for "長洲醫院","瑪嘉烈醫院", "北區醫院" inside { hospitalSpecialistServices } from "./utils"
