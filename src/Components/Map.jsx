@@ -18,6 +18,10 @@ function Map({ userLocation, location }) {
     );
   }
 
+  // if (userLocation === null) {
+  //   return <p>請允許系統存取您的當前位置及重新更新頁面</p>;
+  // }
+
   // Function to get iframe src based on location
   const getIframeSrc = () => {
     //to prevent location.hospitalName value is null before user clicks

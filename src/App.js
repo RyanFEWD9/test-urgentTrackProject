@@ -9,6 +9,7 @@ import PageNotFound from "./Components/PageNotFound";
 
 function App() {
   const [userLocation, setUserLocation] = useState(null);
+
   return (
     <Router>
       <section className={styles["navBar-logoName"]}>
