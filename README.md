@@ -100,7 +100,7 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 1. utils.js new object : hospitalGoogleIframeLink
 2. Map.jsx updated using new object
 
-2024/01/01 Abbie's update
+2024/01/02 Abbie's update
 
 1. ServicePage.jsx added Distance and Map
 2. New ServicePageButton.jsx
