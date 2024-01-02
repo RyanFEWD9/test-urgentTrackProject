@@ -1,7 +1,6 @@
 //import styles from "./ServicePage.module.css";
 import styles from "../App.module.css";
 import CallIcon from "@mui/icons-material/Call";
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import InfoIcon from "@mui/icons-material/Info";
@@ -13,9 +12,10 @@ import { hospitalSpecialistServices } from "./utils";
 import ServicePageButton from "./ServicePageButton";
 import ServicePageMap from "./ServicePageMap";
 import { districtColor } from "./utils";
-import LastUploadTime from "./LastUploadTime";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import SearchBar from "./SearchBar";
 
-function ServicePage({ userLocation }) {
+function ServicePage({ userLocation, searchTerm, setSearchTerm }) {
   //For enabling CORS
   // https://cors-anywhere.herokuapp.com/corsdemo
 
@@ -121,6 +121,7 @@ function ServicePage({ userLocation }) {
       <div className={styles["button-container"]}>
         <ServicePageButton setSelectedService={setSelectedService} />
       </div>
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className={styles["serviceText-container"]}>
         <p>
           <LocationOnIcon sx={{ fontSize: 16, padding: 0.1 }} />
@@ -131,8 +132,9 @@ function ServicePage({ userLocation }) {
         {allHospitals
           .filter(
             (obj) =>
-              selectedService === null ||
-              obj.hospital.specialistServices[selectedService] === 1
+              (selectedService === null ||
+                obj.hospital.specialistServices[selectedService] === 1) &&
+              obj.hospital.name.includes(searchTerm)
           )
           .map((obj) => (
             <div
@@ -150,6 +152,11 @@ function ServicePage({ userLocation }) {
                   {obj.distance.toFixed(1)}km
                 </span>
               </h2>
+              <img
+                src={obj.hospital.img}
+                alt="hospital-image"
+                className={styles["hospital-image"]}
+              />
               <p>
                 <NavigationIcon style={{ color: "#2683fd" }} />
                 &emsp;
@@ -161,90 +168,116 @@ function ServicePage({ userLocation }) {
                 <a href={`tel:${obj.hospital.contact}`}>
                   {obj.hospital.contact}
                 </a>
+                <p>
+                  <CalendarMonthIcon style={{ color: "#2683fd" }} />
+                  &emsp;
+                  {/* {Apple mobile device will redirect to App store, Andriod --> Google store, Desktop device all redirect to Google store} */}
+                  <a
+                    href="https://www3.ha.org.hk/hago/Home/DownloadApps/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    經醫管局流動應用程式「 HA Go 」預約新症
+                  </a>
+                </p>
               </p>
               <h4 className={styles["newServices-title"]}>
                 <ClassIcon />
                 {obj.hospital.type} 新症平均輪候時間 :
               </h4>
-              <ol>
+              <ul>
+                {/* to filter out the matched selected service according to user click and move it to the first position inside the ul list using spread in arrays */}
                 {/* {service=key, avaiable= value} */}
-                {Object.entries(obj.hospital.specialistServices)
-                  .filter(([service, available]) => available === 1)
-                  .map(([service, _], index) => {
-                    // Find the booking wait time for the current service
-                    const waitTimeUrgent = hospitalsBooking.find(
-                      (time) =>
-                        time.cluster === obj.hospital.type &&
-                        time.specialty === service &&
-                        time.Category === "緊急新症 - 中位數"
-                    );
+                {[
+                  ...(selectedService &&
+                  obj.hospital.specialistServices[selectedService] === 1
+                    ? [[selectedService, 1]]
+                    : []),
+                  ...Object.entries(obj.hospital.specialistServices).filter(
+                    ([service, available]) =>
+                      available === 1 && service !== selectedService
+                  ),
+                ].map(([service, _], index) => {
+                  const isSelectedService = service === selectedService;
+                  // Find the booking wait time for the current service
+                  const waitTimeUrgent = hospitalsBooking.find(
+                    (time) =>
+                      time.cluster === obj.hospital.type &&
+                      time.specialty === service &&
+                      time.Category === "緊急新症 - 中位數"
+                  );
 
-                    const waitTimeStableSemiUrgent = hospitalsBooking.find(
-                      (time) =>
-                        time.cluster === obj.hospital.type &&
-                        time.specialty === service &&
-                        time.Category === "半緊急新症 - 中位數"
-                    );
+                  const waitTimeStableSemiUrgent = hospitalsBooking.find(
+                    (time) =>
+                      time.cluster === obj.hospital.type &&
+                      time.specialty === service &&
+                      time.Category === "半緊急新症 - 中位數"
+                  );
 
-                    const waitTimeStable = hospitalsBooking.find(
-                      (time) =>
-                        time.cluster === obj.hospital.type &&
-                        time.specialty === service &&
-                        time.Category === "穩定新症 - 中位數"
-                    );
+                  const waitTimeStable = hospitalsBooking.find(
+                    (time) =>
+                      time.cluster === obj.hospital.type &&
+                      time.specialty === service &&
+                      time.Category === "穩定新症 - 中位數"
+                  );
 
-                    const waitTimeStableLongest = hospitalsBooking.find(
-                      (time) =>
-                        time.cluster === obj.hospital.type &&
-                        time.specialty === service &&
-                        time.Category === "穩定新症 - 最長"
-                    );
+                  const waitTimeStableLongest = hospitalsBooking.find(
+                    (time) =>
+                      time.cluster === obj.hospital.type &&
+                      time.specialty === service &&
+                      time.Category === "穩定新症 - 最長"
+                  );
 
-                    return (
-                      <li key={index}>
-                        {service}
-                        <span>
-                          {isFetching3 ? (
-                            <p>
-                              <HourglassBottomIcon />
-                              新症大慨輪候時間更新中...
-                            </p>
-                          ) : (
-                            <p>
-                              {waitTimeUrgent ? (
-                                <div>
-                                  <p className={styles["blue"]}>
-                                    <AccessTimeIcon
-                                      style={{ color: "#2683fd" }}
-                                    />
-                                    緊急新症：{waitTimeUrgent.Value}
-                                  </p>
-                                  <p className={styles["orange"]}>
-                                    <AccessTimeIcon
-                                      style={{ color: "#2683fd" }}
-                                    />
-                                    半緊急新症：{waitTimeStableSemiUrgent.Value}
-                                  </p>
-                                  <p className={styles["red"]}>
-                                    <AccessTimeIcon
-                                      style={{ color: "#2683fd" }}
-                                    />
-                                    穩定新症：{waitTimeStable.Value} (最長：
-                                    {waitTimeStableLongest.Value})
-                                  </p>
-                                </div>
-                              ) : (
-                                <span>
-                                  *新症輪候時間只適用於耳鼻喉科丶眼科丶婦科丶內科丶骨科丶兒科丶精神科及外科
-                                </span>
-                              )}
-                            </p>
-                          )}
-                        </span>
-                      </li>
-                    );
-                  })}
-              </ol>
+                  return (
+                    <li
+                      key={index}
+                      className={
+                        isSelectedService ? styles.selectedService : ""
+                      }
+                    >
+                      {service}
+                      <span>
+                        {isFetching3 ? (
+                          <p>
+                            <HourglassBottomIcon />
+                            新症大慨輪候時間更新中...
+                          </p>
+                        ) : (
+                          <p>
+                            {waitTimeUrgent ? (
+                              <div>
+                                <p className={styles["blue"]}>
+                                  <AccessTimeIcon
+                                    style={{ color: "#2683fd" }}
+                                  />
+                                  緊急新症：{waitTimeUrgent.Value}
+                                </p>
+                                <p className={styles["orange"]}>
+                                  <AccessTimeIcon
+                                    style={{ color: "#2683fd" }}
+                                  />
+                                  半緊急新症：{waitTimeStableSemiUrgent.Value}
+                                </p>
+                                <p className={styles["red"]}>
+                                  <AccessTimeIcon
+                                    style={{ color: "#2683fd" }}
+                                  />
+                                  穩定新症：{waitTimeStable.Value} (最長：
+                                  {waitTimeStableLongest.Value})
+                                </p>
+                              </div>
+                            ) : (
+                              <span>
+                                *新症輪候時間只適用於耳鼻喉科丶眼科丶婦科丶內科丶骨科丶兒科丶精神科及外科
+                              </span>
+                            )}
+                          </p>
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
               <p>
                 <InfoIcon style={{ color: "#2683fd" }} />
                 <a

@@ -9,7 +9,7 @@ import PageNotFound from "./Components/PageNotFound";
 
 function App() {
   const [userLocation, setUserLocation] = useState(null);
-
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <Router>
       <section className={styles["navBar-logoName"]}>
@@ -32,6 +32,8 @@ function App() {
             <ServicePage
               userLocation={userLocation}
               setUserLocation={setUserLocation}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
             />
           }
         />
@@ -43,6 +45,8 @@ function App() {
             <Distance
               userLocation={userLocation}
               setUserLocation={setUserLocation}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
             />
           }
         />
