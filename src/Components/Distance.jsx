@@ -234,11 +234,8 @@ function Distance({ userLocation, setUserLocation }) {
   console.log(distances);
 
   return (
-    <div>
-      <h1>
-        <LocalHospitalIcon sx={{ fontSize: 30 }} />
-        急症室等候時間
-      </h1>
+    <div className={styles["main-container"]}>
+      <h1>急症室等候時間</h1>
       <div id="hospitalDisplayWrapper">
         <SearchBar onSearch={setSearchTerm} />
         <div className="MapWithDistanceWrapper">
@@ -250,7 +247,10 @@ function Distance({ userLocation, setUserLocation }) {
         {distances.length > 0 ? (
           <div>
             <div className={styles["hospital-container"]}>
-              <h3>以下是距離您當前位置最近的急症室服務：</h3>
+              <p>
+                <LocalHospitalIcon sx={{ fontSize: 16 }} />
+                以下是距離您當前位置最近的急症室服務：
+              </p>
               {getFilteredDistances().map((item, index) => (
                 <div
                   key={index}
@@ -271,7 +271,6 @@ function Distance({ userLocation, setUserLocation }) {
                           (obj) => obj.name === item.hospital.institution_tc
                         )?.district
                       }
-                      區
                     </p>
                   </div>
                   <h2>
@@ -294,7 +293,6 @@ function Distance({ userLocation, setUserLocation }) {
                       .map(({ hospName, topWait }) => (
                         <div key={hospName} className="wait-Time">
                           <p>
-                            <QueryBuilderIcon />
                             等候時間：
                             <span
                               className={
@@ -324,21 +322,22 @@ function Distance({ userLocation, setUserLocation }) {
                       .map(({ name, contact, website, address }) => (
                         <div key={name}>
                           <p>
-                            <NavigationIcon />
-                            <a>{address}</a>
+                            <NavigationIcon style={{ color: "#2683fd" }} />
+                            <a>&emsp;{address}</a>
                           </p>
                           <p>
-                            <CallIcon />
-                            <a href={`tel:${contact}`}> {contact}</a>
+                            <CallIcon style={{ color: "#2683fd" }} />
+
+                            <a href={`tel:${contact}`}>&emsp; {contact}</a>
                           </p>
                           <p>
-                            <InfoIcon />
+                            <InfoIcon style={{ color: "#2683fd" }} />
                             <a
                               href={website}
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-                              查看更多
+                              &emsp;查看更多
                             </a>
                           </p>
                         </div>
@@ -354,7 +353,9 @@ function Distance({ userLocation, setUserLocation }) {
             醫院距離更新中...
           </p>
         )}
-        <LastUploadTime latestTime={latestTime} />
+        <footer>
+          <LastUploadTime latestTime={latestTime} />
+        </footer>
       </div>
     </div>
   );

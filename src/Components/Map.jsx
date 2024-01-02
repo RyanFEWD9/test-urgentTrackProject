@@ -11,10 +11,10 @@ function Map({ userLocation, location }) {
   // If neither location nor userLocation is provided, show a loading message
   if (!mapLocation) {
     return (
-      <div>
+      <p>
         <HourglassBottomIcon />
         地圖更新中...
-      </div>
+      </p>
     );
   }
 
