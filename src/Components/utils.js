@@ -55,6 +55,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.313773,
     longitude: 114.25627,
+    img: "https://www.ha.org.hk/haho/ho/kec/v3/images/img_clusters_hhh.jpg",
   },
   {
     name: "基督教聯合醫院",
@@ -420,6 +421,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.379939,
     longitude: 114.20129,
+    img: "https://www.ha.org.hk/haho/ho/ntec/img_clusters_pwh.jpg",
   },
   {
     name: "北大嶼山醫院",

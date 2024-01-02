@@ -1,11 +1,14 @@
-import React from "react";
-import styles from "./ServicePage.module.css";
+import React, { useState } from "react";
+import styles from "../App.module.css";
 import { hospitalSpecialistServices } from "./utils";
 
 function ServicePageButton({ setSelectedService }) {
-  //Onlick function for buttons
+  const [selectedKey, setSelectedKey] = useState(null);
+
+  // OnClick function for buttons
   const handleServiceClick = (serviceKey) => {
     setSelectedService(serviceKey);
+    setSelectedKey(serviceKey);
   };
 
   return (
@@ -16,7 +19,10 @@ function ServicePageButton({ setSelectedService }) {
           <button
             onClick={() => handleServiceClick(serviceKey)}
             key={serviceKey}
-            className={styles["button"]}
+            // {highlighted color for selected button}
+            className={`${styles["button"]} ${
+              selectedKey === serviceKey ? styles["selected"] : ""
+            }`}
           >
             {serviceKey}
           </button>

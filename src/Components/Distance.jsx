@@ -13,7 +13,12 @@ import InfoIcon from "@mui/icons-material/Info";
 import { hospitalSpecialistServices } from "./utils";
 import { districtColor } from "./utils";
 
-function Distance({ userLocation, setUserLocation }) {
+function Distance({
+  userLocation,
+  setUserLocation,
+  searchTerm,
+  setSearchTerm,
+}) {
   //For enabling CORS
   // https://cors-anywhere.herokuapp.com/corsdemo
 
@@ -41,9 +46,6 @@ function Distance({ userLocation, setUserLocation }) {
   const [isFetching, setIsFetching] = useState(false);
   const [latestTime, setLatestTime] = useState("");
   const [characters, setCharacters] = useState([]); // array
-
-  //For the search bar use
-  const [searchTerm, setSearchTerm] = useState("");
 
   //For Map use
   // const [userLocation, setUserLocation] = useState(null);
@@ -229,7 +231,6 @@ function Distance({ userLocation, setUserLocation }) {
     }
     return ""; // Return an empty string or some default class if district doesn't match
   }
-
   console.log(hospitals);
   console.log(distances);
 
@@ -237,7 +238,7 @@ function Distance({ userLocation, setUserLocation }) {
     <div className={styles["main-container"]}>
       <h1>急症室等候時間</h1>
       <div id="hospitalDisplayWrapper">
-        <SearchBar onSearch={setSearchTerm} />
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <div className="MapWithDistanceWrapper">
           <Map
             userLocation={userLocation}
@@ -280,6 +281,15 @@ function Distance({ userLocation, setUserLocation }) {
                       {item.distance.toFixed(0)} km
                     </span>
                   </h2>
+                  <img
+                    src={
+                      hospitalSpecialistServices.find(
+                        (obj) => obj.name === item.hospital.institution_tc
+                      )?.img
+                    }
+                    alt="hospital-image"
+                    className={styles["hospital-image"]}
+                  />
                   {isFetching ? (
                     <p>
                       <HourglassBottomIcon />

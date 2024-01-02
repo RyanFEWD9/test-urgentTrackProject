@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import styles from "../App.module.css";
 
-function SearchBar({ onSearch }) {
-  const [searchTerm, setSearchTerm] = useState("");
+function SearchBar({ searchTerm, setSearchTerm }) {
+  // const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-    onSearch(event.target.value); // Pass the search term to the parent component
+    setSearchTerm(event.target.value); // Pass the search term to the parent componen廿
   };
 
   return (
@@ -14,7 +13,7 @@ function SearchBar({ onSearch }) {
       <div className={styles["searchInputWrapper"]}>
         <input
           type="search"
-          placeholder="輸入公立醫院名稱以搜尋急症室路線"
+          placeholder="輸入公立醫院名稱以搜尋"
           onChange={handleSearchChange}
           value={searchTerm}
         />

@@ -115,3 +115,12 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 
 1. Bug fixed for ServicePage.jsx
 2. Added back data for "長洲醫院","瑪嘉烈醫院", "北區醫院" inside { hospitalSpecialistServices } from "./utils"
+
+2024/01/02 23：00 Abbie's update
+
+1. ServicePage.jsx added redirection link to HA GO App for booking
+   (Apple mobile device will redirect to App store, Andriod --> Google store, Desktop device all redirect to Google store)
+2. SearchBar added for ServicePage.jsx
+3. Added sorting according button selected with css highlighted(.selected)
+4. Added 2 sample images (威爾斯親王醫院, 靈實醫院)inside { hospitalSpecialistServices } from "./utils"
+5. Added testing image inside Distance.jsx and ServicePage.js

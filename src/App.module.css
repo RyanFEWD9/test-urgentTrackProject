@@ -183,6 +183,16 @@ button:hover {
   color: #ffffff;
 }
 
+.button-container .selected {
+  background-color: #2683fd;
+  color: #ffffff;
+}
+
+.selectedService {
+  font-weight: bold;
+  color: #2683fd;
+  font-size: 20px;
+}
 /**/
 
 .footer-wrapper {
@@ -416,4 +426,10 @@ img {
 .introTextWrapper {
   margin: 1em;
   margin-right: 4em;
+}
+
+.hospital-image {
+  all: unset;
+  width: 250px;
+  height: 100px;
 }
