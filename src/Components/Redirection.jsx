@@ -1,15 +1,18 @@
 import React from "react";
 
-function Redirection() {
-  const latitude = 37.7749; // Sample latitude
-  const longitude = -122.4194; // Sample longitude
-
+function Redirection({ userLocation, location }) {
+  // Determine which location to redirect for the map
+  const mapLocation = location || userLocation;
   const redirectToGoogleMaps = () => {
-    window.open(`https://maps.google.com/maps?q=${latitude},${longitude}`);
+    window.open(
+      `https://maps.google.com/maps?q=${mapLocation.latitude},${mapLocation.longitude}`
+    );
   };
 
   const redirectToAppleMaps = () => {
-    window.open(`http://maps.apple.com/maps?daddr=${latitude},${longitude}`);
+    window.open(
+      `http://maps.apple.com/maps?daddr=${mapLocation.latitude},${mapLocation.longitude}`
+    );
   };
 
   return (

@@ -14,6 +14,7 @@ import { hospitalSpecialistServices } from "./utils";
 import { districtColor } from "./utils";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import ServicePageMap from "./ServicePageMap";
+import Redirection from "./Redirection";
 
 function Distance({
   userLocation,
@@ -248,6 +249,10 @@ function Distance({
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <div className="MapWithDistanceWrapper">
           <ServicePageMap
+            userLocation={userLocation}
+            location={selectedHospitalLocation}
+          />
+          <Redirection
             userLocation={userLocation}
             location={selectedHospitalLocation}
           />
