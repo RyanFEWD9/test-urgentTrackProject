@@ -8,6 +8,9 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import ClassIcon from "@mui/icons-material/Class";
 import Redirection from "./Redirection";
+import { hospitalSpecialistServices } from "./utils";
+import { districtColor2 } from "./utils";
+import { hongKongDistricts } from "./utils";
 
 function GeneralPage({
   userLocation,
@@ -107,11 +110,22 @@ function GeneralPage({
 
   console.log(hospitalGeneral);
   console.log(hospitalQuota);
+  console.log(sortedGeneralHospitals);
 
   return (
     <div>
       <h1>普通科門診診所</h1>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      {
+        <select className={styles["select"]}>
+          <option>篩選</option>
+          {hongKongDistricts.map((district, index) => (
+            <option value={district} key={index}>
+              {district}
+            </option>
+          ))}
+        </select>
+      }
       <ServicePageMap userLocation={userLocation} />
       <Redirection userLocation={userLocation} />
       <div className={styles["serviceText-container"]}>
@@ -126,28 +140,61 @@ function GeneralPage({
               資料更新中...
             </p>
           ) : (
-            sortedGeneralHospitals.map((hospital, index) => (
-              <div key={index} className={styles["hospital-item"]}>
-                <h2 className={styles["bold"]}>
-                  {hospital.hospital.institution_tc}&emsp;
-                  <span>
-                    <span class="glyphicon glyphicon-map-marker"></span>
-                    {hospital.distance.toFixed(1)}km
-                  </span>
-                </h2>
+            sortedGeneralHospitals
+              .filter((obj) => obj.hospital.institution_tc.includes(searchTerm)) //for input function
+              .map((hospital, index) => (
+                <div key={index} className={styles["hospital-item"]}>
+                  <div
+                    className={districtColor2(
+                      //// Use find to locate the matching 醫院聯網 and return its district
+                      hospitalSpecialistServices.find(
+                        (obj) => obj.type === hospital.hospital.cluster_tc
+                      )?.district
+                    )}
+                  >
+                    {
+                      // Use find to locate the matching 醫院聯網 and return its district
+                      hospitalSpecialistServices.find(
+                        (obj) => obj.type === hospital.hospital.cluster_tc
+                      )?.district
+                    }
+                  </div>
 
-                <h4 className={styles["newServices-title"]}>
-                  <ClassIcon />
-                  {hospital.hospital.cluster_tc}
-                </h4>
+                  <h2 className={styles["bold"]}>
+                    {hospital.hospital.institution_tc}&emsp;
+                    <span>
+                      <span class="glyphicon glyphicon-map-marker"></span>
+                      {hospital.distance.toFixed(1)}km
+                    </span>
+                  </h2>
 
-                <p>
-                  <NavigationIcon style={{ color: "#2683fd" }} />
-                  &emsp;
-                  <a>{hospital.hospital.address_tc}</a>
-                </p>
-              </div>
-            ))
+                  <h4 className={styles["newServices-title"]}>
+                    <ClassIcon />
+                    {hospital.hospital.cluster_tc}
+                  </h4>
+                  <div>
+                    {/* {Use find to locate the matching clinic name and return to its 18區} */}
+                    {
+                      hospitalQuota.find(
+                        (obj) => obj.Clinic === hospital.hospital.institution_tc
+                      )?.District
+                    }
+                  </div>
+                  <p>
+                    {/* {Use find to locate the matching clinic name and return to its 18區} */}
+                    {
+                      hospitalQuota.find(
+                        (obj) => obj.Clinic === hospital.hospital.institution_tc
+                      )?.["Doctor Consultation Sessions"]
+                    }
+                  </p>
+                  <p>
+                    <NavigationIcon style={{ color: "#2683fd" }} />
+                    &emsp;
+                    <a>{hospital.hospital.address_tc}</a>
+                  </p>
+                </div>
+              ))
           )}
         </section>
       </div>
