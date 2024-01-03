@@ -433,3 +433,19 @@ img {
   width: 250px;
   height: 100px;
 }
+
+/* General Page */
+.select {
+  background-color: #ffffff;
+  width: 10%;
+  min-height: 10%;
+  padding: 0.8em;
+  border-radius: 4em;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 2%;
+  text-align: center;
+}

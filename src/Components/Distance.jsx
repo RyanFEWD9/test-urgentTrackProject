@@ -11,7 +11,7 @@ import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import InfoIcon from "@mui/icons-material/Info";
 import { hospitalSpecialistServices } from "./utils";
-import { districtColor } from "./utils";
+import { districtColor2 } from "./utils";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import ServicePageMap from "./ServicePageMap";
 import Redirection from "./Redirection";
@@ -226,18 +226,6 @@ function Distance({
     return deg * (Math.PI / 180);
   };
 
-  function districtColor2(district) {
-    if (district === "港島") {
-      return styles.hkisland;
-    }
-    if (district === "九龍") {
-      return styles.kowloon;
-    }
-    if (district === "新界") {
-      return styles.newterr;
-    }
-    return ""; // Return an empty string or some default class if district doesn't match
-  }
   console.log(hospitals);
   console.log(distances);
 
@@ -272,6 +260,7 @@ function Distance({
                 >
                   <div
                     className={districtColor2(
+                      // Use find to locate the matching service and return its district
                       hospitalSpecialistServices.find(
                         (obj) => obj.name === item.hospital.institution_tc
                       )?.district

@@ -1,3 +1,5 @@
+import styles from "../App.module.css";
+
 //red text for waitTime above 2hrs
 export const isWaitTimeOverTwoHours = (waitTime) => {
   // This regular expression matches "超過" followed by one or more digits and then "小時"
@@ -25,6 +27,19 @@ export function districtColor(obj) {
   if (obj.hospital.district === "新界") {
     return "newterr";
   }
+}
+
+export function districtColor2(district) {
+  if (district === "港島") {
+    return styles.hkisland;
+  }
+  if (district === "九龍") {
+    return styles.kowloon;
+  }
+  if (district === "新界") {
+    return styles.newterr;
+  }
+  return ""; // Return an empty string or some default class if district doesn't match
 }
 
 export const hospitalSpecialistServices = [
@@ -931,4 +946,25 @@ export const hospitalGoogleIframeLink = [
     googleIframeLink:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3693.8713508972237!2d114.02782632504149!3d22.206994879753754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3401568e03ecc7bb%3A0x635158043e206f64!2z6ZW35rSy6Yar6Zmi!5e0!3m2!1szh-TW!2shk!4v1704048731498!5m2!1szh-TW!2shk",
   },
+];
+
+export const hongKongDistricts = [
+  "中西區",
+  "灣仔區",
+  "東區",
+  "南區",
+  "油尖旺區",
+  "深水埗區",
+  "九龍城區",
+  "黃大仙區",
+  "觀塘區",
+  "葵青區",
+  "荃灣區",
+  "屯門區",
+  "元朗區",
+  "北區",
+  "大埔區",
+  "西貢區",
+  "沙田區",
+  "離島區",
 ];
