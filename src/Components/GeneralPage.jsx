@@ -7,6 +7,7 @@ import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import ClassIcon from "@mui/icons-material/Class";
+import Redirection from "./Redirection";
 
 function GeneralPage({
   userLocation,
@@ -14,25 +15,28 @@ function GeneralPage({
   searchTerm,
   setSearchTerm,
 }) {
-  //For enabling CORS
+  // For enabling CORS
   // https://cors-anywhere.herokuapp.com/corsdemo
 
-  //CORS proxy
+  // CORS proxy
   const CORS = "https://cors-anywhere.herokuapp.com/";
 
   const generalAPI = `${CORS}https://www.ha.org.hk/opendata/facility-gop.json`;
 
   const quotaAPI = `${CORS}https://www.ha.org.hk/pas_gopc/pas_gopc_avg_quota_pdf/g0_9uo7a_p-tc.json`;
 
-  //for generalAPI use
+  // For generalAPI use
   const [isFetching4, setIsFetching4] = useState(false);
   const [hospitalGeneral, setHospitalGeneral] = useState([]);
 
-  //for quotaAPI use
+  // For quotaAPI use
   const [isFetching5, setIsFetching5] = useState(false);
   const [hospitalQuota, setHospitalQuota] = useState([]);
 
-  //General API Fetching
+  // For Distance use
+  const [sortedGeneralHospitals, setSortedGeneralHospitals] = useState([]);
+
+  // General API Fetching
   useEffect(() => {
     const getData4 = async () => {
       try {
@@ -40,6 +44,7 @@ function GeneralPage({
         const res = await fetch(generalAPI);
         const data = await res.json();
         setHospitalGeneral(data);
+        console.log(hospitalGeneral); // Move the console.log inside the useEffect
       } catch (err) {
         console.log(err);
       } finally {
@@ -49,7 +54,7 @@ function GeneralPage({
     getData4();
   }, []);
 
-  //Quota API Fetching
+  // Quota API Fetching
   useEffect(() => {
     const getData5 = async () => {
       try {
@@ -66,13 +71,49 @@ function GeneralPage({
     getData5();
   }, []);
 
+  // Calculate Distances, sort them and update state
+  useEffect(() => {
+    if (userLocation && hospitalGeneral.length) {
+      const calculateDistances = () => {
+        return hospitalGeneral.map((hospital) => {
+          const lat1 = parseFloat(hospital.latitude);
+          const lon1 = parseFloat(hospital.longitude);
+          const lat2 = userLocation.latitude;
+          const lon2 = userLocation.longitude;
+          const R = 6371; // Radius of the Earth in kilometers
+          const dLat = deg2rad(lat2 - lat1);
+          const dLon = deg2rad(lon2 - lon1);
+          const a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(deg2rad(lat1)) *
+              Math.cos(deg2rad(lat2)) *
+              Math.sin(dLon / 2) *
+              Math.sin(dLon / 2);
+          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          const distance = R * c; // Distance in kilometers
+          return { hospital, distance }; // Add distance data to the hospital object
+        });
+      };
+
+      const distances = calculateDistances();
+      distances.sort((a, b) => a.distance - b.distance);
+      setSortedGeneralHospitals(distances);
+    }
+  }, [userLocation, hospitalGeneral]); // This effect should run when userLocation or hospitalGeneral changes
+
+  const deg2rad = (deg) => {
+    return deg * (Math.PI / 180);
+  };
+
   console.log(hospitalGeneral);
   console.log(hospitalQuota);
+
   return (
     <div>
       <h1>普通科門診診所</h1>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <ServicePageMap userLocation={userLocation} />
+      <Redirection userLocation={userLocation} />
       <div className={styles["serviceText-container"]}>
         <p>
           <LocationOnIcon sx={{ fontSize: 16, padding: 0.1 }} />
@@ -85,22 +126,28 @@ function GeneralPage({
               資料更新中...
             </p>
           ) : (
-            hospitalGeneral.map(
-              ({ cluster_tc, institution_tc, address_tc }, index) => (
-                <div key={index} className={styles["hospital-item"]}>
-                  <h2>{institution_tc}</h2>
-                  <h4 className={styles["newServices-title"]}>
-                    <ClassIcon />
-                    {cluster_tc}
-                  </h4>
-                  <p>
-                    <NavigationIcon style={{ color: "#2683fd" }} />
-                    &emsp;
-                    <a>{address_tc}</a>
-                  </p>
-                </div>
-              )
-            )
+            sortedGeneralHospitals.map((hospital, index) => (
+              <div key={index} className={styles["hospital-item"]}>
+                <h2 className={styles["bold"]}>
+                  {hospital.hospital.institution_tc}&emsp;
+                  <span>
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                    {hospital.distance.toFixed(1)}km
+                  </span>
+                </h2>
+
+                <h4 className={styles["newServices-title"]}>
+                  <ClassIcon />
+                  {hospital.hospital.cluster_tc}
+                </h4>
+
+                <p>
+                  <NavigationIcon style={{ color: "#2683fd" }} />
+                  &emsp;
+                  <a>{hospital.hospital.address_tc}</a>
+                </p>
+              </div>
+            ))
           )}
         </section>
       </div>
