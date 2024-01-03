@@ -84,6 +84,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.322291,
     longitude: 114.2279,
+    img: "https://www.ha.org.hk/haho/ho/kec/v3/images/img_clusters_uch.jpg",
   },
 
   {
@@ -113,6 +114,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.369548,
     longitude: 114.11956,
+    img: "https://www.ha.org.hk/haho/ho/kwc/v3/images/img_clusters_ych.jpg",
   },
   {
     name: "將軍澳醫院",
@@ -141,6 +143,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.317964,
     longitude: 114.27021,
+    img: "https://www.ha.org.hk/haho/ho/kec/v3/images/img_clusters_tkoh.jpg",
   },
   {
     name: "東華醫院",
@@ -169,6 +172,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.284955,
     longitude: 114.14661,
+    img: "https://www.ha.org.hk/haho/ho/hkwc/v3/images/img_clusters_twh.jpg",
   },
   {
     name: "東華東院",
@@ -197,6 +201,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.274725,
     longitude: 114.19026,
+    img: "https://www.ha.org.hk/haho/ho/hkec/v3/images/img_clusters_tweh.jpg",
   },
   {
     name: "屯門醫院",
@@ -225,6 +230,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.40708,
     longitude: 113.97621,
+    img: "https://www.ha.org.hk/haho/ho/ntwc/v3/images/img_clusters_tmh.jpg",
   },
   {
     name: "大口環根德公爵夫人兒童醫院",
@@ -253,6 +259,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.271574,
     longitude: 114.12424,
+    img: "https://www.ha.org.hk/haho/ho/hkwc/v3/images/img_clusters_dkch.jpg",
   },
   {
     name: "贊育醫院",
@@ -281,6 +288,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.286146,
     longitude: 114.14457,
+    img: "https://www.ha.org.hk/haho/ho/hkwc/v3/images/img_clusters_tyh.jpg",
   },
   {
     name: "天水圍醫院",
@@ -309,6 +317,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.458704,
     longitude: 113.99585,
+    img: "https://www.ha.org.hk/haho/ho/ntwc/v3/images/img_clusters_tswh.jpg",
   },
   {
     name: "伊利沙伯醫院",
@@ -337,6 +346,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.30886,
     longitude: 114.17519,
+    img: "https://www.ha.org.hk/haho/ho/kcc/v3/images/img_clusters_qeh.jpg",
   },
   {
     name: "瑪麗醫院",
@@ -365,6 +375,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.2704,
     longitude: 114.13117,
+    img: "https://www.ha.org.hk/haho/ho/hkwc/v3/images/img_clusters_qmh.jpg",
   },
   {
     name: "律敦治醫院",
@@ -393,6 +404,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.275909,
     longitude: 114.17529,
+    img: "https://www.ha.org.hk/haho/ho/hkec/v3/images/img_clusters_rh.jpg",
   },
   {
     name: "威爾斯親王醫院",
@@ -450,6 +462,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.282571,
     longitude: 113.93914,
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/North_Lantau_Hospital.jpg/2880px-North_Lantau_Hospital.jpg",
   },
   {
     name: "聖母醫院",
@@ -478,6 +491,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.345588,
     longitude: 114.19657,
+    img: "https://www.ha.org.hk/haho/ho/kcc/v3/images/img_clusters_olmh.jpg",
   },
   {
     name: "東區尤德夫人那打素醫院",
@@ -506,6 +520,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.26918,
     longitude: 114.23643,
+    img: "",
   },
   {
     name: "博愛醫院",
@@ -674,6 +689,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.340629,
     longitude: 114.15231,
+    img: "https://www.ha.org.hk/haho/ho/kwc/v3/images/img_clusters_cmc.jpg",
   },
   {
     name: "雅麗氏何妙齡那打素醫院",
@@ -757,6 +773,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.340057,
     longitude: 114.1347,
+    img: "https://www.ha.org.hk/haho/ho/kwc/v3/images/img_clusters_pmh.jpg",
   },
   {
     name: "北區醫院",

@@ -114,14 +114,15 @@ function ServicePage({ userLocation, searchTerm, setSearchTerm }) {
   return (
     <div className={styles["servicePage-container"]}>
       <h1>專科服務</h1>
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <div className={styles["button-container"]}>
+        <ServicePageButton setSelectedService={setSelectedService} />
+      </div>
       <ServicePageMap
         userLocation={userLocation}
         location={selectedHospitalLocation2}
       />
-      <div className={styles["button-container"]}>
-        <ServicePageButton setSelectedService={setSelectedService} />
-      </div>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
       <div className={styles["serviceText-container"]}>
         <p>
           <LocationOnIcon sx={{ fontSize: 16, padding: 0.1 }} />
