@@ -55,7 +55,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.313773,
     longitude: 114.25627,
-    img: "https://www.ha.org.hk/haho/ho/kec/v3/images/img_clusters_hhh.jpg",
+    img: "https://d5ttlem47o98b.cloudfront.net/s3fs-public/styles/banner/public/2022-04/WhatsApp%20Image%202022-04-03%20at%204.30.04%20PM.jpeg?itok=2F0cxL2h",
   },
   {
     name: "基督教聯合醫院",
@@ -114,7 +114,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.369548,
     longitude: 114.11956,
-    img: "https://www.ha.org.hk/haho/ho/kwc/v3/images/img_clusters_ych.jpg",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTzIT9CJ-bMGaFeqkZ9Tf2hI2uvJkqAZal7A&usqp=CAU",
   },
   {
     name: "將軍澳醫院",
@@ -143,7 +143,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.317964,
     longitude: 114.27021,
-    img: "https://www.ha.org.hk/haho/ho/kec/v3/images/img_clusters_tkoh.jpg",
+    img: "https://cdn.hk01.com/di/media/images/4312888/org/5bcb108cf86850ecc742891b5c3057d9.jpg/WKHhU4OZsTyUwjtrLT2t3WXEn4eY7yHoKwQ9FQ0EPRU?v=w1920",
   },
   {
     name: "東華醫院",
@@ -288,7 +288,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.286146,
     longitude: 114.14457,
-    img: "https://www.ha.org.hk/haho/ho/hkwc/v3/images/img_clusters_tyh.jpg",
+    img: "https://s.yimg.com/ny/api/res/1.2/BC0cAPTBQgBpnCs4q3nb8w--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTUxMg--/https://media.zenfs.com/en_us/News/singtao/20180208a103909.jpg",
   },
   {
     name: "天水圍醫院",
@@ -346,7 +346,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.30886,
     longitude: 114.17519,
-    img: "https://www.ha.org.hk/haho/ho/kcc/v3/images/img_clusters_qeh.jpg",
+    img: "https://image.stheadline.com/f/1500p0/0x0/100/none/b0fd86f1488f6e0fd765dda3353fe7ad/stheadline/inewsmedia/20210111/_2021011120121394173.jpeg",
   },
   {
     name: "瑪麗醫院",
@@ -433,7 +433,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.379939,
     longitude: 114.20129,
-    img: "https://www.ha.org.hk/haho/ho/ntec/img_clusters_pwh.jpg",
+    img: "https://www.freeguider.com/upload/venues/989/big/3f2e87471ff18f1b2719355f8a4d560c.jpg",
   },
   {
     name: "北大嶼山醫院",
@@ -520,7 +520,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.26918,
     longitude: 114.23643,
-    img: "",
+    img: "https://www.freeguider.com/upload/venues/987/big/2e88fa82d79156fed2ae749e19de6d72.JPG",
   },
   {
     name: "博愛醫院",
@@ -549,6 +549,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.44523,
     longitude: 114.04159,
+    img: "https://www.freeguider.com/upload/venues/1551/big/785deaecc826fd74f16777d3976e4120.JPG",
   },
   {
     name: "廣華醫院",
@@ -577,6 +578,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.315174,
     longitude: 114.17244,
+    img: "https://cdn.hk01.com/di/media/images/664471/org/d71fe9a19dccb760580bf8ea3f2f731e.jpg/Yiu901rdXxWq-sLjedaLoOf1qf2_EZ0hybIK4cmyCuE?v=w1920",
   },
   {
     name: "香港佛教醫院",
@@ -605,6 +607,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.33568,
     longitude: 114.18874,
+    img: "https://cdn.hk01.com/di/media/images/dw/20210107/423898429744222208285719.jpeg/S_xg5f8IwI06VEmlag0vI4v_9wQ_r0P1VePFvVXjxb0?v=w1920",
   },
   {
     name: "青山醫院",
@@ -633,6 +636,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.410011,
     longitude: 113.97374,
+    img: "https://resource01-proxy.ulifestyle.com.hk/res/v3/image/content/2355000/2357390/20190524JHC003__20190524_L.jpg",
   },
   {
     name: "沙田慈氏護養院",
@@ -661,6 +665,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.39918,
     longitude: 114.21653,
+    img: "https://obs.line-scdn.net/0hMbuqXVDNEk1ICD60JQdtGnJeESJ7ZAFOLD5DUhdmTHk1MAEcdWpUeGQOSHxha1UTIW5dKGsMCXxjbQUScmtU/w644",
   },
   {
     name: "明愛醫院",
@@ -718,6 +723,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.458696,
     longitude: 114.17479,
+    img: "https://www.careheart.org.hk/wordpress/wp-content/uploads/2019/02/20190131-1.png",
   },
   {
     name: "葛量洪醫院",
@@ -746,6 +752,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.251156,
     longitude: 114.17316,
+    img: "https://www.ha.org.hk/haho/ho/hkwc/v3/images/img_clusters_gh.jpg",
   },
   {
     name: "瑪嘉烈醫院",
@@ -773,7 +780,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.340057,
     longitude: 114.1347,
-    img: "https://www.ha.org.hk/haho/ho/kwc/v3/images/img_clusters_pmh.jpg",
+    img: "https://stream.881903.com/public/c4665a6bc1a3b1f9121c47386e8c73e8/2021/03/fd42876c82f1c8c839b89c68a060b2cc.jpg",
   },
   {
     name: "北區醫院",
@@ -801,6 +808,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.496832,
     longitude: 114.12456,
+    img: "https://tendervoice.hospitalchap.org.hk/wp-content/uploads/2008/05/north.jpg",
   },
   {
     name: "長洲醫院",
@@ -828,6 +836,7 @@ export const hospitalSpecialistServices = [
     },
     latitude: 22.208059,
     longitude: 114.03151,
+    img: "https://had18.huluhk.org/uploadedFile/563531471552969450.jpg",
   },
 ];
 
