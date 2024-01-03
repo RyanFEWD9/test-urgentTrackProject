@@ -259,3 +259,6 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 2024/01/03 Abbie's update
 
 1. Added Error msg if geolocation access is rejected by user
+
+2024/01/03 Ryan's update
+1. Added google map and apple map redirection button (CSS still need improvement)
