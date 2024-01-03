@@ -126,4 +126,4 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 5. Added testing image inside Distance.jsx and ServicePage.js
 
 2024/01/02 11:09 Ryan's update
-1.Added all hospital image in utils.js
+1. Added all hospital image in utils.js
