@@ -17,15 +17,22 @@ function ServicePageMap({ userLocation, location }) {
     );
   }
 
+  // Create the URL for the OpenStreetMap iframe src attribute
+  const openStreetMapURL = `https://www.openstreetmap.org/export/embed.html?bbox=${
+    mapLocation.longitude - 0.0005
+  }%2C${mapLocation.latitude - 0.0005}%2C${mapLocation.longitude + 0.0005}%2C${
+    mapLocation.latitude + 0.0005
+  }&layer=mapnik&marker=${mapLocation.latitude}%2C${mapLocation.longitude}`;
+
   return (
-    <div className={styles["googleMapWrapper"]}>
+    <div className={styles["mapWrapper"]}>
       <p className={styles["mapHeading"]}>
         <LocationOnIcon />
         {location ? `${location.hospitalName}位置：` : "您的當前位置："}
       </p>
       <div className={styles["mapContainer"]}>
         <iframe
-          src={`https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3691.2652607348364!2d${mapLocation.longitude}!3d${mapLocation.latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDE4JzIwLjkiTiAxMTTCsDEwJzA1LjUiRQ!5e0!3m2!1sen!2shk!4v1702883238467!5m2!1sen!2shk`}
+          src={openStreetMapURL}
           width="600"
           height="450"
           style={{ border: 0 }}
