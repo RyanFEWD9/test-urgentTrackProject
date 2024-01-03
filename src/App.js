@@ -6,6 +6,7 @@ import styles from "./App.module.css";
 import ServicePage from "./Components/ServicePage";
 import AboutUsPage from "./Components/AboutUsPage";
 import PageNotFound from "./Components/PageNotFound";
+import GeneralPage from "./Components/GeneralPage";
 
 function App() {
   const [userLocation, setUserLocation] = useState(null);
@@ -22,6 +23,7 @@ function App() {
           <Link to="/about-us"> 主要頁</Link>
           <Link to="/UrgentTrackProject"> 急症室</Link>
           <Link to="/service">專科服務</Link>
+          <Link to="/general">普通科</Link>
         </nav>
       </div>
 
@@ -43,6 +45,17 @@ function App() {
           path="/UrgentTrackProject"
           element={
             <Distance
+              userLocation={userLocation}
+              setUserLocation={setUserLocation}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          }
+        />
+        <Route
+          path="/general"
+          element={
+            <GeneralPage
               userLocation={userLocation}
               setUserLocation={setUserLocation}
               searchTerm={searchTerm}
