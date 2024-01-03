@@ -12,6 +12,7 @@ import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import InfoIcon from "@mui/icons-material/Info";
 import { hospitalSpecialistServices } from "./utils";
 import { districtColor } from "./utils";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 function Distance({
   userLocation,
@@ -51,6 +52,9 @@ function Distance({
   // const [userLocation, setUserLocation] = useState(null);
   const [selectedHospitalLocation, setSelectedHospitalLocation] =
     useState(null);
+
+  //Error msg
+  const [errorMsg, setErrorMsg] = useState("");
 
   // Function to update the selected hospitaﬁl location
   const handleHospitalSelect = (location) => {
@@ -167,7 +171,8 @@ function Distance({
           });
         },
         (error) => {
-          console.log(error);
+          setErrorMsg("請允許系統存取您的當前位置 及 重新更新頁面");
+          // fetchUserLocation();
         }
       );
     } else {
@@ -237,6 +242,7 @@ function Distance({
   return (
     <div className={styles["main-container"]}>
       <h1>急症室等候時間</h1>
+      <p style={{ color: "red" }}>{errorMsg}</p>
       <div id="hospitalDisplayWrapper">
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <div className="MapWithDistanceWrapper">

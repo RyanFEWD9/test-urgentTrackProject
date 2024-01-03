@@ -124,6 +124,3 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 3. Added sorting according button selected with css highlighted(.selected)
 4. Added 2 sample images (威爾斯親王醫院, 靈實醫院)inside { hospitalSpecialistServices } from "./utils"
 5. Added testing image inside Distance.jsx and ServicePage.js
-
-2024/01/02 11:09 Ryan's update
-1. Added all hospital image in utils.js
