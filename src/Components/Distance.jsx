@@ -13,6 +13,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import { hospitalSpecialistServices } from "./utils";
 import { districtColor } from "./utils";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import ServicePageMap from "./ServicePageMap";
 
 function Distance({
   userLocation,
@@ -246,7 +247,7 @@ function Distance({
       <div id="hospitalDisplayWrapper">
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <div className="MapWithDistanceWrapper">
-          <Map
+          <ServicePageMap
             userLocation={userLocation}
             location={selectedHospitalLocation}
           />
