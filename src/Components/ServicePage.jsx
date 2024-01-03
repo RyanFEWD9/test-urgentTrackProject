@@ -14,6 +14,7 @@ import ServicePageMap from "./ServicePageMap";
 import { districtColor } from "./utils";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SearchBar from "./SearchBar";
+import Redirection from "./Redirection";
 
 function ServicePage({ userLocation, searchTerm, setSearchTerm }) {
   //For enabling CORS
@@ -122,7 +123,10 @@ function ServicePage({ userLocation, searchTerm, setSearchTerm }) {
         userLocation={userLocation}
         location={selectedHospitalLocation2}
       />
-
+      <Redirection
+        userLocation={userLocation}
+        location={selectedHospitalLocation2}
+      />
       <div className={styles["serviceText-container"]}>
         <p>
           <LocationOnIcon sx={{ fontSize: 16, padding: 0.1 }} />
