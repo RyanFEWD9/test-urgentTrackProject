@@ -23,6 +23,35 @@ body {
 }
 /**/
 
+/**/
+.errorMsg {
+  color: red;
+}
+
+/*Distance Page*/
+
+.waitTimeButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+.oneHourButton {
+  border: 3px solid #2683fd;
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+  color: #2683fd;
+  font-weight: bold;
+  font-size: 20px;
+}
+.twoHourButton {
+  border: 3px solid rgb(229, 57, 57);
+  font-size: 20px;
+  color: rgb(229, 57, 57);
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+  font-weight: bold;
+}
 .hospital-container::after {
 }
 
@@ -448,4 +477,24 @@ img {
   justify-content: space-between;
   margin: 2%;
   text-align: center;
+}
+
+.districts {
+  border: 1px solid black;
+  text-align: center;
+  border-radius: 30px;
+  width: 100px;
+  padding: 5px;
+}
+
+.haGO {
+  width: 250px;
+  height: 100px;
+}
+
+.iconContainer {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  right: 0;
 }

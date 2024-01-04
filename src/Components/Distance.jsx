@@ -58,20 +58,54 @@ function Distance({
   //Error msg
   const [errorMsg, setErrorMsg] = useState("");
 
+  //For waitTimeButton use
+  const [filterWait, setFilterWait] = useState(""); // "1" or "!1"
+
   // Function to update the selected hospitaﬁl location
   const handleHospitalSelect = (location) => {
     setSelectedHospitalLocation(location);
   };
 
-  // Function to filter hospitals based on search term
+  // Function to filter hospitals based on search term and waitTimebuttons
   const getFilteredDistances = () => {
-    if (!searchTerm) {
-      return distances;
+    let filteredDistances = distances;
+
+    // First, filter by search term if there's one
+    if (searchTerm) {
+      filteredDistances = filteredDistances.filter((distanceItem) =>
+        distanceItem.hospital.institution_tc.includes(searchTerm)
+      );
     }
-    return distances.filter((item) =>
-      item.hospital.institution_tc.includes(searchTerm)
-    );
+
+    // Then, if there's a wait time filter, apply it
+    if (filterWait) {
+      filteredDistances = filteredDistances.filter((distanceItem) => {
+        // Step 2 : Need to a matching hospital name for the upper part
+        const characterItem = characters.find(
+          (charItem) =>
+            charItem.hospName === distanceItem.hospital.institution_tc
+        );
+
+        // Step 3 : further apply the button filter based on the 'topWait' value and the filterWait state
+        if (characterItem) {
+          const waitTime = characterItem.topWait;
+          if (filterWait === "1") {
+            return waitTime.includes("1");
+          } else if (filterWait === "!1") {
+            return !waitTime.includes("1");
+          }
+        }
+        return false;
+      });
+    }
+
+    return filteredDistances;
   };
+
+  // Reset wait time button filter when search term changes
+  useEffect(() => {
+    setFilterWait("");
+  }, [searchTerm]);
 
   //WaitTime API Fetching
   useEffect(() => {
@@ -90,6 +124,15 @@ function Distance({
     };
     getData();
   }, []);
+
+  //OnClick function for the waitTime button
+  const handleOneHourClick = () => {
+    setFilterWait("1");
+  };
+
+  const handleTwoHourClick = () => {
+    setFilterWait("!1");
+  };
 
   // On Click function for hospital container
   const handleHospitalClick = (hospital) => {
@@ -142,8 +185,6 @@ function Distance({
     getData2();
   }, []);
 
-  console.log(hospitalsData);
-
   //Distance API Fetching
   useEffect(() => {
     fetchUserLocation();
@@ -173,7 +214,7 @@ function Distance({
           });
         },
         (error) => {
-          setErrorMsg("請允許系統存取您的當前位置 及 重新更新頁面");
+          setErrorMsg("⚠️ 請允許系統存取您的當前位置 及 重新更新頁面 ⚠️");
           // fetchUserLocation();
         }
       );
@@ -228,11 +269,12 @@ function Distance({
 
   console.log(hospitals);
   console.log(distances);
+  console.log(characters);
 
   return (
     <div className={styles["main-container"]}>
       <h1>急症室等候時間</h1>
-      <p style={{ color: "red" }}>{errorMsg}</p>
+      <p className={styles["errorMsg"]}>{errorMsg}</p>
       <div id="hospitalDisplayWrapper">
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <div className="MapWithDistanceWrapper">
@@ -252,6 +294,20 @@ function Distance({
                 <LocalHospitalIcon sx={{ fontSize: 16 }} />
                 以下是距離您當前位置最近的急症室服務：
               </p>
+              <div className={styles["waitTimeButtonContainer"]}>
+                <button
+                  className={styles["oneHourButton"]}
+                  onClick={handleOneHourClick} // Corrected from OnClick to onClick
+                >
+                  1 小時
+                </button>
+                <button
+                  className={styles["twoHourButton"]}
+                  onClick={handleTwoHourClick} // Corrected from OnClick to onClick
+                >
+                  2 小時或以上
+                </button>
+              </div>
               {getFilteredDistances().map((item, index) => (
                 <div
                   key={index}
