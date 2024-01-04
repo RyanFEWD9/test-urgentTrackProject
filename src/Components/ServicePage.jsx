@@ -134,6 +134,19 @@ function ServicePage({ userLocation, searchTerm, setSearchTerm }) {
         </p>
       </div>
       <section className={styles["specialistServices-container"]}>
+        <div className={styles["iconContainer"]}>
+          <a
+            href="https://www3.ha.org.hk/hago/Home/DownloadApps/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              className={styles["haGO"]}
+              src="https://sthagowebwww2prd01.blob.core.windows.net/hago/images/default-source/web-library/ha_go_logo_text.png?sfvrsn=21d59c59_3"
+              alt="HA-GO"
+            />
+          </a>
+        </div>
         {allHospitals
           .filter(
             (obj) =>

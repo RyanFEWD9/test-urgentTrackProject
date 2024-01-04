@@ -269,3 +269,13 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 1.  New path /general created
 2.  GeneralPage.jsx created
 3.  GeneralPage.jsx data fetched
+
+2024/01/04 Abbie update
+
+1. GeneralPage.jsx updated, select function pending
+
+2024/01/04 20:00 Abbie's update
+
+1. GeneralPage.jsx map onClick function, select function working
+2. Distance.jsx added waitTime button
+3. Floating Icon added
