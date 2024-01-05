@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../App.module.css";
+import styles from "./ServicePage.module.css";
 
-function Redirection({ userLocation, location }) {
+function ServicePageRedirection({ userLocation, location }) {
   // Determine which location to redirect for the map
   const mapLocation = location || userLocation;
   const redirectToGoogleMaps = () => {
@@ -34,4 +34,4 @@ function Redirection({ userLocation, location }) {
     </div>
   );
 }
-export default Redirection;
+export default ServicePageRedirection;
