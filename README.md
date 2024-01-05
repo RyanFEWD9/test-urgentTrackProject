@@ -279,3 +279,9 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 1. GeneralPage.jsx map onClick function, select function working
 2. Distance.jsx added waitTime button
 3. Floating Icon added
+
+2024/01/05 23：15 Abbie's update
+
+1. Redirection buttons CSS fixed
+2. Seperated stylesheet for ServicePage.module.css
+3. All path used carousel slider

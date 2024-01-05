@@ -2,11 +2,12 @@ import Distance from "./Components/Distance";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import styles from "./App.module.css";
-
 import ServicePage from "./Components/ServicePage";
 import AboutUsPage from "./Components/AboutUsPage";
 import PageNotFound from "./Components/PageNotFound";
 import GeneralPage from "./Components/GeneralPage";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   const [userLocation, setUserLocation] = useState(null);

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "../App.module.css";
 import SearchBar from "./SearchBar";
 import LastUploadTime from "./LastUploadTime";
-import Map from "./Map";
 import { isWaitTimeOverTwoHours } from "./utils";
 import CallIcon from "@mui/icons-material/Call";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
@@ -13,8 +12,11 @@ import InfoIcon from "@mui/icons-material/Info";
 import { hospitalSpecialistServices } from "./utils";
 import { districtColor2 } from "./utils";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import ServicePageMap from "./ServicePageMap";
-import Redirection from "./Redirection";
+import ShareMap from "./ShareMap";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { settings } from "./utils";
 
 function Distance({
   userLocation,
@@ -278,11 +280,7 @@ function Distance({
       <div id="hospitalDisplayWrapper">
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <div className="MapWithDistanceWrapper">
-          <ServicePageMap
-            userLocation={userLocation}
-            location={selectedHospitalLocation}
-          />
-          <Redirection
+          <ShareMap
             userLocation={userLocation}
             location={selectedHospitalLocation}
           />
@@ -290,10 +288,6 @@ function Distance({
         {distances.length > 0 ? (
           <div>
             <div className={styles["hospital-container"]}>
-              <p>
-                <LocalHospitalIcon sx={{ fontSize: 16 }} />
-                以下是距離您當前位置最近的急症室服務：
-              </p>
               <div className={styles["waitTimeButtonContainer"]}>
                 <button
                   className={styles["oneHourButton"]}
@@ -308,110 +302,119 @@ function Distance({
                   2 小時或以上
                 </button>
               </div>
-              {getFilteredDistances().map((item, index) => (
-                <div
-                  key={index}
-                  className={styles["hospital-item"]}
-                  onClick={() => handleHospitalClick(item.hospital)}
-                >
+              <p>
+                <LocalHospitalIcon sx={{ fontSize: 16 }} />
+                以下是距離您當前位置最近的急症室服務：
+              </p>
+
+              <Slider {...settings}>
+                {getFilteredDistances().map((item, index) => (
                   <div
-                    className={districtColor2(
-                      // Use find to locate the matching service and return its district
-                      hospitalSpecialistServices.find(
-                        (obj) => obj.name === item.hospital.institution_tc
-                      )?.district
-                    )}
+                    key={index}
+                    className={styles["hospital-item"]}
+                    onClick={() => handleHospitalClick(item.hospital)}
                   >
-                    <p>
-                      {
+                    <div
+                      className={districtColor2(
                         // Use find to locate the matching service and return its district
                         hospitalSpecialistServices.find(
                           (obj) => obj.name === item.hospital.institution_tc
                         )?.district
+                      )}
+                    >
+                      <p>
+                        {
+                          // Use find to locate the matching service and return its district
+                          hospitalSpecialistServices.find(
+                            (obj) => obj.name === item.hospital.institution_tc
+                          )?.district
+                        }
+                      </p>
+                    </div>
+                    <h2>
+                      {item.hospital.institution_tc}
+                      <span>
+                        &emsp;
+                        <span class="glyphicon glyphicon-map-marker"></span>
+                        {item.distance.toFixed(0)} km
+                      </span>
+                    </h2>
+                    <img
+                      src={
+                        hospitalSpecialistServices.find(
+                          (obj) => obj.name === item.hospital.institution_tc
+                        )?.img
                       }
-                    </p>
+                      alt="hospital-image"
+                      className={styles["hospital-image"]}
+                    />
+                    {isFetching ? (
+                      <p>
+                        <HourglassBottomIcon />
+                        等候時間更新中...
+                      </p>
+                    ) : (
+                      characters
+                        .filter(
+                          (char) =>
+                            char.hospName === item.hospital.institution_tc
+                        )
+                        .map(({ hospName, topWait }) => (
+                          <div key={hospName} className="wait-Time">
+                            <p>
+                              等候時間：
+                              <span
+                                className={
+                                  isWaitTimeOverTwoHours(topWait)
+                                    ? styles.redText
+                                    : styles.blueText
+                                }
+                              >
+                                {topWait}
+                              </span>
+                            </p>
+                          </div>
+                        ))
+                    )}
+
+                    {isFetching2 ? (
+                      <p>
+                        <HourglassBottomIcon />
+                        詳細資訊更新中...
+                      </p>
+                    ) : (
+                      hospitalsData
+                        .filter(
+                          (hospitalsData) =>
+                            hospitalsData.name === item.hospital.institution_tc
+                        )
+                        .map(({ name, contact, website, address }) => (
+                          <div key={name}>
+                            <p>
+                              <NavigationIcon style={{ color: "#2683fd" }} />
+                              <a>&emsp;{address}</a>
+                            </p>
+                            <p>
+                              <CallIcon style={{ color: "#2683fd" }} />
+
+                              <a href={`tel:${contact}`}>&emsp; {contact}</a>
+                            </p>
+                            <p>
+                              <InfoIcon style={{ color: "#2683fd" }} />
+                              <a
+                                href={website}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                &emsp;查看更多
+                              </a>
+                            </p>
+                          </div>
+                        ))
+                    )}
                   </div>
-                  <h2>
-                    {item.hospital.institution_tc}
-                    <span>
-                      &emsp;<span class="glyphicon glyphicon-map-marker"></span>
-                      {item.distance.toFixed(0)} km
-                    </span>
-                  </h2>
-                  <img
-                    src={
-                      hospitalSpecialistServices.find(
-                        (obj) => obj.name === item.hospital.institution_tc
-                      )?.img
-                    }
-                    alt="hospital-image"
-                    className={styles["hospital-image"]}
-                  />
-                  {isFetching ? (
-                    <p>
-                      <HourglassBottomIcon />
-                      等候時間更新中...
-                    </p>
-                  ) : (
-                    characters
-                      .filter(
-                        (char) => char.hospName === item.hospital.institution_tc
-                      )
-                      .map(({ hospName, topWait }) => (
-                        <div key={hospName} className="wait-Time">
-                          <p>
-                            等候時間：
-                            <span
-                              className={
-                                isWaitTimeOverTwoHours(topWait)
-                                  ? styles.redText
-                                  : styles.blueText
-                              }
-                            >
-                              {topWait}
-                            </span>
-                          </p>
-                        </div>
-                      ))
-                  )}
-
-                  {isFetching2 ? (
-                    <p>
-                      <HourglassBottomIcon />
-                      詳細資訊更新中...
-                    </p>
-                  ) : (
-                    hospitalsData
-                      .filter(
-                        (hospitalsData) =>
-                          hospitalsData.name === item.hospital.institution_tc
-                      )
-                      .map(({ name, contact, website, address }) => (
-                        <div key={name}>
-                          <p>
-                            <NavigationIcon style={{ color: "#2683fd" }} />
-                            <a>&emsp;{address}</a>
-                          </p>
-                          <p>
-                            <CallIcon style={{ color: "#2683fd" }} />
-
-                            <a href={`tel:${contact}`}>&emsp; {contact}</a>
-                          </p>
-                          <p>
-                            <InfoIcon style={{ color: "#2683fd" }} />
-                            <a
-                              href={website}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              &emsp;查看更多
-                            </a>
-                          </p>
-                        </div>
-                      ))
-                  )}
-                </div>
-              ))}
+                ))}
+              </Slider>
             </div>
           </div>
         ) : (

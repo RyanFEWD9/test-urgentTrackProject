@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../App.module.css";
+import styles from "./ServicePage.module.css";
 
-function SearchBar({ searchTerm, setSearchTerm }) {
+function ServicePageSearchBar({ searchTerm, setSearchTerm }) {
   // const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearchChange = (event) => {
@@ -24,4 +24,4 @@ function SearchBar({ searchTerm, setSearchTerm }) {
     </div>
   );
 }
-export default SearchBar;
+export default ServicePageSearchBar;

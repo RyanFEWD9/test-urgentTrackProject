@@ -1,11 +1,10 @@
 import React from "react";
-import styles from "./ServicePage.module.css";
+import styles from "../App.module.css";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
+import Redirection from "./Redirection";
 
-import ServicePageRedirection from "./ServicePageRedirection";
-
-function ServicePageMap({ userLocation, location }) {
+function ShareMap({ userLocation, location }) {
   // Determine which location to use for the map
   const mapLocation = location || userLocation;
 
@@ -22,8 +21,8 @@ function ServicePageMap({ userLocation, location }) {
   // Create the URL for the OpenStreetMap iframe src attribute
   const openStreetMapURL = `https://www.openstreetmap.org/export/embed.html?bbox=${
     mapLocation.longitude - 0.0005
-  }%2C${mapLocation.latitude - 0.0005}%2C${mapLocation.longitude + 0.005}%2C${
-    mapLocation.latitude + 0.005
+  }%2C${mapLocation.latitude - 0.0005}%2C${mapLocation.longitude + 0.0005}%2C${
+    mapLocation.latitude + 0.0005
   }&layer=mapnik&marker=${mapLocation.latitude}%2C${mapLocation.longitude}`;
 
   return (
@@ -35,17 +34,16 @@ function ServicePageMap({ userLocation, location }) {
       <div className={styles["mapContainer"]}>
         <iframe
           src={openStreetMapURL}
-          className={styles.iframe}
+          width="600"
+          height="450"
+          style={{ border: 0 }}
           allowFullScreen=""
           loading="lazy"
         ></iframe>
-        <ServicePageRedirection
-          userLocation={userLocation}
-          location={location}
-        />
+        <Redirection userLocation={userLocation} location={location} />
       </div>
     </div>
   );
 }
 
-export default ServicePageMap;
+export default ShareMap;
