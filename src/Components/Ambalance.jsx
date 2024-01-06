@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import AddIcCallRoundedIcon from "@mui/icons-material/AddIcCallRounded";
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
+import ListItem from "@mui/material/ListItem";
 
 function Ambalance() {
   const componentRef = useRef();
@@ -35,6 +36,7 @@ function Ambalance() {
           <section className={styles["introWrapper"]}>
             <div className={styles["introTextWrapper"]}>
               <Card
+                className={styles["searchInputWrapper"]}
                 sx={{
                   minWidth: 550,
                   padding: 3,
@@ -62,6 +64,7 @@ function Ambalance() {
             </div>
             <div className={styles["introTextWrapper"]}>
               <Card
+                className={styles["searchInputWrapper"]}
                 sx={{
                   minWidth: 550,
                   padding: 3,
@@ -96,9 +99,10 @@ function Ambalance() {
           <section className={styles["introWrapper"]}>
             {data.map((item, index) => (
               <Card
+                className={styles["searchInputWrapper"]}
                 key={index}
                 sx={{
-                  minWidth: 295,
+                  minWidth: 290,
                   padding: 3,
                   display: "block",
                   margin: "20px 5px",
@@ -124,6 +128,40 @@ function Ambalance() {
             ))}
           </section>
         </section>
+
+        <div className={styles["introTextWrapper"]}>
+          <Card
+            className={styles["searchInputWrapper"]}
+            sx={{
+              minWidth: 550,
+              padding: 3,
+              display: "block",
+              margin: "15px 3px",
+            }}
+          >
+            <CardContent style={{ textAlign: "center" }}>
+              <Typography
+                sx={{ fontSize: 22 }}
+                color="text.secondary"
+                component="div"
+              >
+                <ListItem style={{ fontSize: 24 }}>
+                  致電者請提供以下資料：
+                </ListItem>
+                <ListItem style={{ fontSize: 24 }}>
+                  發生何事？(有人暈倒、受傷、病人等)
+                </ListItem>
+                <ListItem style={{ fontSize: 24 }}>詳細事發地點</ListItem>
+                <ListItem style={{ fontSize: 24 }}>
+                  簡述傷病者情況(病人之年齡、性別、病歷、病徵、病狀等，傷者之受傷程度、人數)
+                </ListItem>
+                <ListItem style={{ fontSize: 24 }}>
+                  留下聯絡電話，方便救護員與你聯絡
+                </ListItem>
+              </Typography>
+            </CardContent>
+          </Card>
+        </div>
         <br />
         <div
           style={{
