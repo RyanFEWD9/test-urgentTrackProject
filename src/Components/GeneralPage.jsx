@@ -12,10 +12,9 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { hospitalSpecialistServices } from "./utils";
 import { districtColor2 } from "./utils";
 import { hongKongDistricts } from "./utils";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { settings } from "./utils";
 
 function GeneralPage({
   userLocation,
@@ -159,6 +158,33 @@ function GeneralPage({
     return deg * (Math.PI / 180);
   };
 
+  //slider setting
+  const settings4 = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: false,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   console.log(hospitalGeneral);
   console.log(hospitalQuota);
   console.log(sortedGeneralHospitals);
@@ -167,16 +193,6 @@ function GeneralPage({
     <div>
       <h1>普通科門診診所</h1>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      {
-        <select className={styles["select"]} onChange={handleSelectChange}>
-          <option>篩選</option>
-          {hongKongDistricts.map((district, index) => (
-            <option value={district} key={index}>
-              {district}
-            </option>
-          ))}
-        </select>
-      }
       <ShareMap
         userLocation={userLocation}
         location={selectedHospitalLocation2}
@@ -199,8 +215,20 @@ function GeneralPage({
           <LocationOnIcon sx={{ fontSize: 16, padding: 0.1 }} />
           以下是距離您當前位置最近的普通科門診：
         </p>
+        <div className={styles["selectContainer"]}>
+          {
+            <select className={styles["select"]} onChange={handleSelectChange}>
+              <option>篩選</option>
+              {hongKongDistricts.map((district, index) => (
+                <option value={district} key={index}>
+                  {district}
+                </option>
+              ))}
+            </select>
+          }
+        </div>
         <section className={styles["specialistServices-container"]}>
-          <Slider {...settings}>
+          <Slider key={isFetching4 ? "loading" : "loaded"} {...settings4}>
             {isFetching4 ? (
               <p>
                 <HourglassBottomIcon />

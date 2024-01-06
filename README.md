@@ -285,3 +285,7 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 1. Redirection buttons CSS fixed
 2. Seperated stylesheet for ServicePage.module.css
 3. All path used carousel slider
+
+2024/01/06 Abbie's update
+
+1. ServicePage (Responsive) and GeneralPage css updated
