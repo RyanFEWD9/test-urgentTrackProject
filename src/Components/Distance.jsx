@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import LastUploadTime from "./LastUploadTime";
 import { isWaitTimeOverTwoHours } from "./utils";
 import CallIcon from "@mui/icons-material/Call";
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
@@ -288,25 +288,27 @@ function Distance({
         {distances.length > 0 ? (
           <div>
             <div className={styles["hospital-container"]}>
-              <div className={styles["waitTimeButtonContainer"]}>
-                <button
-                  className={styles["oneHourButton"]}
-                  onClick={handleOneHourClick} // Corrected from OnClick to onClick
-                >
-                  1 小時
-                </button>
-                <button
-                  className={styles["twoHourButton"]}
-                  onClick={handleTwoHourClick} // Corrected from OnClick to onClick
-                >
-                  2 小時或以上
-                </button>
-              </div>
-              <p>
-                <LocalHospitalIcon sx={{ fontSize: 16 }} />
-                以下是距離您當前位置最近的急症室服務：
-              </p>
+              <div className={styles["locationtextAndSelectContainer"]}>
+                <p className={styles["locationText"]}>
+                  <LocationOnIcon sx={{ fontSize: 16, padding: 0.1 }} />
+                  以下是距離您當前位置最近的急症室服務：
+                </p>
 
+                <div className={styles["waitTimeButtonContainer"]}>
+                  <button
+                    className={styles["oneHourButton"]}
+                    onClick={handleOneHourClick} // Corrected from OnClick to onClick
+                  >
+                    1 小時
+                  </button>
+                  <button
+                    className={styles["twoHourButton"]}
+                    onClick={handleTwoHourClick} // Corrected from OnClick to onClick
+                  >
+                    2 小時或以上
+                  </button>
+                </div>
+              </div>
               <Slider {...settings}>
                 {getFilteredDistances().map((item, index) => (
                   <div

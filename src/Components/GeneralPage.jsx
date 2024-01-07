@@ -9,13 +9,13 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import ClassIcon from "@mui/icons-material/Class";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import CloseIcon from "@mui/icons-material/Close";
 import { hospitalSpecialistServices } from "./utils";
-import { districtColor2 } from "./utils";
 import { hongKongDistricts } from "./utils";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { settings } from "./utils";
+import { districtColor3 } from "./utils";
 
 function GeneralPage({
   userLocation,
@@ -47,6 +47,14 @@ function GeneralPage({
   //for Map use
   const [selectedHospitalLocation2, setSelectedHospitalLocation2] =
     useState(null);
+
+  // for icon container visibility
+  const [showIconContainer, setShowIconContainer] = useState(true);
+
+  // Function to handle CloseIcon click
+  const handleCloseIconClick = () => {
+    setShowIconContainer(false);
+  };
 
   const handleHospitalSelect2 = (location) => {
     setSelectedHospitalLocation2(location);
@@ -159,48 +167,92 @@ function GeneralPage({
     return deg * (Math.PI / 180);
   };
 
+  //slider setting
+  const settings4 = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: false,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   console.log(hospitalGeneral);
   console.log(hospitalQuota);
   console.log(sortedGeneralHospitals);
 
   return (
-    <div>
+    <div className={styles["main-container"]}>
       <h1>普通科門診診所</h1>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      {
-        <select className={styles["select"]} onChange={handleSelectChange}>
-          <option>篩選</option>
-          {hongKongDistricts.map((district, index) => (
-            <option value={district} key={index}>
-              {district}
-            </option>
-          ))}
-        </select>
-      }
       <ShareMap
         userLocation={userLocation}
         location={selectedHospitalLocation2}
       />
       <div className={styles["serviceText-container"]}>
-        <div className={styles["iconContainer"]}>
-          <a
-            href="https://www3.ha.org.hk/hago/Home/DownloadApps/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className={styles["haGO"]}
-              src="https://sthagowebwww2prd01.blob.core.windows.net/hago/images/default-source/web-library/ha_go_logo_text.png?sfvrsn=21d59c59_3"
-              alt="HA-GO"
-            />
-          </a>
+        {/* to remove the floating icon once user clicked x */}
+        {showIconContainer && (
+          <div className={styles["iconContainer"]}>
+            <div className={styles["iconWrap"]}>
+              <CloseIcon
+                onClick={handleCloseIconClick}
+                role="button"
+                tabIndex={0}
+              />
+              <a
+                href="https://www3.ha.org.hk/hago/Home/DownloadApps/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  className={styles["haGO"]}
+                  src="https://sthagowebwww2prd01.blob.core.windows.net/hago/images/default-source/web-library/ha_go_logo_text.png?sfvrsn=21d59c59_3"
+                  alt="HA-GO"
+                />
+              </a>
+            </div>
+          </div>
+        )}
+        <div className={styles["locationtextAndSelectContainer"]}>
+          <p className={styles["locationText"]}>
+            <LocationOnIcon sx={{ fontSize: 16, padding: 0.1 }} />
+            以下是距離您當前位置最近的普通科門診：
+          </p>
+          <div className={styles["selectContainer"]}>
+            {
+              <select
+                className={styles["select"]}
+                onChange={handleSelectChange}
+              >
+                <option>篩選</option>
+                {hongKongDistricts.map((district, index) => (
+                  <option value={district} key={index}>
+                    {district}
+                  </option>
+                ))}
+              </select>
+            }
+          </div>
         </div>
-        <p>
-          <LocationOnIcon sx={{ fontSize: 16, padding: 0.1 }} />
-          以下是距離您當前位置最近的普通科門診：
-        </p>
         <section className={styles["specialistServices-container"]}>
-          <Slider {...settings}>
+          <Slider key={isFetching4 ? "loading" : "loaded"} {...settings4}>
             {isFetching4 ? (
               <p>
                 <HourglassBottomIcon />
@@ -232,7 +284,15 @@ function GeneralPage({
                       )?.district
                     }
                   </div> */}
-                    <div className={styles["districts"]}>
+                    <div
+                      className={districtColor3(
+                        // Use find to locate the matching clinic name and return its 18區 styling
+                        hospitalQuota.find(
+                          (obj) =>
+                            obj.Clinic === hospital.hospital.institution_tc
+                        )?.District
+                      )}
+                    >
                       {/* {Use find to locate the matching clinic name and return to its 18區} */}
                       {
                         hospitalQuota.find(
@@ -292,6 +352,10 @@ function GeneralPage({
             )}
           </Slider>
         </section>
+      </div>
+      <div className={styles["footer-wrapper"]}>
+        <footer>© 資料歸香港公立醫院版權所有</footer>
+        <footer>更新頻率 : 每季 (1月、4月、7月及10月) </footer>
       </div>
     </div>
   );

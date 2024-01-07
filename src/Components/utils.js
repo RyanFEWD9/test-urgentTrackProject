@@ -16,7 +16,7 @@ export const isWaitTimeOverTwoHours = (waitTime) => {
   return false;
 };
 
-//district color function
+//ServicePage district color function
 export function districtColor(obj) {
   if (obj.hospital.district === "港島") {
     return "hkisland";
@@ -29,20 +29,20 @@ export function districtColor(obj) {
   }
 }
 
-//slider setting
+//Distance page slider setting
 export const settings = {
   dots: true,
-  infinite: true,
+  infinite: false,
   speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 3,
+  slidesToShow: 4,
+  slidesToScroll: 4,
   responsive: [
     {
       breakpoint: 1024,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
-        infinite: true,
+        infinite: false,
         dots: true,
       },
     },
@@ -55,7 +55,7 @@ export const settings = {
     },
   ],
 };
-
+//DistancePage district Color
 export function districtColor2(district) {
   if (district === "港島") {
     return styles.hkisland;
@@ -69,6 +69,7 @@ export function districtColor2(district) {
   return ""; // Return an empty string or some default class if district doesn't match
 }
 
+//ServicePage 分科服務
 export const hospitalSpecialistServices = [
   {
     name: "靈實醫院",
@@ -995,3 +996,44 @@ export const hongKongDistricts = [
   "沙田區",
   "離島區",
 ];
+
+//General Page districtcolor
+//18區顏色
+export function districtColor3(District) {
+  if (
+    District === "中西區" ||
+    District === "灣仔區" ||
+    District === "東區" ||
+    District === "南區"
+  ) {
+    return styles.hkisland;
+  }
+
+  if (
+    District === "黃大仙區" ||
+    District === "油尖旺區" ||
+    District === "深水埗區" ||
+    District === "九龍城區" ||
+    District === "觀塘區"
+  ) {
+    return styles.kowloon;
+  }
+
+  if (
+    District === "新界" ||
+    District === "葵青區" ||
+    District === "荃灣區" ||
+    District === "屯門區" ||
+    District === "元朗區" ||
+    District === "北區" ||
+    District === "大埔區" ||
+    District === "西貢區" ||
+    District === "沙田區" ||
+    District === "離島區"
+  ) {
+    return styles.newterr;
+  }
+
+  //  return a default class
+  return styles.districts;
+}
