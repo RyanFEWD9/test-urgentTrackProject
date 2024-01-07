@@ -289,3 +289,10 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 2024/01/06 Abbie's update
 
 1. ServicePage (Responsive) and GeneralPage css updated
+
+2024/01/07 Abbie's update
+
+1. iframe size updated
+2. GeneralPage district color updated
+3. Footers updated on ServicePage and General Page
+4. floating icon added on ServicePage and General Page mobile ver.
