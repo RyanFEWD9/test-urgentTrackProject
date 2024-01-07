@@ -30,7 +30,7 @@ body {
 
 .searchInputWrapper {
   background-color: #ffffff;
-  width: 100%;
+  width: 90%;
   min-height: 10%;
   padding: 0.8em;
   border-radius: 4em;
@@ -40,6 +40,8 @@ body {
   display: flex;
   justify-content: space-between;
   margin: 2%;
+ 
+
 }
 
 input:focus::placeholder {
@@ -67,6 +69,7 @@ input {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin:2em;
 }
 
 .service-button {
@@ -436,8 +439,7 @@ img {
     flex-direction: column;
   }
 
-  .upperCardLeftContainer {
-  }
+ 
 
   .upperCardRightContainer {
     all: unset;
@@ -458,3 +460,9 @@ img {
     flex-direction: column;
   }
 }
+
+.specialistServices-container {
+ 
+  margin: 2em;
+}
+
