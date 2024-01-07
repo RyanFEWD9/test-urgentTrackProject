@@ -15,9 +15,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <Router>
-      <section className={styles["navBar-logoName"]}>
-        <span>UrgentTrack</span>
-      </section>
+      
       <div className={styles["navBar-homepage"]}>
         <nav>
           {/* Links to navigate between pages */}
