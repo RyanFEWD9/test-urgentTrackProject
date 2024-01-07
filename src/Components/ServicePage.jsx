@@ -13,6 +13,7 @@ import ServicePageButton from "./ServicePageButton";
 import ServicePageMap from "./ServicePageMap";
 import { districtColor } from "./utils";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import CloseIcon from "@mui/icons-material/Close";
 import ServicePageSearchBar from "./ServicePageSearchBar";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
@@ -40,6 +41,14 @@ function ServicePage({ userLocation, searchTerm, setSearchTerm }) {
   //for Map use
   const [selectedHospitalLocation2, setSelectedHospitalLocation2] =
     useState(null);
+
+  // for icon container visibility
+  const [showIconContainer, setShowIconContainer] = useState(true);
+
+  // Function to handle CloseIcon click
+  const handleCloseIconClick = () => {
+    setShowIconContainer(false);
+  };
 
   const handleHospitalSelect2 = (location) => {
     setSelectedHospitalLocation2(location);
@@ -121,8 +130,8 @@ function ServicePage({ userLocation, searchTerm, setSearchTerm }) {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -178,19 +187,29 @@ function ServicePage({ userLocation, searchTerm, setSearchTerm }) {
           />
           <ServicePageButton setSelectedService={setSelectedService} />
           <div className={styles["specialistServices-container"]}>
-            <div className={styles["iconContainer"]}>
-              <a
-                href="https://www3.ha.org.hk/hago/Home/DownloadApps/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  className={styles["haGO"]}
-                  src="https://sthagowebwww2prd01.blob.core.windows.net/hago/images/default-source/web-library/ha_go_logo_text.png?sfvrsn=21d59c59_3"
-                  alt="HA-GO"
-                />
-              </a>
-            </div>
+            {/* to remove the floating icon once user clicked x */}
+            {showIconContainer && (
+              <div className={styles["iconContainer"]}>
+                <div className={styles["iconWrap"]}>
+                  <CloseIcon
+                    onClick={handleCloseIconClick}
+                    role="button"
+                    tabIndex={0}
+                  />
+                  <a
+                    href="https://www3.ha.org.hk/hago/Home/DownloadApps/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      className={styles["haGO"]}
+                      src="https://sthagowebwww2prd01.blob.core.windows.net/hago/images/default-source/web-library/ha_go_logo_text.png?sfvrsn=21d59c59_3"
+                      alt="HA-GO"
+                    />
+                  </a>
+                </div>
+              </div>
+            )}
             <div className={styles["serviceText-container"]}>
               <p className={styles["locationText"]}>
                 <LocationOnIcon sx={{ fontSize: 16, padding: 0.1 }} />
@@ -388,6 +407,10 @@ function ServicePage({ userLocation, searchTerm, setSearchTerm }) {
             location={selectedHospitalLocation2}
           />
         </div>
+      </div>
+      <div className={styles["footer-wrapper"]}>
+        <footer>© 資料歸香港公立醫院版權所有</footer>
+        <footer>更新頻率 : 每季 (1月、4月、7月及10月) </footer>
       </div>
     </div>
   );
