@@ -298,4 +298,9 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 4. floating icon added on ServicePage and General Page mobile ver.
 
 2024/01/05 Kelly's update
+
 CSS updated for App.js, App.module.css, AboutUsPage.jsx, Ambalance.jsx, ServicePage.module.css.
+
+2024/01/05 Kelly's update 
+
+CSS updated for App.js, App.module.css, AboutUsPage.jsx, Ambalance.jsx, GeneralPage.jsx, ServicePage.jsx, ServicePage.module.css.
