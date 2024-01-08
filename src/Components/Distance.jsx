@@ -17,6 +17,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { settings } from "./utils";
+import LoadingOpening from "./Loading";
+import Background from "./Background";
 
 function Distance({ userLocation, setUserLocation }) {
   //For enabling CORS
@@ -282,7 +284,9 @@ function Distance({ userLocation, setUserLocation }) {
 
   return (
     <div className={styles["main-container"]}>
+      <LoadingOpening />
       <h1>急症室等候時間</h1>
+
       <p className={styles["errorMsg"]}>{errorMsg}</p>
       <div id="hospitalDisplayWrapper">
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -432,6 +436,7 @@ function Distance({ userLocation, setUserLocation }) {
             醫院距離更新中...
           </p>
         )}
+
         <footer>
           <LastUploadTime latestTime={latestTime} />
         </footer>

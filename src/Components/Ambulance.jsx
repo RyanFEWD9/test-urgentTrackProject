@@ -4,8 +4,14 @@ import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import styles from "../App.module.css";
 import CallIcon from "@mui/icons-material/Call";
+
+import LoadingOpening from "./Loading";
 import ScrollTop from "./ScrollToTop";
 import ShareApp from "./ShareApp";
+
+import ScrollTop from "./ScrollToTop";
+import ShareApp from "./ShareApp";
+
 
 
 function Ambulance() {
@@ -49,7 +55,12 @@ function Ambulance() {
   ];
 
   return (
+
+    <>
+      <LoadingOpening />
+
         <>
+
       <div ref={componentRef}>
         <div className={styles["hotlineWrapper"]}>
           <h1>緊急求助熱線</h1>
@@ -64,13 +75,19 @@ function Ambulance() {
                   <Link to={`tel:${item.電話}`}>
                     {item.電話}
                     <br />
+
+
                     <br />
+
                   </Link>
                 </div>
               ))}
             </div>
             <br></br>
+
+
             <br />
+
 
             <div className={styles["hotlineInfoWrapper"]}>
               <h3>致電者請提供以下資料：</h3>
@@ -93,10 +110,29 @@ function Ambulance() {
                 </li>
               </ol>
             </div>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <div className={styles["hotlineButtonWrapper"]}>
+                <button onClick={printPage}>列印／存檔</button>
+              </div>
+            </div>
+
           </div>
           <br />
         </section>
       </div>
+
+
+      <div className={styles["shareFooterWrapper"]}>
+        <ShareApp />
+        <ScrollTop />
+
       <div
         style={{
           display: "flex",
@@ -107,6 +143,7 @@ function Ambulance() {
         <div className={styles["hotlineButtonWrapper"]}>
           <button onClick={printPage}>列印／存檔</button>
         </div>
+
       </div>
 
       <div className={styles["footer-wrapper"]}>
@@ -121,5 +158,3 @@ function Ambulance() {
 
 export default Ambulance;
 
-
-          

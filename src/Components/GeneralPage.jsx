@@ -16,6 +16,7 @@ import { hongKongDistricts } from "./utils";
 // import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { districtColor3 } from "./utils";
+import LoadingOpening from "./Loading";
 
 function GeneralPage({
   userLocation,
@@ -215,6 +216,7 @@ function GeneralPage({
 
   return (
     <div className={styles["main-container"]}>
+      <LoadingOpening />
       <h1>普通科門診診所</h1>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <ShareMap
@@ -238,8 +240,14 @@ function GeneralPage({
               >
                 <img
                   className={styles["haGO"]}
-                  src="https://sthagowebwww2prd01.blob.core.windows.net/hago/images/default-source/web-library/ha_go_logo_text.png?sfvrsn=21d59c59_3"
+                  src="https://play-lh.googleusercontent.com/IZP8Pl7b1QSsMTerRcnL9ekl7uosH7DCJGeNLsNLb4vlxBc_9KV9wgvYzZcLk3FiHd4"
                   alt="HA-GO"
+                  style={{
+                    width: "5.5em",
+                    backgroundColor: "#ffffff",
+                    borderRadius: "1em",
+                    boxShadow: "0 10px 15px rgba(0, 0, 0, 0.08)",
+                  }}
                 />
               </a>
             </div>
