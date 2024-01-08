@@ -297,6 +297,13 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 3. Footers updated on ServicePage and General Page
 4. floating icon added on ServicePage and General Page mobile ver.
 
-2024/01/08 Kelly's update 
+2024/01/08 Kelly's update
 
 CSS updated for App.js, App.module.css, AboutUsPage.jsx, Ambalance.jsx, GeneralPage.jsx, ServicePage.jsx, ServicePage.module.css.
+
+2024/01/08 Abbie's update
+
+1. typo updated for Ambulance.jsx and path
+2. SearchBar share input result issue debugged
+3. Bug fixed for cleared search result not returning back to firstslide (Distance.jsx, ServicePage.jsx and GeneralPage.jsx)
+4. GeneralPage.jsx bug fixed for mobile version not returning to first slider

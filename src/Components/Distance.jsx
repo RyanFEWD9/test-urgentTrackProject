@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "../App.module.css";
 import SearchBar from "./SearchBar";
 import LastUploadTime from "./LastUploadTime";
@@ -18,12 +18,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { settings } from "./utils";
 
-function Distance({
-  userLocation,
-  setUserLocation,
-  searchTerm,
-  setSearchTerm,
-}) {
+function Distance({ userLocation, setUserLocation }) {
   //For enabling CORS
   // https://cors-anywhere.herokuapp.com/corsdemo
 
@@ -52,8 +47,10 @@ function Distance({
   const [latestTime, setLatestTime] = useState("");
   const [characters, setCharacters] = useState([]); // array
 
+  //for searchBar use
+  const [searchTerm, setSearchTerm] = useState("");
+
   //For Map use
-  // const [userLocation, setUserLocation] = useState(null);
   const [selectedHospitalLocation, setSelectedHospitalLocation] =
     useState(null);
 
@@ -63,7 +60,17 @@ function Distance({
   //For waitTimeButton use
   const [filterWait, setFilterWait] = useState(""); // "1" or "!1"
 
-  // Function to update the selected hospitaﬁl location
+  // Ref to store slider instance
+  const sliderRef = useRef(null);
+
+  // Reset the slider to the first slide when the search term is cleared
+  useEffect(() => {
+    if (searchTerm === "" && sliderRef.current) {
+      sliderRef.current.slickGoTo(0);
+    }
+  }, [searchTerm]);
+
+  // Function to update the selected hospital location
   const handleHospitalSelect = (location) => {
     setSelectedHospitalLocation(location);
   };
@@ -309,7 +316,7 @@ function Distance({
                   </button>
                 </div>
               </div>
-              <Slider {...settings}>
+              <Slider ref={sliderRef} {...settings}>
                 {getFilteredDistances().map((item, index) => (
                   <div
                     key={index}

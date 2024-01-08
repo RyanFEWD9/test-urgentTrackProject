@@ -5,7 +5,7 @@ function ServicePageSearchBar({ searchTerm, setSearchTerm }) {
   // const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value); // Pass the search term to the parent componen廿
+    setSearchTerm(event.target.value); // Pass the search term to the parent component
   };
 
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import SearchBar from "./SearchBar";
 import ShareMap from "./ShareMap";
 import styles from "../App.module.css";
@@ -20,8 +20,8 @@ import { districtColor3 } from "./utils";
 function GeneralPage({
   userLocation,
   setUserLocation,
-  searchTerm,
-  setSearchTerm,
+  // searchTerm,
+  // setSearchTerm,
 }) {
   // For enabling CORS
   // https://cors-anywhere.herokuapp.com/corsdemo
@@ -32,6 +32,9 @@ function GeneralPage({
   const generalAPI = `${CORS}https://www.ha.org.hk/opendata/facility-gop.json`;
 
   const quotaAPI = `${CORS}https://www.ha.org.hk/pas_gopc/pas_gopc_avg_quota_pdf/g0_9uo7a_p-tc.json`;
+
+  //for searchBar use
+  const [searchTerm, setSearchTerm] = useState("");
 
   // For generalAPI use
   const [isFetching4, setIsFetching4] = useState(false);
@@ -50,6 +53,16 @@ function GeneralPage({
 
   // for icon container visibility
   const [showIconContainer, setShowIconContainer] = useState(true);
+
+  // Ref to store slider instance
+  const sliderRef = useRef(null);
+
+  // Reset the slider to the first slide when the search term is cleared
+  useEffect(() => {
+    if (searchTerm === "" && sliderRef.current) {
+      sliderRef.current.slickGoTo(0);
+    }
+  }, [searchTerm]);
 
   // Function to handle CloseIcon click
   const handleCloseIconClick = () => {
@@ -172,6 +185,7 @@ function GeneralPage({
     dots: true,
     infinite: false,
     speed: 500,
+    initialSlide: 0, // Start with the first slide
     slidesToShow: 4,
     slidesToScroll: 4,
     responsive: [
@@ -189,6 +203,7 @@ function GeneralPage({
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          initialSlide: 0, // Ensure the first slide is shown on mobile
         },
       },
     ],
@@ -252,24 +267,30 @@ function GeneralPage({
           </div>
         </div>
         <section className={styles["specialistServices-container"]}>
-          <Slider key={isFetching4 ? "loading" : "loaded"} {...settings4}>
-            {isFetching4 ? (
-              <p>
-                <HourglassBottomIcon />
-                資料更新中...
-              </p>
-            ) : (
-              sortedGeneralHospitals
-                .filter((obj) =>
-                  obj.hospital.institution_tc.includes(searchTerm)
-                ) //for input function
-                .map((hospital, index) => (
-                  <div
-                    key={index}
-                    className={styles["hospital-item"]}
-                    onClick={() => handleHospitalClick2(hospital.hospital)}
-                  >
-                    {/* <div
+          {/* {to fix dynamically changing data and added a condition to display first slider on mobile} */}
+          {sortedGeneralHospitals.length > 0 ? (
+            <Slider
+              key={isFetching4 ? "loading" : "loaded"}
+              ref={sliderRef}
+              {...settings4}
+            >
+              {isFetching4 ? (
+                <p>
+                  <HourglassBottomIcon />
+                  資料更新中...
+                </p>
+              ) : (
+                sortedGeneralHospitals
+                  .filter((obj) =>
+                    obj.hospital.institution_tc.includes(searchTerm)
+                  ) //for input function
+                  .map((hospital, index) => (
+                    <div
+                      key={index}
+                      className={styles["hospital-item"]}
+                      onClick={() => handleHospitalClick2(hospital.hospital)}
+                    >
+                      {/* <div
                     className={districtColor2(
                       //// Use find to locate the matching 醫院聯網 and return its district
                       hospitalSpecialistServices.find(
@@ -284,74 +305,79 @@ function GeneralPage({
                       )?.district
                     }
                   </div> */}
-                    <div
-                      className={districtColor3(
-                        // Use find to locate the matching clinic name and return its 18區 styling
-                        hospitalQuota.find(
-                          (obj) =>
-                            obj.Clinic === hospital.hospital.institution_tc
-                        )?.District
-                      )}
-                    >
-                      {/* {Use find to locate the matching clinic name and return to its 18區} */}
-                      {
-                        hospitalQuota.find(
-                          (obj) =>
-                            obj.Clinic === hospital.hospital.institution_tc
-                        )?.District
-                      }
-                    </div>
-                    <h2 className={styles["bold"]}>
-                      {hospital.hospital.institution_tc}&emsp;
-                      <span>
-                        <span class="glyphicon glyphicon-map-marker"></span>
-                        {hospital.distance.toFixed(1)}km
-                      </span>
-                    </h2>
-                    {/* 
+                      <div
+                        className={districtColor3(
+                          // Use find to locate the matching clinic name and return its 18區 styling
+                          hospitalQuota.find(
+                            (obj) =>
+                              obj.Clinic === hospital.hospital.institution_tc
+                          )?.District
+                        )}
+                      >
+                        {/* {Use find to locate the matching clinic name and return to its 18區} */}
+                        {
+                          hospitalQuota.find(
+                            (obj) =>
+                              obj.Clinic === hospital.hospital.institution_tc
+                          )?.District
+                        }
+                      </div>
+                      <h2 className={styles["bold"]}>
+                        {hospital.hospital.institution_tc}&emsp;
+                        <span>
+                          <span class="glyphicon glyphicon-map-marker"></span>
+                          {hospital.distance.toFixed(1)}km
+                        </span>
+                      </h2>
+                      {/* 
                   <h4 className={styles["newServices-title"]}>
                     <ClassIcon />
                     {hospital.hospital.cluster_tc}
                   </h4> */}
 
-                    <p>
-                      <QueryBuilderIcon style={{ color: "#2683fd" }}/>
-                      &emsp;
-                      {/* {Use find to locate the matching clinic name and return to its 18區} */}
-                      {isFetching5 ? (
-                        <p>
-                          <HourglassBottomIcon />
-                          資料更新中...
-                        </p>
-                      ) : (
-                        hospitalQuota.find(
-                          (obj) =>
-                            obj.Clinic === hospital.hospital.institution_tc
-                        )?.["Doctor Consultation Sessions"]
-                      )}
-                    </p>
-                    <p>
-                      <CalendarMonthIcon style={{ color: "#2683fd" }} />
-                      &emsp;
-                      {/* {Apple mobile device will redirect to App store, Andriod --> Google store, Desktop device all redirect to Google store} */}
-                      <a
-                        href="https://www3.ha.org.hk/hago/Home/DownloadApps/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        經
-                        「 HA Go 」預約新症
-                      </a>
-                    </p>
-                    <p>
-                      <NavigationIcon style={{ color: "#2683fd" }} />
-                      &emsp;
-                      <a>{hospital.hospital.address_tc}</a>
-                    </p>
-                  </div>
-                ))
-            )}
-          </Slider>
+                      <p>
+                        <QueryBuilderIcon style={{ color: "#2683fd" }} />
+                        &emsp;
+                        {/* {Use find to locate the matching clinic name and return to its 18區} */}
+                        {isFetching5 ? (
+                          <p>
+                            <HourglassBottomIcon />
+                            資料更新中...
+                          </p>
+                        ) : (
+                          hospitalQuota.find(
+                            (obj) =>
+                              obj.Clinic === hospital.hospital.institution_tc
+                          )?.["Doctor Consultation Sessions"]
+                        )}
+                      </p>
+                      <p>
+                        <CalendarMonthIcon style={{ color: "#2683fd" }} />
+                        &emsp;
+                        {/* {Apple mobile device will redirect to App store, Andriod --> Google store, Desktop device all redirect to Google store} */}
+                        <a
+                          href="https://www3.ha.org.hk/hago/Home/DownloadApps/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          經 「 HA Go 」預約新症
+                        </a>
+                      </p>
+                      <p>
+                        <NavigationIcon style={{ color: "#2683fd" }} />
+                        &emsp;
+                        <a>{hospital.hospital.address_tc}</a>
+                      </p>
+                    </div>
+                  ))
+              )}
+            </Slider>
+          ) : (
+            <p>
+              <HourglassBottomIcon />
+              醫院距離更新中...
+            </p>
+          )}
         </section>
       </div>
       <div className={styles["footer-wrapper"]}>
