@@ -40,8 +40,6 @@ body {
   display: flex;
   justify-content: space-between;
   margin: 2%;
- 
-
 }
 
 input:focus::placeholder {
@@ -69,7 +67,7 @@ input {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  margin:2em;
+  margin: 2em;
 }
 
 .service-button {
@@ -91,9 +89,9 @@ button:hover {
   color: #ffffff;
 }
 
-.allComponents {
-  margin-top: 40px;
-}
+/* .allComponents {
+  margin-top: -40px;
+} */
 
 .upperCardContainer {
   display: flex;
@@ -148,6 +146,7 @@ li {
 h1 {
   text-align: center;
   font-size: 2.5em;
+  /* margin-bottom: -5px; */
 }
 
 h2 {
@@ -170,7 +169,6 @@ h4 {
 a {
   color: #7f7f7f;
   font-style: normal;
-  
 }
 
 a:hover {
@@ -227,7 +225,6 @@ p {
   font-size: 18px;
 }
 
-
 /*buttonForServicePage*/
 .serviceText-container p {
   margin-top: 2em;
@@ -274,7 +271,7 @@ p {
 }
 
 img {
-  border-radius: 5%;
+  border-radius: 60%;
   margin-right: 5px;
 }
 
@@ -301,7 +298,7 @@ img {
   justify-content: space-around; */
 
   color: #7f7f7f;
-font-style: normal;
+  font-style: normal;
 }
 
 .right-container {
@@ -311,13 +308,13 @@ font-style: normal;
 .mapWrapper {
   margin-right: 1em;
   color: #7f7f7f;
-font-style: normal;
+  font-style: normal;
 }
 
-.mapWrapper a{
+.mapWrapper a {
   margin-right: 1em;
   color: #7f7f7f;
-font-style: normal;
+  font-style: normal;
 }
 
 .iframe {
@@ -368,7 +365,7 @@ font-style: normal;
   font-weight: normal;
   color: #7f7f7f;
   margin: 2em;
-  margin-top: 2.4em;
+  /* margin-top: -10px; */
   display: flex;
   justify-content: space-between;
 }
@@ -390,8 +387,6 @@ font-style: normal;
     flex-direction: column;
   }
 
- 
-
   .upperCardRightContainer {
     all: unset;
     margin-top: 10px;
@@ -409,14 +404,10 @@ font-style: normal;
   }
   .footer-wrapper {
     flex-direction: column;
+    margin-top: 2.4em;
   }
 }
 
 .specialistServices-container {
- 
   margin: 2em;
 }
-
-
-
-

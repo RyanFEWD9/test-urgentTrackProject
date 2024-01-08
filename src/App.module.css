@@ -512,7 +512,7 @@ p {
 
   background-color: #3c87df;
   top: 0; /* Position the navbar at the top of the page */
-  padding: 2em;
+  padding: 1.8em;
   z-index: 1;
   text-align: center;
 
@@ -618,7 +618,11 @@ p {
   .waitTimeButtonContainer {
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
     margin-top: 10px;
+  }
+  .twoHourButton {
+    margin-top: 5px;
   }
   /* to put the close icon on top left */
   .iconWrap {
@@ -664,6 +668,12 @@ p {
   width: 8em;
 }
 
+
+.mainHotlineWrapper {
+
+}
+
+
 .smallArrow {
   background-color: #fff;
   color: #000 !important;
@@ -674,4 +684,3 @@ p {
   align-items: center !important;
   justify-content: center !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
-}

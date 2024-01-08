@@ -12,7 +12,6 @@ import Ambulance from "./Components/Ambulance";
 
 function App() {
   const [userLocation, setUserLocation] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
   return (
     <Router>
       <div className={styles["navBar-homepage"]}>
@@ -34,8 +33,6 @@ function App() {
             <ServicePage
               userLocation={userLocation}
               setUserLocation={setUserLocation}
-              searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
             />
           }
         />
@@ -47,8 +44,6 @@ function App() {
             <Distance
               userLocation={userLocation}
               setUserLocation={setUserLocation}
-              searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
             />
           }
         />
@@ -58,8 +53,6 @@ function App() {
             <GeneralPage
               userLocation={userLocation}
               setUserLocation={setUserLocation}
-              searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
             />
           }
         />

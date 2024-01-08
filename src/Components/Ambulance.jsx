@@ -1,10 +1,12 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
+
 import { useReactToPrint } from "react-to-print";
 import styles from "../App.module.css";
 import CallIcon from "@mui/icons-material/Call";
 import ScrollTop from "./ScrollToTop";
 import ShareApp from "./ShareApp";
+
 
 function Ambulance() {
   const componentRef = useRef();
@@ -12,6 +14,7 @@ function Ambulance() {
     content: () => componentRef.current,
     documentTitle: "UrgentHotLines",
     onAfterPrint: () => alert("Success"),
+
   });
 
   const data = [
@@ -46,7 +49,7 @@ function Ambulance() {
   ];
 
   return (
-    <>
+        <>
       <div ref={componentRef}>
         <div className={styles["hotlineWrapper"]}>
           <h1>緊急求助熱線</h1>
@@ -117,3 +120,6 @@ function Ambulance() {
 }
 
 export default Ambulance;
+
+
+          
