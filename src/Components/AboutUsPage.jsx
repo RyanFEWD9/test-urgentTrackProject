@@ -25,7 +25,7 @@ function AboutUsPage() {
 
           <div>
             <img
-              src="https://img.freepik.com/free-vector/hospital-building-concept-illustration_114360-8440.jpg?w=1380&t=st=1704138563~exp=1704139163~hmac=5a196dd6626a106014470b51be11b5c0527a95fe9940e63d06004d1e802e77d4"
+              src="https://img.freepik.com/free-vector/people-walking-sitting-hospital-building-city-clinic-glass-exterior-flat-vector-illustration-medical-help-emergency-architecture-healthcare-concept_74855-10130.jpg?w=1480&t=st=1704681542~exp=1704682142~hmac=a148819c2566433fc587b27abaf93864311d96b64a7c03be3221c8d12ef18572"
               className={styles["imgWrapper"] } 
             ></img>
           </div>

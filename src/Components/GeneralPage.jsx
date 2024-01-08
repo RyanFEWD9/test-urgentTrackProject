@@ -315,7 +315,7 @@ function GeneralPage({
                   </h4> */}
 
                     <p>
-                      <QueryBuilderIcon />
+                      <QueryBuilderIcon style={{ color: "#2683fd" }}/>
                       &emsp;
                       {/* {Use find to locate the matching clinic name and return to its 18區} */}
                       {isFetching5 ? (
@@ -339,7 +339,8 @@ function GeneralPage({
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        經醫管局流動應用程式「 HA Go 」預約新症
+                        經
+                        「 HA Go 」預約新症
                       </a>
                     </p>
                     <p>
