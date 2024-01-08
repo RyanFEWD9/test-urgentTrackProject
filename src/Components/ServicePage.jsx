@@ -1,4 +1,4 @@
-//import styles from "./ServicePage.module.css";
+//import styles from "../App.module.css";
 import styles from "./ServicePage.module.css";
 import CallIcon from "@mui/icons-material/Call";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -18,6 +18,7 @@ import ServicePageSearchBar from "./ServicePageSearchBar";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import LoadingOpening from "./Loading";
 
 function ServicePage({ userLocation }) {
   //For enabling CORS
@@ -194,6 +195,7 @@ function ServicePage({ userLocation }) {
 
   return (
     <div className={styles["servicePage-container"]}>
+      <LoadingOpening />
       <h1>專科服務</h1>
       <div className={styles["allComponents"]}>
         <div className={styles["left-container"]}>
@@ -218,8 +220,15 @@ function ServicePage({ userLocation }) {
                 >
                   <img
                     className={styles["haGO"]}
-                    src="https://sthagowebwww2prd01.blob.core.windows.net/hago/images/default-source/web-library/ha_go_logo_text.png?sfvrsn=21d59c59_3"
+                    src="https://play-lh.googleusercontent.com/IZP8Pl7b1QSsMTerRcnL9ekl7uosH7DCJGeNLsNLb4vlxBc_9KV9wgvYzZcLk3FiHd4"
                     alt="HA-GO"
+                    style={{
+                      width: "5.5em",
+                      backgroundColor: "#ffffff",
+                      borderRadius: "1em",
+                      boxShadow: "0 10px 15px rgba(0, 0, 0, 0.08)",
+                      margin: "1em",
+                    }}
                   />
                 </a>
               </div>
