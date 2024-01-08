@@ -317,4 +317,4 @@ Ambulance.jsx ScrollToTop.jsx ShareApp.jsx
 
 
 2024/01/09 Kelly's update
-CSS updated for index.html, App.module.css, AboutUsPage.jsx, Ambalance.jsx, Distance.jsx, GeneralPage.jsx, Loading.jsx, ServicePage.jsx, ServicePage.module.css.
+1. CSS updated for index.html, App.module.css, AboutUsPage.jsx, Ambalance.jsx, Distance.jsx, GeneralPage.jsx, Loading.jsx, ServicePage.jsx, ServicePage.module.css.
