@@ -8,14 +8,13 @@ import PageNotFound from "./Components/PageNotFound";
 import GeneralPage from "./Components/GeneralPage";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Ambalance from "./Components/Ambalance";
+import Ambulance from "./Components/Ambulance";
 
 function App() {
   const [userLocation, setUserLocation] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <Router>
-      
       <div className={styles["navBar-homepage"]}>
         <nav>
           {/* Links to navigate between pages */}
@@ -24,7 +23,7 @@ function App() {
           <Link to="/UrgentTrackProject"> 急症室</Link>
           <Link to="/service">專科服務</Link>
           <Link to="/general">普通科</Link>
-          <Link to="/ambalance">緊急熱線</Link>
+          <Link to="/ambulance">緊急熱線</Link>
         </nav>
       </div>
 
@@ -64,7 +63,7 @@ function App() {
             />
           }
         />
-        <Route path="/ambalance" element={<Ambalance />} />
+        <Route path="/ambulance" element={<Ambulance />} />
       </Routes>
     </Router>
   );

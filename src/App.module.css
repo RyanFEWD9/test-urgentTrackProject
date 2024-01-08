@@ -5,18 +5,14 @@
 body {
   background-color: #fafafa;
   color: #7f7f7f;
-
 }
 
-
-
- @media only screen and  (max-width: 800px) {
+@media only screen and (max-width: 800px) {
   .introTextWrapper img {
     display: none;
     visibility: hidden;
   }
 }
-
 
 /* AboutUsPage */
 @keyframes slideInLeft {
@@ -51,13 +47,17 @@ body {
   }
 }
 
-.introWrapper h1, .introWrapper h3, .introWrapper p, .introWrapper button {
+.introWrapper h1,
+.introWrapper h3,
+.introWrapper p,
+.introWrapper button {
   animation: 1.2s slideInLeft ease-in-out forwards 0s;
 }
 
-.introWrapper h1, .introWrapper h3 {
+.introWrapper h1,
+.introWrapper h3 {
   font-weight: 1200;
-  color: #6F6F6F;
+  color: #6f6f6f;
 }
 
 .introWrapper img {
@@ -82,10 +82,8 @@ body {
   justify-content: flex-start;
 }
 
-
-
 #nearbyHospitalButton {
-  background-color: #1BD6B5;
+  background-color: #1bd6b5;
   font-weight: 700;
   color: #ffffff;
 }
@@ -95,17 +93,16 @@ body {
   color: #ffffff;
 }
 
-#chooseServiceButton  a{
+#chooseServiceButton a {
   text-decoration: none;
-  color: #1BD6B5;
+  color: #1bd6b5;
   font-weight: 800;
 }
 
-#chooseServiceButton  {
+#chooseServiceButton {
   color: #0d5346;
   background-color: #fafafa;
-  border: 3px solid  #1BD6B5;
-  
+  border: 3px solid #1bd6b5;
 }
 
 .mainWrapper p {
@@ -114,8 +111,8 @@ body {
 
 img {
   border-radius: 5%;
-  
-  width:80%;
+
+  width: 80%;
   height: 30%;
   display: flex;
   justify-content: center;
@@ -124,7 +121,6 @@ img {
 .introWrapper {
   display: flex;
   align-items: center;
-
 }
 
 .introTextWrapper {
@@ -138,37 +134,29 @@ img {
   height: 100px;
 }
 
-
-
 .introTextWrapper h1 {
   margin-top: 1em;
   text-align: left;
-  color: #2074D6;
+  color: #2074d6;
   font-weight: bold;
 }
 
-
-
 .introTextWrapper h3 {
   margin-top: 5em;
-
-
 }
-.introTextWrapper h1, .introTextWrapper  h3,.introTextWrapper  p, .chooseServiceButtonWrapper {
-  margin-left:12%;
-
+.introTextWrapper h1,
+.introTextWrapper h3,
+.introTextWrapper p,
+.chooseServiceButtonWrapper {
+  margin-left: 12%;
 }
-
-
 
 .imgWrapper {
-
-  box-shadow: 0 2p  x 3px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2p x 3px rgba(0, 0, 0, 0.03);
   display: flex;
   justify-content: flex-end;
   margin-top: 15%;
   margin-left: 12%;
-  
 }
 
 /*
@@ -454,7 +442,7 @@ h1 {
   margin-left: 0.2em;
   margin-top: 4em;
   margin-bottom: 1em;
-  color: #6F6F6F;
+  color: #6f6f6f;
 }
 
 h2 {
@@ -462,19 +450,19 @@ h2 {
   margin-bottom: 0.6em;
   margin-top: 0.4em;
   margin-left: 0.2em;
-  color: #6F6F6F;
+  color: #6f6f6f;
 }
 
 h3 {
   font-size: 1.5em;
   margin-left: 0.2em;
-  color: #6F6F6F;
+  color: #6f6f6f;
 }
 
 h4 {
   font-size: 1.1em;
   margin-left: 0.2em;
-  color: #6F6F6F;
+  color: #6f6f6f;
 }
 
 a {
@@ -514,11 +502,7 @@ p {
 
   border-radius: 50em;
   transform: scale(1);
-  
-
 }
-
-
 
 .navBar-homepage nav {
   display: flex;
@@ -526,26 +510,20 @@ p {
   width: 100%; /* Full width */
   position: fixed; /* Set the navbar to fixed position */
 
-  background-color: #3C87DF;
+  background-color: #3c87df;
   top: 0; /* Position the navbar at the top of the page */
   padding: 2em;
   z-index: 1;
   text-align: center;
 
-  
-
   border: 20px solid #fafafa;
   border-radius: 2.5em;
 }
 
-.navBar-homepage  {
+.navBar-homepage {
   background-color: #fafafa;
-  width: 100%; 
- 
-
+  width: 100%;
 }
-
-
 
 /*buttonForServicePage*/
 .serviceText-container p {
@@ -569,7 +547,6 @@ p {
   box-shadow: 0 0 3px rgb(108, 172, 255);
   transform: scale(1);
 }
-
 
 /* General Page */
 .select {
@@ -618,15 +595,13 @@ p {
 .locationtextAndSelectContainer {
   display: flex;
   justify-content: space-between;
-
-  
 }
 
-.hospital-item p, .hospital-item a {
+.hospital-item p,
+.hospital-item a {
   color: #7f7f7f;
   font-style: normal;
 }
-
 
 @media screen and (max-width: 600px) {
   .hospital-container {
@@ -659,44 +634,44 @@ p {
 .hotlineWithNameWrapper {
   display: flex;
   flex-direction: column;
-  
+
   background-color: #ffffff;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
   border-radius: 1em;
   padding: 1em;
   transform: scale(0.96);
-  
+
   margin: 10%;
   margin-top: 2em;
   padding: 2em;
   text-align: center;
- 
-
-
 }
 
 .hotlineWithNameWrapper a {
   font-size: 20px;
   cursor: pointer;
-
 }
-
-
 
 .hotlineInfoWrapper li {
   font-size: 20px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  
 }
-
 
 .hotlineButtonWrapper button {
   padding: 0.6em;
   width: 8em;
 }
 
-.mainHotlineWrapper {
-
+.smallArrow {
+  background-color: #fff;
+  color: #000 !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
