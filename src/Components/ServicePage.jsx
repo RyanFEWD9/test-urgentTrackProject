@@ -271,7 +271,7 @@ function ServicePage({ userLocation, searchTerm, setSearchTerm }) {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            經醫管局流動應用程式「 HA Go 」預約新症
+                            經「 HA Go 」預約新症
                           </a>
                         </p>
 
