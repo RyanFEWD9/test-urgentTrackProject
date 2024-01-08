@@ -1,24 +1,26 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import styles from "../App.module.css";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import AddIcCallRoundedIcon from "@mui/icons-material/AddIcCallRounded";
+
 import { useReactToPrint } from "react-to-print";
-import ListItem from "@mui/material/ListItem";
+import styles from "../App.module.css";
 import CallIcon from "@mui/icons-material/Call";
+
 import LoadingOpening from "./Loading";
 import ScrollTop from "./ScrollToTop";
 import ShareApp from "./ShareApp";
+
+import ScrollTop from "./ScrollToTop";
+import ShareApp from "./ShareApp";
+
+
 
 function Ambulance() {
   const componentRef = useRef();
   const printPage = useReactToPrint({
     content: () => componentRef.current,
     documentTitle: "UrgentHotLines",
-    onAfterPrint: () => alert("Print success"),
+    onAfterPrint: () => alert("Success"),
+
   });
 
   const data = [
@@ -53,8 +55,12 @@ function Ambulance() {
   ];
 
   return (
+
     <>
       <LoadingOpening />
+
+        <>
+
       <div ref={componentRef}>
         <div className={styles["hotlineWrapper"]}>
           <h1>緊急求助熱線</h1>
@@ -69,11 +75,19 @@ function Ambulance() {
                   <Link to={`tel:${item.電話}`}>
                     {item.電話}
                     <br />
+
+
+                    <br />
+
                   </Link>
                 </div>
               ))}
             </div>
             <br></br>
+
+
+            <br />
+
 
             <div className={styles["hotlineInfoWrapper"]}>
               <h3>致電者請提供以下資料：</h3>
@@ -96,6 +110,7 @@ function Ambulance() {
                 </li>
               </ol>
             </div>
+
             <div
               style={{
                 display: "flex",
@@ -107,17 +122,39 @@ function Ambulance() {
                 <button onClick={printPage}>列印／存檔</button>
               </div>
             </div>
+
           </div>
           <br />
         </section>
       </div>
 
+
       <div className={styles["shareFooterWrapper"]}>
         <ShareApp />
         <ScrollTop />
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div className={styles["hotlineButtonWrapper"]}>
+          <button onClick={printPage}>列印／存檔</button>
+        </div>
+
       </div>
+
+      <div className={styles["footer-wrapper"]}>
+        <footer>© 資料歸香港公立醫院版權所有</footer>
+        <footer>最後更新： 2024年1月8日 下午12時00分</footer>
+      </div>
+      <ShareApp />
+      <ScrollTop />
     </>
   );
 }
 
 export default Ambulance;
+
