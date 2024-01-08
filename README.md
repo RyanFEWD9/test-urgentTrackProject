@@ -296,3 +296,6 @@ update a bit content and CSS in AboutUsPage.js , App.module.css, app.js
 2. GeneralPage district color updated
 3. Footers updated on ServicePage and General Page
 4. floating icon added on ServicePage and General Page mobile ver.
+
+2024/01/05 Kelly's update
+CSS updated for App.js, App.module.css, AboutUsPage.jsx, Ambalance.jsx, ServicePage.module.css.

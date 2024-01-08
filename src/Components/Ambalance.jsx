@@ -24,11 +24,12 @@ function Ambalance() {
         ref={componentRef}
         style={{ width: "100%", height: window.innerHeight }}
       >
-        <section className={styles["mainWrapper"]}>
-          <div className={styles["introTextWrapper"]}>
+        <section className={styles["mainHotlineWrapper"]}>
+          <div className={styles["hotlineWrapper"]}>
             <h1>
+            <AddIcCallRoundedIcon style={{ fontSize: 40 }} />
               緊急救助熱線
-              <AddIcCallRoundedIcon style={{ fontSize: 40 }} />
+              
             </h1>
           </div>
           <br />
