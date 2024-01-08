@@ -668,5 +668,19 @@ p {
   width: 8em;
 }
 
+
 .mainHotlineWrapper {
+
 }
+
+
+.smallArrow {
+  background-color: #fff;
+  color: #000 !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
