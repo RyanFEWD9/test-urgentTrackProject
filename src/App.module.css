@@ -618,7 +618,11 @@ p {
   .waitTimeButtonContainer {
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
     margin-top: 10px;
+  }
+  .twoHourButton {
+    margin-top: 5px;
   }
   /* to put the close icon on top left */
   .iconWrap {
