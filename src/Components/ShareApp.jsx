@@ -16,7 +16,7 @@ import {
   LinkedinIcon,
 } from "react-share";
 
-function Share() {
+function ShareApp() {
   const shareUrl = "https://generationfewd9.github.io/urgentTrackProject/";
   return (
     <div>
@@ -81,4 +81,4 @@ function Share() {
   );
 }
 
-export default Share;
+export default ShareApp;

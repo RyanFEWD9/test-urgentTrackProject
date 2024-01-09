@@ -9,6 +9,7 @@ import GeneralPage from "./Components/GeneralPage";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Ambulance from "./Components/Ambulance";
+import Opinion from "./Components/Opinion";
 
 function App() {
   const [userLocation, setUserLocation] = useState(null);
@@ -23,6 +24,7 @@ function App() {
           <Link to="/service">專科服務</Link>
           <Link to="/general">普通科</Link>
           <Link to="/ambulance">緊急熱線</Link>
+          <Link to="/opinion">意見表格</Link>
         </nav>
       </div>
 
@@ -57,6 +59,7 @@ function App() {
           }
         />
         <Route path="/ambulance" element={<Ambulance />} />
+        <Route path="/opinion" element={<Opinion />} />
       </Routes>
     </Router>
   );

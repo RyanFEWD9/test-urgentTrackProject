@@ -1,0 +1,38 @@
+.hotlineWithNameWrapper {
+  display: flex;
+  flex-direction: column;
+
+  background-color: #ffffff;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 1em;
+  padding: 1em;
+  transform: scale(0.96);
+
+  margin: 10%;
+  margin-top: 2em;
+  padding: 2em;
+  text-align: center;
+
+  font-size: 1.2em; /* Increased font size */
+}
+
+.hotlineWithNameWrapper a {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hotlineInfoWrapper li {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.hotlineButtonWrapper button {
+  padding: 0.6em;
+  width: 8em;
+}
+
+.textarea {
+  height: 150px;
+}
