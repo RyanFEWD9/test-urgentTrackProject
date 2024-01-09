@@ -783,13 +783,7 @@ p {
 .smallArrow {
   background-color: #fff;
   color: #000 !important;
-  width: 4em !important;
-  height: 4em !important;
-  padding: 1em;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 50% !important;
 }
 
 .smallArrow:hover {
