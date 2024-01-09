@@ -18,7 +18,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { settings } from "./utils";
 import LoadingOpening from "./Loading";
-import Background from "./Background";
 
 function Distance({ userLocation, setUserLocation }) {
   //For enabling CORS
