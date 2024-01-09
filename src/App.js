@@ -24,7 +24,7 @@ function App() {
           <Link to="/service">專科服務</Link>
           <Link to="/general">普通科</Link>
           <Link to="/ambulance">緊急熱線</Link>
-          <Link to="/opinion">意見表格</Link>
+          <Link to="/opinion">聯絡我們</Link>
         </nav>
       </div>
 
