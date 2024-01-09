@@ -1,18 +1,11 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-
 import { useReactToPrint } from "react-to-print";
 import styles from "../App.module.css";
 import CallIcon from "@mui/icons-material/Call";
-
 import LoadingOpening from "./Loading";
 import ScrollTop from "./ScrollToTop";
 import ShareApp from "./ShareApp";
-
-import ScrollTop from "./ScrollToTop";
-import ShareApp from "./ShareApp";
-
-
 
 function Ambulance() {
   const componentRef = useRef();
@@ -20,7 +13,6 @@ function Ambulance() {
     content: () => componentRef.current,
     documentTitle: "UrgentHotLines",
     onAfterPrint: () => alert("Success"),
-
   });
 
   const data = [
@@ -55,12 +47,8 @@ function Ambulance() {
   ];
 
   return (
-
     <>
       <LoadingOpening />
-
-        <>
-
       <div ref={componentRef}>
         <div className={styles["hotlineWrapper"]}>
           <h1>緊急求助熱線</h1>
@@ -72,45 +60,27 @@ function Ambulance() {
                 <div key={index}>
                   <h2>{item.機構}</h2>
                   <CallIcon style={{ color: "#2683fd" }} /> &emsp;
-                  <Link to={`tel:${item.電話}`}>
-                    {item.電話}
-                    <br />
-
-
-                    <br />
-
-                  </Link>
+                  <Link to={`tel:${item.電話}`}>{item.電話}</Link>
                 </div>
               ))}
             </div>
-            <br></br>
-
-
-            <br />
-
-
             <div className={styles["hotlineInfoWrapper"]}>
               <h3>致電者請提供以下資料：</h3>
               <ol>
-                <br />
                 <li>
-                  1. 簡述發生的緊急的情況(有人暈倒、受傷、病人出現病徵等狀況)
+                  簡述發生的緊急的情況(有人暈倒、受傷、病人出現病徵等狀況)
                 </li>
-                <br />
                 <li>
-                  2. 提供具體詳細的事發地點描述(周圍的建築物名稱、街道地址等)
+                  提供具體詳細的事發地點描述(周圍的建築物名稱、街道地址等)
                 </li>
-                <br />
                 <li>
-                  3. 簡述傷病者情況(年齡、性別、病歷、病徵，傷者之受傷程度等)
+                  簡述傷病者情況(年齡、性別、病歷、病徵，傷者之受傷程度等)
                 </li>
-                <br />
                 <li>
-                  4. 為了方便救護員與你聯絡, 請提供能夠隨時聯絡到你的電話號碼
+                  為了方便救護員與你聯絡, 請提供能夠隨時聯絡到你的電話號碼
                 </li>
               </ol>
             </div>
-
             <div
               style={{
                 display: "flex",
@@ -122,39 +92,19 @@ function Ambulance() {
                 <button onClick={printPage}>列印／存檔</button>
               </div>
             </div>
-
           </div>
-          <br />
         </section>
       </div>
-
-
       <div className={styles["shareFooterWrapper"]}>
         <ShareApp />
         <ScrollTop />
-
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <div className={styles["hotlineButtonWrapper"]}>
-          <button onClick={printPage}>列印／存檔</button>
-        </div>
-
       </div>
-
       <div className={styles["footer-wrapper"]}>
         <footer>© 資料歸香港公立醫院版權所有</footer>
         <footer>最後更新： 2024年1月8日 下午12時00分</footer>
       </div>
-      <ShareApp />
-      <ScrollTop />
     </>
   );
 }
 
 export default Ambulance;
-
