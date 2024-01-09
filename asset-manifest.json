@@ -1,16 +1,19 @@
 {
   "files": {
-    "main.css": "/RyanFEWD9/test-urgentTrackProject.git/static/css/main.87202f97.css",
-    "main.js": "/RyanFEWD9/test-urgentTrackProject.git/static/js/main.d632f050.js",
-    "static/js/787.e75c002b.chunk.js": "/RyanFEWD9/test-urgentTrackProject.git/static/js/787.e75c002b.chunk.js",
-    "static/media/logo.svg": "/RyanFEWD9/test-urgentTrackProject.git/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/RyanFEWD9/test-urgentTrackProject.git/index.html",
-    "main.87202f97.css.map": "/RyanFEWD9/test-urgentTrackProject.git/static/css/main.87202f97.css.map",
-    "main.d632f050.js.map": "/RyanFEWD9/test-urgentTrackProject.git/static/js/main.d632f050.js.map",
-    "787.e75c002b.chunk.js.map": "/RyanFEWD9/test-urgentTrackProject.git/static/js/787.e75c002b.chunk.js.map"
+    "main.css": "/urgentTrackProject/static/css/main.f90d430a.css",
+    "main.js": "/urgentTrackProject/static/js/main.561ce46d.js",
+    "static/js/787.bee62828.chunk.js": "/urgentTrackProject/static/js/787.bee62828.chunk.js",
+    "static/media/slick.svg": "/urgentTrackProject/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/urgentTrackProject/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/urgentTrackProject/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/urgentTrackProject/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/urgentTrackProject/index.html",
+    "main.f90d430a.css.map": "/urgentTrackProject/static/css/main.f90d430a.css.map",
+    "main.561ce46d.js.map": "/urgentTrackProject/static/js/main.561ce46d.js.map",
+    "787.bee62828.chunk.js.map": "/urgentTrackProject/static/js/787.bee62828.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.87202f97.css",
-    "static/js/main.d632f050.js"
+    "static/css/main.f90d430a.css",
+    "static/js/main.561ce46d.js"
   ]
 }
