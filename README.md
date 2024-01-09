@@ -326,3 +326,7 @@ Opinion.jsx
 
 2024/01/09 1251 Chloe's update
 Opinion.jsx amend number input
+
+2024/01/09 Abbie's update
+
+1. GeneralPage district color bug fix

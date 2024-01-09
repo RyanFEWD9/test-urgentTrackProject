@@ -267,7 +267,7 @@ img {
   width: 6em;
   height: 2em;
   border: 2px solid #d60000;
-  text-align: center;
+  /* text-align: center; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -669,7 +669,9 @@ p {
   width: 100px;
   padding: 5px;
 }
-
+.generalPageDistrictColor {
+  padding-bottom: 13px;
+}
 .haGO {
   display: none;
 }

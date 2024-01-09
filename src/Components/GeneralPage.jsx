@@ -323,12 +323,14 @@ function GeneralPage({
                         )}
                       >
                         {/* {Use find to locate the matching clinic name and return to its 18區} */}
-                        {
-                          hospitalQuota.find(
-                            (obj) =>
-                              obj.Clinic === hospital.hospital.institution_tc
-                          )?.District
-                        }
+                        <p className={styles["generalPageDistrictColor"]}>
+                          {
+                            hospitalQuota.find(
+                              (obj) =>
+                                obj.Clinic === hospital.hospital.institution_tc
+                            )?.District
+                          }
+                        </p>
                       </div>
                       <h2 className={styles["bold"]}>
                         {hospital.hospital.institution_tc}&emsp;
