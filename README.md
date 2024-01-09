@@ -334,3 +334,7 @@ Opinion.jsx amend number input
 2024/01/09 17:00 Abbie's update
 
 1. Service updated ipad and mobile responsive
+
+2024/01/10 Kelly's update
+
+1. CSS updated for App.js, App.module.css, Opinion.jsx, Opinion.module.css.
