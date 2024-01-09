@@ -323,3 +323,6 @@ Opinion.jsx
 
 1. ServicePage.jsx floating icon updated
 2. GeneralPage.jsx and Distance.jsx mobile version margin-top fixed
+
+2024/01/09 1251 Chloe's update
+Opinion.jsx amend number input

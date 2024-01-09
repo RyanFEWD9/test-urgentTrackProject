@@ -23,16 +23,6 @@ function Opinion() {
     window.location.reload();
   }
 
-  let userInfo = "";
-  function toggleGetData() {
-    userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    console.log(userInfo.Email);
-    setName(userInfo.Name);
-    setEmail(userInfo.Email);
-    setText(userInfo.Text);
-    setNumber(userInfo.Number);
-  }
-
   return (
     <div>
       <h1>意見箱</h1>
@@ -65,7 +55,7 @@ function Opinion() {
               maxLength="25"
               name="enter-tel2"
               placeholder="輸入電話"
-              onChange={(e) => setText(e.target.value)}
+              onChange={(e) => setNumber(e.target.value)}
               style={{ textAlign: "center" }}
             />
           </label>
