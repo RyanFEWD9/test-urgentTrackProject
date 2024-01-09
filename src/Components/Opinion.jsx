@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./Opinion.module.css";
+import ScrollTop from "./ScrollToTop";
+import ShareApp from "./ShareApp";
 
 function Opinion() {
   const [name, setName] = useState("");
@@ -38,7 +40,7 @@ function Opinion() {
         <div>
           <form>
             <label htmlFor="name">
-              姓名 &nbsp;
+              姓名
               <input
                 id="enter-name"
                 type="text"
@@ -54,7 +56,7 @@ function Opinion() {
           </form>
           <br />
           <label htmlFor="tel">
-            電話 &nbsp;
+            電話
             <input
               id="enter-tel"
               type="text"
@@ -68,8 +70,9 @@ function Opinion() {
             />
           </label>
           <br />
+          <br />
           <label htmlFor="email">
-            電郵 &nbsp;
+            電郵
             <input
               id="enter-email"
               type="text"
@@ -82,18 +85,17 @@ function Opinion() {
             />
           </label>
           <br />
-
+          <br />
           <label htmlFor="text">
-            內容 &nbsp;
             <textarea
               name="enter-content"
               id="enter-content"
-              title="輸入內容"
-              placeholder="輸入內容"
+              title="內容"
+              placeholder="內容"
               maxLength="1000"
               className={`txt_area w-input ${styles.textarea}`}
               onChange={(e) => setText(e.target.value)}
-              style={{ textAlign: "center" }}
+              style={{ textAlign: "center", height: "200px", width: "400px" }}
             />
           </label>
           <br />
@@ -103,6 +105,8 @@ function Opinion() {
           </button>
         </div>
       </div>
+      <ShareApp />
+      <ScrollTop />
     </div>
   );
 }
