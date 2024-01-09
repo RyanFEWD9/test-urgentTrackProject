@@ -400,6 +400,21 @@ img {
   justify-content: space-between;
 }
 
+.haGO {
+  display: none;
+}
+
+.iconContainer {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  right: 0;
+}
+
+.iconWrap {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
   .allComponents {
     display: flex;
@@ -423,21 +438,15 @@ img {
   }
 
   /* to put the close icon on top left */
-
-  .haGO {
-    display: none;
-  }
-
-  .iconContainer {
-    display: flex;
-    position: fixed;
-    z-index: 1;
-    right: 0;
-  }
-
   .iconWrap {
-    display: none;
+    display: flex;
   }
+  .haGO {
+    display: block;
+    width: 200px;
+    height: 75px;
+  }
+
   .footer-wrapper {
     flex-direction: column;
     margin-top: 2.4em;
