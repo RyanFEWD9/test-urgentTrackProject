@@ -1,7 +1,9 @@
 import { useState } from "react";
-import styles from "./Opinion.module.css";
+//import styles from "./Opinion.module.css";
+import styles from "../App.module.css";
 import ScrollTop from "./ScrollToTop";
 import ShareApp from "./ShareApp";
+import LoadingOpening from "./Loading";
 
 function Opinion() {
   const [name, setName] = useState("");
@@ -25,75 +27,69 @@ function Opinion() {
 
   return (
     <div>
-      <h1>意見箱</h1>
-      <div className={`box ${styles.hotlineWithNameWrapper}`}>
-        <div>
+      <LoadingOpening />
+      <h1>聯絡我們</h1>
+      <div>
+        <div className={styles["contactUsWrapper"]}>
+          <h5>請填寫以下表格，我們會盡快回覆你</h5>
           <form>
             <label htmlFor="name">
-              姓名
               <input
                 id="enter-name"
                 type="text"
-                className="txtfield w-input"
-                maxLength="20"
+                className={styles["txtfield w-input"]}
                 name="enter-name"
                 data-name="enter-name"
-                placeholder="輸入姓名"
+                placeholder="姓名"
                 onChange={(e) => setName(e.target.value)}
-                style={{ textAlign: "center" }}
+                style={{}}
+              />
+            </label>
+
+            <label htmlFor="tel">
+              <input
+                id="enter-tel"
+                type="text"
+                className={styles["txtfield w-input"]}
+                name="enter-tel2"
+                placeholder="電話"
+                onChange={(e) => setNumber(e.target.value)}
+                style={{}}
+              />
+            </label>
+
+            <label htmlFor="email">
+              <input
+                id="enter-email"
+                type="text"
+                className={styles["txtfield w-input"]}
+                name="enter-email2"
+                placeholder="電郵"
+                onChange={(e) => setEmail(e.target.value)}
+                style={{}}
+              />
+            </label>
+
+            <label htmlFor="text">
+              <textarea
+                name="enter-content"
+                id="enter-content"
+                title="內容"
+                placeholder="在此輸入內容"
+                className={`txt_area w-input ${styles.textarea}`}
+                onChange={(e) => setText(e.target.value)}
+                style={{}}
               />
             </label>
           </form>
+
           <br />
-          <label htmlFor="tel">
-            電話
-            <input
-              id="enter-tel"
-              type="text"
-              className="txtfield w-input"
-              minLength="8"
-              maxLength="25"
-              name="enter-tel2"
-              placeholder="輸入電話"
-              onChange={(e) => setNumber(e.target.value)}
-              style={{ textAlign: "center" }}
-            />
-          </label>
-          <br />
-          <br />
-          <label htmlFor="email">
-            電郵
-            <input
-              id="enter-email"
-              type="text"
-              className="txtfield w-input"
-              maxLength="1000"
-              name="enter-email2"
-              placeholder="輸入電郵"
-              onChange={(e) => setEmail(e.target.value)}
-              style={{ textAlign: "center" }}
-            />
-          </label>
-          <br />
-          <br />
-          <label htmlFor="text">
-            <textarea
-              name="enter-content"
-              id="enter-content"
-              title="內容"
-              placeholder="內容"
-              maxLength="1000"
-              className={`txt_area w-input ${styles.textarea}`}
-              onChange={(e) => setText(e.target.value)}
-              style={{ textAlign: "center", height: "200px", width: "400px" }}
-            />
-          </label>
-          <br />
-          <div className={styles["hotlineButtonWrapper"]}>
-            <button onClick={handleSubmission} className="subscribeButton">
-              提交
-            </button>
-          </div>
+        </div>
+
+        <div className={styles["subscribeButtonWrapper"]}>
+          <button onClick={handleSubmission} className="subscribeButton">
+            提交
+          </button>
         </div>
       </div>
       <div
