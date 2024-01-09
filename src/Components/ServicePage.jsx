@@ -203,7 +203,6 @@ function ServicePage({ userLocation }) {
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
           />
-          <ServicePageButton setSelectedService={setSelectedService} />
           {/* to remove the floating icon once user clicked x */}
           {showIconContainer && (
             <div className={styles["iconContainer"]}>
@@ -227,13 +226,15 @@ function ServicePage({ userLocation }) {
                       backgroundColor: "#ffffff",
                       borderRadius: "1em",
                       boxShadow: "0 10px 15px rgba(0, 0, 0, 0.08)",
-                      margin: "1em",
+                      // margin: "1em",
                     }}
                   />
                 </a>
               </div>
             </div>
           )}
+          <ServicePageButton setSelectedService={setSelectedService} />
+
           <div className={styles["specialistServices-container"]}>
             <div className={styles["serviceText-container"]}>
               <p className={styles["locationText"]}>

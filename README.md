@@ -318,3 +318,8 @@ CSS updated for App.js, App.module.css, AboutUsPage.jsx, Ambalance.jsx, GeneralP
 
 2024/01/09 Chloe's update
 Opinion.jsx
+
+2024/01/09 12:30 Abbie's update
+
+1. ServicePage.jsx floating icon updated
+2. GeneralPage.jsx and Distance.jsx mobile version margin-top fixed
