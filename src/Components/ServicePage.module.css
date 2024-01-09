@@ -415,7 +415,12 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 600px) {
+/* .specialistServices-container {
+  margin: 2em;
+} */
+
+/* mobile and ipad */
+@media screen and (max-width: 820px) {
   .allComponents {
     display: flex;
     flex-direction: column;
@@ -451,8 +456,4 @@ img {
     flex-direction: column;
     margin-top: 2.4em;
   }
-}
-
-.specialistServices-container {
-  margin: 2em;
 }
