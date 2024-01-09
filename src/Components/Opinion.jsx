@@ -99,14 +99,25 @@ function Opinion() {
             />
           </label>
           <br />
-
-          <button onClick={handleSubmission} className="subscribeButton">
-            提交
-          </button>
+          <div className={styles["hotlineButtonWrapper"]}>
+            <button onClick={handleSubmission} className="subscribeButton">
+              提交
+            </button>
+          </div>
         </div>
       </div>
-      <ShareApp />
-      <ScrollTop />
+      <div
+        className={`${styles.shareFooterWrapper} d-flex justify-center align-center`}
+      >
+        <div className="centered-container">
+          <ShareApp />
+        </div>
+        <ScrollTop />
+      </div>
+      <div className={styles["footer-wrapper"]}>
+        <footer>© 資料歸香港公立醫院版權所有</footer>
+        <footer>最後更新： 2024年1月8日 下午12時00分</footer>
+      </div>
     </div>
   );
 }

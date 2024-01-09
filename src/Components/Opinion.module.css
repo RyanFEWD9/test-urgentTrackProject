@@ -36,3 +36,44 @@
 .textarea {
   height: 150px;
 }
+
+.d-flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.shareFooterWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hotlineButtonWrapper button {
+  padding: 0.6em;
+  width: 8em;
+  margin: 1em;
+  color: #1bac92;
+  background-color: transparent;
+  border: 2px solid #1bd6b5;
+}
+
+.hotlineButtonWrapper button:hover {
+  padding: 0.6em;
+  width: 8em;
+  color: #ffffff;
+  background-color: #1bd6b5;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+}
